@@ -1,0 +1,11 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:v="clr-namespace:System;assembly=mscorlib"
+    xmlns:local="using:MusicApp.Resources">
+
+    <!-- Menu -->
+    <v:String x:Key="Menu_MainPageIcon">&#xE80F;</v:String>
+    <v:String x:Key="Menu_PerformersIcon">&#xE72D;</v:String>
+    <v:String x:Key="Menu_SettingsIcon">&#xE713;</v:String>
+</ResourceDictionary>

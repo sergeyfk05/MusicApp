@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MusicApp.Configs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,10 +11,9 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MusicApp
+namespace MusicApp.Views
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
@@ -23,6 +23,9 @@ namespace MusicApp
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = ViewConfig.GetViewInfoByName("Base").ViewModel;
+            this.MenuFrame.DataContext = ViewConfig.GetViewInfoByName("Menu").ViewModel;
+            this.MenuFrame.Navigate(new Uri("Views/HamburgerMenu.xaml", UriKind.RelativeOrAbsolute));
         }
     }
 }
