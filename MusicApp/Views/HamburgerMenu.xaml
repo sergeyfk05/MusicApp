@@ -16,5 +16,4 @@
     </Page.Resources>
 
     <ContentControl Background="SaddleBrown" Style="{DynamicResource HamburgerMenuStyle}"/>
-    
 </Page>

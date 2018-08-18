@@ -30,18 +30,5 @@ namespace MusicApp.Configs
             new ViewInfo("Settings", typeof(MusicApp.Views.HamburgerMenu), new HumburgerMenuViewModel())
         };
 
-        internal static IEnumerable<MenuItem> GetMenuItems()
-        {
-            return new List<MenuItem>()
-        {
-            new MenuItem{ IconText = (string)StaticResources["Menu_MainPageIcon"], LabelText = (string)StaticResources["Menu_MainPage"], Name="Home" },
-            new MenuItem{ IconText = (string)StaticResources["Menu_PerformersIcon"], LabelText = (string)StaticResources["Menu_Performers"], Name="Performers" },
-            new MenuItem{ IconText = (string)StaticResources["Menu_SettingsIcon"], LabelText = (string)StaticResources["Menu_Settings"], Name="Settings" },
-        };
-        }
-
-
-        internal static ResourceDictionary StaticResources { get; set; } = Application.Current.Resources;
-
     }
 }

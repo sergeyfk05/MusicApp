@@ -55,6 +55,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\RelayCommand.cs" />
+    <Compile Include="Models\RelayCommandWithParameter.cs" />
     <Compile Include="Models\ViewInfo.cs" />
     <Compile Include="Resources\DataTemplates\MenuItem.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />

@@ -7,9 +7,9 @@ using System.Windows.Input;
 
 namespace MusicApp.Models
 {
-    internal class RelayCommand<T> : ICommand
+    internal class RelayCommandWithParameter<T> : ICommand
     {
-        private readonly Action _execute;
+        private readonly Action<T> _execute;
         private readonly Predicate<T> _canExecute;
 
         /// <summary>
@@ -21,7 +21,7 @@ namespace MusicApp.Models
         /// Создает новую команду, которая всегда может выполняться.
         /// </summary>
         /// <param name="execute">Логика выполнения.</param>
-        public RelayCommand(Action execute)
+        public RelayCommandWithParameter(Action<T> execute)
             : this(execute, null)
         {
         }
@@ -31,7 +31,7 @@ namespace MusicApp.Models
         /// </summary>
         /// <param name="execute">Логика выполнения.</param>
         /// <param name="canExecute">Логика состояния выполнения.</param>
-        public RelayCommand(Action execute, Predicate<T> canExecute)
+        public RelayCommandWithParameter(Action<T> execute, Predicate<T> canExecute)
         {
             if (execute == null)
                 throw new ArgumentNullException("execute");
@@ -57,14 +57,12 @@ namespace MusicApp.Models
         /// <param name="parameter">
         /// Данные, используемые командой. Если команда не требует передачи данных, этот объект можно установить равным NULL.
         /// </param>
-        public void Execute()
-        {
-            _execute();
-        }
         public void Execute(object parameter)
         {
-            _execute();
+            if(parameter != null)
+            _execute((T)parameter);
         }
+
         /// <summary>
         /// Метод, используемый для создания события <see cref="CanExecuteChanged"/>
         /// чтобы показать, что возвращаемое значение <see cref="CanExecute"/>

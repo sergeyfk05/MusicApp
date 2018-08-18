@@ -3,7 +3,6 @@
                     xmlns:local="clr-namespace:MusicApp.Resources.Styles">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="MainWindowStyles.xaml"/>
-        
         <ResourceDictionary>
             <Style x:Key="MainWindowStyle" TargetType="Window" BasedOn="{StaticResource MainWindowBaseStyle}">
                 <Setter Property="Background" Value="Wheat"/>

@@ -12,31 +12,6 @@ namespace MusicApp.ViewModels
 {
     internal class BaseViewModel : IViewModel, INotifyPropertyChanged, IBaseViewModel
     {
-        public string Title
-        {
-            get { return title; }
-            set
-            {
-                title = value;
-                OnPropertyChanged("Title");
-            }
-        }
-        private string title = "";
-
-        public string ActivePageText
-        {
-            get { return String.IsNullOrEmpty(activePageText) ? ViewConfig.StaticResources?["Menu_MainPage"] as string : activePageText; }
-            set
-            {
-                activePageText = value;
-                OnPropertyChanged("ActivePageText");
-            }
-        }
-        private string activePageText = "";
-
-        public void Loaded_Execute(object obj) { }
-
-
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {

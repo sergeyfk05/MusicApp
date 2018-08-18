@@ -22,9 +22,8 @@ namespace MusicApp.Views
     {
         public MainWindow()
         {
-            InitializeComponent();
             this.DataContext = ViewConfig.GetViewInfoByName("Base").ViewModel;
-            this.MenuFrame.DataContext = ViewConfig.GetViewInfoByName("Menu").ViewModel;
+            InitializeComponent();
             this.MenuFrame.Navigate(new Uri("Views/HamburgerMenu.xaml", UriKind.RelativeOrAbsolute));
         }
     }

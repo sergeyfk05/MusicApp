@@ -8,7 +8,5 @@ namespace MusicApp.ViewModels
 {
     internal interface IBaseViewModel
     {
-        string Title { get; set; }
-        string ActivePageText { get; set; }
     }
 }
