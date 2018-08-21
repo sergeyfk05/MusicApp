@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MusicApp.Resources.DataTemplates
+namespace MusicApp.Models
 {
     public class MenuItem
     {

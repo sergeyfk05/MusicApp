@@ -34,8 +34,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -54,10 +56,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Logic\ResourceManager.cs" />
     <Compile Include="Models\RelayCommand.cs" />
     <Compile Include="Models\RelayCommandWithParameter.cs" />
     <Compile Include="Models\ViewInfo.cs" />
-    <Compile Include="Resources\DataTemplates\MenuItem.cs" />
+    <Compile Include="Models\MenuItem.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\HamburgerMenuViewModel.cs" />
     <Compile Include="ViewModels\IBaseViewModel.cs" />

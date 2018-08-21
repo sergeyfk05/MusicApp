@@ -8,16 +8,48 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using MusicApp.Configs;
-using MusicApp.Resources.DataTemplates;
 using MusicApp.Views;
 using System.Windows.Controls;
 using System.Windows;
 using System.Windows.Media.Animation;
+using MusicApp.Logic;
 
 namespace MusicApp.ViewModels
 {
-    public sealed class HumburgerMenuViewModel : INotifyPropertyChanged, IViewModel
+    internal sealed class HamburgerMenuViewModel : INotifyPropertyChanged, IViewModel
     {
+        /// <summary>
+        /// turn on/off animations
+        /// </summary>
+        public bool HamburgerMenu_IsAnimate
+        {
+            get { return _hamburgerMenu_IsAnimate; }
+            set
+            {
+                if(_hamburgerMenu_IsAnimate != value)
+                {
+                    _hamburgerMenu_IsAnimate = value;
+                    OnPropertyChanged("HamburgerMenu_IsLoaded");
+                }
+            }
+        }
+        private bool _hamburgerMenu_IsAnimate;
+
+        public bool HamburgerMenu_IsOpen
+        {
+            get { return _hamburgerMenu_IsOpen; }
+            set
+            {
+                if(_hamburgerMenu_IsOpen != value)
+                {
+                    _hamburgerMenu_IsOpen = value;
+                    OnPropertyChanged("HamburgerMenu_IsOpen");
+                }
+            }
+        }
+        private bool _hamburgerMenu_IsOpen = false;
+
+
         private ICommand _clickHumburgerButton;
         public ICommand ClickHumburgerButton
         {
@@ -31,11 +63,9 @@ namespace MusicApp.ViewModels
         }
         private void ClickHumburgerButton_Execute()
         {
-            string sbName = IsOpen ? "HamburgerMenu_CloseMenu" : "HamburgerMenu_OpenMenu";
-            (Application.Current.TryFindResource(sbName) as Storyboard).Begin();
-            IsOpen = !IsOpen;
+            HamburgerMenu_IsAnimate = true;
+            HamburgerMenu_IsOpen = !HamburgerMenu_IsOpen;
         }
-        private bool IsOpen = false;
 
 
         

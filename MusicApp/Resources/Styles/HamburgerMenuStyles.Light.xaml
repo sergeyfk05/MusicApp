@@ -14,7 +14,7 @@
                 <Setter Property="Fill" Value="#FF515151"/>
             </Style>
             <Style x:Key="HamburgerMenuStyle" TargetType="ContentControl" BasedOn="{StaticResource HamburgerMenuBaseStyle}"/>
-            <Style x:Key="HumburgerMenu_DockPanelStyle" TargetType="DockPanel" BasedOn="{StaticResource HamburgerMenu_DockPanelBaseStyle}">
+            <Style x:Key="HamburgerMenu_DockPanelStyle" TargetType="DockPanel" BasedOn="{StaticResource HamburgerMenu_DockPanelBaseStyle}">
                 <Setter Property="Background" Value="#FF116FA4"/>
             </Style>
         </ResourceDictionary>

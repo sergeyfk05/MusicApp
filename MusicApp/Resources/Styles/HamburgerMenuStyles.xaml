@@ -32,7 +32,7 @@
             <Style x:Key="HamburgerMenuBaseStyle" TargetType="ContentControl">
                 <Setter Property="Template" Value="{StaticResource HamburgerMenuTemplate}"/>
                 <Setter Property="HorizontalAlignment" Value="Left"/>
-                <Setter Property="Width" Value="70"/>
+                <Setter Property="Width" Value="auto"/>
             </Style>
 
             <Style x:Key="HamburgerMenu_DockPanelBaseStyle" TargetType="DockPanel"/>

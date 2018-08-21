@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MusicApp.ViewModels;
-using MusicApp.Resources.DataTemplates;
 using System.Collections.ObjectModel;
 using MusicApp.Models;
 using System.Windows;
@@ -24,10 +23,10 @@ namespace MusicApp.Configs
         private static readonly List<ViewInfo> _viewsInfo = new List<ViewInfo>()
         {
             new ViewInfo("Base", typeof(MusicApp.Views.MainWindow), new BaseViewModel()),
-            new ViewInfo("Menu", typeof(Views.HamburgerMenu), new HumburgerMenuViewModel()),
-            new ViewInfo("Home", typeof(MusicApp.Views.HamburgerMenu), new HumburgerMenuViewModel()),
-            new ViewInfo("Performers", typeof(MusicApp.Views.HamburgerMenu), new HumburgerMenuViewModel()),
-            new ViewInfo("Settings", typeof(MusicApp.Views.HamburgerMenu), new HumburgerMenuViewModel())
+            new ViewInfo("Menu", typeof(Views.HamburgerMenu), new HamburgerMenuViewModel()),
+            new ViewInfo("Home", typeof(MusicApp.Views.HamburgerMenu), new HamburgerMenuViewModel()),
+            new ViewInfo("Performers", typeof(MusicApp.Views.HamburgerMenu), new HamburgerMenuViewModel()),
+            new ViewInfo("Settings", typeof(MusicApp.Views.HamburgerMenu), new HamburgerMenuViewModel())
         };
 
     }
