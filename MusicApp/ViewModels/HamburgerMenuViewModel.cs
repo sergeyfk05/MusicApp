@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using MusicApp.Configs;
 using MusicApp.Views;
-using System.Windows.Controls;
 using System.Windows;
 using System.Windows.Media.Animation;
 using MusicApp.Logic;
@@ -18,23 +17,6 @@ namespace MusicApp.ViewModels
 {
     internal sealed class HamburgerMenuViewModel : INotifyPropertyChanged, IViewModel
     {
-        /// <summary>
-        /// turn on/off animations
-        /// </summary>
-        public bool HamburgerMenu_IsAnimate
-        {
-            get { return _hamburgerMenu_IsAnimate; }
-            set
-            {
-                if(_hamburgerMenu_IsAnimate != value)
-                {
-                    _hamburgerMenu_IsAnimate = value;
-                    OnPropertyChanged("HamburgerMenu_IsLoaded");
-                }
-            }
-        }
-        private bool _hamburgerMenu_IsAnimate;
-
         public bool HamburgerMenu_IsOpen
         {
             get { return _hamburgerMenu_IsOpen; }
@@ -63,8 +45,7 @@ namespace MusicApp.ViewModels
         }
         private void ClickHumburgerButton_Execute()
         {
-            HamburgerMenu_IsAnimate = true;
-            HamburgerMenu_IsOpen = !HamburgerMenu_IsOpen;
+            HamburgerMenu_IsOpen = !HamburgerMenu_IsOpen; OnPropertyChanged("l");
         }
 
 
@@ -73,6 +54,19 @@ namespace MusicApp.ViewModels
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        }
+
+        public List<MenuItem> list
+        {
+            get { return new List<MenuItem>()
+            {
+                new MenuItem("sdsadas"),
+                new MenuItem("sdsadassdasdasdass"),
+                new MenuItem("sdsadasytjhyfgffhf"),
+
+            };
+            }
+            set { }
         }
     }
 }

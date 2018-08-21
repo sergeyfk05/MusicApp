@@ -8,6 +8,10 @@ namespace MusicApp.Models
 {
     public class MenuItem
     {
+        public MenuItem(string label)
+        {
+            LabelText = label;
+        }
         public string IconText { get; internal set; }
         public string LabelText { get; internal set; }
         public string Name { get; internal set; }
