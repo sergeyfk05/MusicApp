@@ -103,36 +103,58 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
+    <ControlTemplate x:Key="HamburgerMenu_ListBoxItemTemplate" TargetType="{x:Type ListBoxItem}">
+        <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
+            <StackPanel Orientation="Horizontal">
+                <Grid Width="72" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" FontFamily="Segoe MDL2 Assets" Text="{Binding IconText}" />
+                </Grid>
+                <TextBlock FontSize="24" VerticalAlignment="Center" Text="{Binding LabelText}" />
+            </StackPanel>
+        </Border>
+        <ControlTemplate.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="True"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" TargetName="Bd" Value="{DynamicResource HamburgerMenu_ListBoxItem_MouseOver_Background}"/>
+                <Setter Property="BorderBrush" TargetName="Bd" Value="{DynamicResource HamburgerMenu_ListBoxItem_MouseOver_BorderBrush}"/>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Selector.IsSelectionActive" Value="False"/>
+                    <Condition Property="IsSelected" Value="True"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" TargetName="Bd" Value="{DynamicResource HamburgerMenu_ListBoxItem_SelectionPassive_Selected_Background}"/>
+                <Setter Property="BorderBrush" TargetName="Bd" Value="{DynamicResource HamburgerMenu_ListBoxItem_SelectionPassive_Selected_BorderBrush}"/>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Selector.IsSelectionActive" Value="True"/>
+                    <Condition Property="IsSelected" Value="True"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" TargetName="Bd" Value="{DynamicResource HamburgerMenu_ListBoxItem_SelectionActive_Selected_Background}"/>
+                <Setter Property="BorderBrush" TargetName="Bd" Value="{DynamicResource HamburgerMenu_ListBoxItem_SelectionActive_Selected_BorderBrush}"/>
+            </MultiTrigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="TextElement.Foreground" TargetName="Bd" Value="{DynamicResource HamburgerMenu_ListBoxItem_Disabled_Foreground}"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="HamburgerMenu_ListBoxTemplate" TargetType="ListBox">
+        <Border Padding="{TemplateBinding Padding}" BorderThickness="{TemplateBinding BorderThickness}">
+            <ItemsPresenter/>
+        </Border>
+    </ControlTemplate>
+
     <ControlTemplate TargetType="ContentControl" x:Key="HamburgerMenuTemplate">
         <DockPanel x:Name="Menu" Style="{DynamicResource HamburgerMenu_DockPanelStyle}">
             <StackPanel>
                 <Grid Style="{DynamicResource HamburgerMenu_TopPanelStyle}">
                     <Button x:Name="HamburgerMenu_Button" Style="{DynamicResource HamburgerMenu_ButtonStyle}" Command="{Binding ClickHumburgerButton}"/>
                 </Grid>
-                <ListBox Background="Transparent" Padding="0" HorizontalAlignment="Left" VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ItemsSource="{Binding list, Mode=OneWay}">
-                    <ListBox.Style>
-                        <Style TargetType="ListBox">
-                            <Setter Property="BorderThickness" Value="0"/>
-                        </Style>
-                    </ListBox.Style>
-                    <ListBox.ItemContainerStyle>
-                        <Style TargetType="ListBoxItem">
-                            <Setter Property="Background" Value="Transparent"/>
-                            <Setter Property="Padding" Value="0"/>
-                            <Setter Property="BorderThickness" Value="0"/>
-                        </Style>
-                    </ListBox.ItemContainerStyle>
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Grid Width="72" HorizontalAlignment="Left" VerticalAlignment="Top">
-                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" FontFamily="Segoe MDL2 Assets" Text="&#xE80F;" />
-                                </Grid>
-                                <TextBlock FontSize="24" Text="{Binding LabelText}" />
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
+                <ListBox Style="{DynamicResource HamburgerMenu_ListBoxStyle}" ItemsSource="{Binding list}"/>
             </StackPanel>
         </DockPanel>
 
@@ -158,6 +180,5 @@
 
         </ControlTemplate.Triggers>
     </ControlTemplate>
-
 
 </ResourceDictionary>

@@ -10,15 +10,36 @@
         <ResourceDictionary>
             <Style x:Key="HamburgerMenu_ButtonStyle" TargetType="Button" BasedOn="{StaticResource HamburgerMenu_ButtonBaseStyle}"/>
             <Style x:Key="HamburgerMenu_TopPanelStyle" TargetType="Grid" BasedOn="{StaticResource HamburgerMenu_TopPanelBaseStyle}">
-                <Setter Property="Background" Value="White"/>
+                <Setter Property="Background" Value="{DynamicResource HamburgerMenu_TopPanel_Background}"/>
             </Style>
             <Style x:Key="HamburgerMenu_ButtonRectangleStyle" TargetType="Rectangle" BasedOn="{StaticResource HamburgerMenu_ButtonRectangleBaseStyle}">
-                <Setter Property="Fill" Value="#FF515151"/>
+                <Setter Property="Fill" Value="{DynamicResource HamburgerMenu_ButtonRectangle_Color}"/>
             </Style>
             <Style x:Key="HamburgerMenuStyle" TargetType="ContentControl" BasedOn="{StaticResource HamburgerMenuBaseStyle}"/>
             <Style x:Key="HamburgerMenu_DockPanelStyle" TargetType="DockPanel" BasedOn="{StaticResource HamburgerMenu_DockPanelBaseStyle}">
-                <Setter Property="Background" Value="#FF116FA4"/>
+                <Setter Property="Background" Value="{DynamicResource HamburgerMenu_MainColor}"/>
             </Style>
+            <Style x:Key="HamburgerMenu_ListBoxItemStyle" TargetType="ListBoxItem" BasedOn="{StaticResource HamburgerMenu_ListBoxItemBaseStyle}">
+                <Setter Property="Background" Value="{DynamicResource HamburgerMenu_ListBoxItem_Backgrond}"/>
+                <Setter Property="Foreground" Value="{DynamicResource HamburgerMenu_ListBoxItem_Foregrond}"/>
+            </Style>
+            <Style x:Key="HamburgerMenu_ListBoxStyle" TargetType="ListBox" BasedOn="{StaticResource HamburgerMenu_ListBoxBaseStyle}"/>
+
+
+            <SolidColorBrush x:Key="HamburgerMenu_TopPanel_Background" Color="White"/>
+            <SolidColorBrush x:Key="HamburgerMenu_ButtonRectangle_Color" Color="#FF515151"/>
+            <SolidColorBrush x:Key="HamburgerMenu_MainColor" Color="#FF116FA4"/>
+            <SolidColorBrush x:Key="HamburgerMenu_ListBoxItem_Backgrond" Color="Red"/>
+            <SolidColorBrush x:Key="HamburgerMenu_ListBoxItem_Foregrond" Color="Black"/>
+
+            <SolidColorBrush x:Key="HamburgerMenu_ListBoxItem_MouseOver_Background" Color="#FF150101"/>
+            <SolidColorBrush x:Key="HamburgerMenu_ListBoxItem_MouseOver_BorderBrush" Color="#FF150101"/>
+            <SolidColorBrush x:Key="HamburgerMenu_ListBoxItem_SelectionPassive_Selected_Background" Color="#FF150101"/>
+            <SolidColorBrush x:Key="HamburgerMenu_ListBoxItem_SelectionPassive_Selected_BorderBrush" Color="#FFDADADA"/>
+            <SolidColorBrush x:Key="HamburgerMenu_ListBoxItem_SelectionActive_Selected_Background" Color="#FF150101"/>
+            <SolidColorBrush x:Key="HamburgerMenu_ListBoxItem_SelectionActive_Selected_BorderBrush" Color="#FFFDFDFD"/>
+            <SolidColorBrush x:Key="HamburgerMenu_ListBoxItem_Disabled_Foreground" Color="Gray"/>
+            
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
 

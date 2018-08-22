@@ -37,6 +37,25 @@
             </Style>
 
             <Style x:Key="HamburgerMenu_DockPanelBaseStyle" TargetType="DockPanel"/>
+
+            <Style x:Key="HamburgerMenu_ListBoxItemBaseStyle" TargetType="ListBoxItem">
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                <Setter Property="Height" Value="55"/>
+                <Setter Property="Template" Value="{StaticResource HamburgerMenu_ListBoxItemTemplate}"/>
+            </Style>
+
+            <Style x:Key="HamburgerMenu_ListBoxBaseStyle" TargetType="ListBox">
+                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="VerticalAlignment" Value="Top"/>
+                <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Hidden"/>
+                <Setter Property="Template" Value="{DynamicResource HamburgerMenu_ListBoxTemplate}"/>
+                <Setter Property="ItemContainerStyle" Value="{DynamicResource HamburgerMenu_ListBoxItemStyle}"/>
+            </Style>
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
 
