@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
         xmlns:local="clr-namespace:MusicApp.Views"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
@@ -12,12 +13,37 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Resources/Styles/MainWindowStyles.light.xaml"/>
+                <ResourceDictionary>
+                    
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    
-    <StackPanel Orientation="Horizontal">
-        <Frame Grid.Column="0" x:Name="MenuFrame"/>
-        <TextBlock Grid.Column="1" Text="sdfszxczxcxz"/>
-    </StackPanel>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Frame Panel.ZIndex="500" Grid.Column="0" x:Name="MenuFrame"/>
+        <Grid x:Name="g" Panel.ZIndex="400" Grid.ColumnSpan="2" Margin="72 0 0 0">
+            <Grid.Effect>
+                <BlurEffect x:Name="BlurEffect" Radius="2">
+                </BlurEffect>
+            </Grid.Effect>
+
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDown">
+                    <i:InvokeCommandAction Command="{Binding ClickContent}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="sdfszxczxcxzhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"/>
+            <TextBlock Grid.Row="1" Margin="150 0 0 0" Text="{Binding IsBlur}"/>
+        </Grid>
+    </Grid>
 </Window>

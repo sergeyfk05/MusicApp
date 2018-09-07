@@ -12,6 +12,7 @@ using MusicApp.Views;
 using System.Windows;
 using System.Windows.Media.Animation;
 using MusicApp.Logic;
+using System.Windows.Media.Effects;
 
 namespace MusicApp.ViewModels
 {
@@ -45,7 +46,15 @@ namespace MusicApp.ViewModels
         }
         private void ClickHumburgerButton_Execute()
         {
-            HamburgerMenu_IsOpen = !HamburgerMenu_IsOpen; OnPropertyChanged("l");
+            if (ViewConfig.GetViewInfoByName("Base").ViewModel is BaseViewModel baseVM)
+                baseVM.IsBlur = !baseVM.IsBlur;
+            HamburgerMenu_IsOpen = !HamburgerMenu_IsOpen;        
+        }
+        internal void CloseHamburgerMenu()
+        {
+            if (ViewConfig.GetViewInfoByName("Base").ViewModel is BaseViewModel baseVM)
+                baseVM.IsBlur = false;
+            HamburgerMenu_IsOpen = false;
         }
 
 
@@ -60,9 +69,9 @@ namespace MusicApp.ViewModels
         {
             get { return new List<MenuItem>()
             {
-                new MenuItem("sdsadas"),
-                new MenuItem("sdsadassdasdasdass"),
-                new MenuItem("sdsadasytjhyfgffhf"),
+                new MenuItem("\xE80F", "sdsadas", "Base"),
+                new MenuItem("\xE713", "sdsadassdasdasdass", "Settings"),
+                new MenuItem("\xE72D", "sdsadasytjhyfgffhf", ""),
 
             };
             }
