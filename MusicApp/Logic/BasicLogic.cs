@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MusicApp.ViewModels
+namespace MusicApp.Logic
 {
-    internal interface IBaseViewModel
+    internal static class BasicLogic
     {
-        bool IsBlur { get; set; }
     }
 }
-

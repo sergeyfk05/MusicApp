@@ -56,6 +56,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Logic\BasicLogic.cs" />
     <Compile Include="Logic\ResourceManager.cs" />
     <Compile Include="Models\RelayCommand.cs" />
     <Compile Include="Models\RelayCommandWithParameter.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\HamburgerMenuViewModel.cs" />
     <Compile Include="ViewModels\IBaseViewModel.cs" />
+    <Compile Include="ViewModels\IMenuViewModel.cs" />
     <Compile Include="ViewModels\IViewModel.cs" />
     <Compile Include="Views\HamburgerMenu.xaml.cs">
       <DependentUpon>HamburgerMenu.xaml</DependentUpon>

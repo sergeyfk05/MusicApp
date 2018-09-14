@@ -16,66 +16,69 @@ using System.Windows.Media.Effects;
 
 namespace MusicApp.ViewModels
 {
-    internal sealed class HamburgerMenuViewModel : INotifyPropertyChanged, IViewModel
+    internal sealed class HamburgerMenuViewModel : INotifyPropertyChanged, IViewModel, IMenuViewModel
     {
-        public bool HamburgerMenu_IsOpen
+        public bool Menu_IsOpen
         {
-            get { return _hamburgerMenu_IsOpen; }
+            get { return _menu_IsOpen; }
             set
             {
-                if(_hamburgerMenu_IsOpen != value)
+                if(_menu_IsOpen != value)
                 {
-                    _hamburgerMenu_IsOpen = value;
-                    OnPropertyChanged("HamburgerMenu_IsOpen");
+                    _menu_IsOpen = value;
+                    OnPropertyChanged("Menu_IsOpen");
                 }
             }
         }
-        private bool _hamburgerMenu_IsOpen = false;
+        private bool _menu_IsOpen = false;
 
 
-        private ICommand _clickHumburgerButton;
-        public ICommand ClickHumburgerButton
+        private ICommand _clickMenuButton;
+        public ICommand ClickMenuButton
         {
             get
             {
-                if (_clickHumburgerButton == null)
-                    _clickHumburgerButton = new RelayCommand<object>(this.ClickHumburgerButton_Execute); 
+                if (_clickMenuButton == null)
+                    _clickMenuButton = new RelayCommand<object>(this.ClickMenuButton_Execute); 
 
-                return _clickHumburgerButton;
+                return _clickMenuButton;
             }
         }
-        private void ClickHumburgerButton_Execute()
+        private void ClickMenuButton_Execute()
         {
-            if (ViewConfig.GetViewInfoByName("Base").ViewModel is BaseViewModel baseVM)
+            IBaseViewModel baseVM = ViewConfig.GetViewInfoByName("Base").ViewModel as IBaseViewModel;
+            if (baseVM != null)
                 baseVM.IsBlur = !baseVM.IsBlur;
-            HamburgerMenu_IsOpen = !HamburgerMenu_IsOpen;        
+            else
+                throw new Exception("logger");
+            Menu_IsOpen = !Menu_IsOpen;        
         }
-        internal void CloseHamburgerMenu()
+        public void CloseMenu()
         {
-            if (ViewConfig.GetViewInfoByName("Base").ViewModel is BaseViewModel baseVM)
+            IBaseViewModel baseVM = ViewConfig.GetViewInfoByName("Base").ViewModel as IBaseViewModel;
+            if (baseVM != null)
                 baseVM.IsBlur = false;
-            HamburgerMenu_IsOpen = false;
+            else
+                throw new Exception("logger");
+            Menu_IsOpen = false;
         }
 
 
-        
+        public List<MenuItem> MenuList
+        {
+            get { return _menuList; }
+        }
+        private List<MenuItem> _menuList = new List<MenuItem>()
+            {
+                new MenuItem("\xE80F", "sdsadas", "Base"),
+                new MenuItem("\xE713", "sdsadassdasdasdass", "Settings"),
+                new MenuItem("\xE72D", "sdsadasytjhyfgffhf", "")
+            };
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
-
-        public List<MenuItem> list
-        {
-            get { return new List<MenuItem>()
-            {
-                new MenuItem("\xE80F", "sdsadas", "Base"),
-                new MenuItem("\xE713", "sdsadassdasdasdass", "Settings"),
-                new MenuItem("\xE72D", "sdsadasytjhyfgffhf", ""),
-
-            };
-            }
-            set { }
         }
     }
 }

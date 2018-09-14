@@ -18,10 +18,6 @@
             <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
             <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
         </DoubleAnimationUsingKeyFrames>
-        <!--<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="Menu">
-            <EasingDoubleKeyFrame KeyTime="0" Value="70"/>
-            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="200"/>
-        </DoubleAnimationUsingKeyFrames>-->
     </Storyboard>
     <Storyboard x:Key="HamburgerMenuRectangles_CloseMenu">
         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="HamburgerMenu_rectangle">
@@ -36,10 +32,6 @@
             <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
             <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
         </DoubleAnimationUsingKeyFrames>
-        <!--<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="Menu">
-            <EasingDoubleKeyFrame KeyTime="0" Value="200"/>
-            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="70"/>
-        </DoubleAnimationUsingKeyFrames>-->
     </Storyboard>
     <Storyboard x:Key="HamburgerMenu_OpenMenu">
         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="Menu">
@@ -82,7 +74,7 @@
 
         <ControlTemplate.Triggers>
 
-            <DataTrigger Binding="{Binding HamburgerMenu_IsOpen, Mode=OneWay}" Value="True">
+            <DataTrigger Binding="{Binding Menu_IsOpen, Mode=OneWay}" Value="True">
                 <DataTrigger.EnterActions>
                     <BeginStoryboard x:Name="OpenMenuRectangleStoryboard" Storyboard="{StaticResource HamburgerMenuRectangles_OpenMenu}"/>
                 </DataTrigger.EnterActions>
@@ -91,7 +83,7 @@
                 </DataTrigger.ExitActions>
             </DataTrigger>
 
-            <DataTrigger Binding="{Binding HamburgerMenu_IsOpen, Mode=OneWay}" Value="False">
+            <DataTrigger Binding="{Binding Menu_IsOpen, Mode=OneWay}" Value="False">
                 <DataTrigger.EnterActions>
                     <BeginStoryboard x:Name="CloseMenuRectangleStoryboard" Storyboard="{StaticResource HamburgerMenuRectangles_CloseMenu}"/>
                 </DataTrigger.EnterActions>
@@ -152,15 +144,15 @@
         <DockPanel x:Name="Menu" Style="{DynamicResource HamburgerMenu_DockPanelStyle}">
             <StackPanel>
                 <Grid Style="{DynamicResource HamburgerMenu_TopPanelStyle}">
-                    <Button x:Name="HamburgerMenu_Button" Style="{DynamicResource HamburgerMenu_ButtonStyle}" Command="{Binding ClickHumburgerButton}"/>
+                    <Button x:Name="HamburgerMenu_Button" Style="{DynamicResource HamburgerMenu_ButtonStyle}" Command="{Binding ClickMenuButton}"/>
                 </Grid>
-                <ListBox Style="{DynamicResource HamburgerMenu_ListBoxStyle}" ItemsSource="{Binding list}"/>
+                <ListBox Style="{DynamicResource HamburgerMenu_ListBoxStyle}" ItemsSource="{Binding MenuList, Mode=OneWay}"/>
             </StackPanel>
         </DockPanel>
 
         <ControlTemplate.Triggers>
 
-            <DataTrigger  Binding="{Binding HamburgerMenu_IsOpen, Mode=OneWay}" Value="True">
+            <DataTrigger  Binding="{Binding Menu_IsOpen, Mode=OneWay}" Value="True">
                 <DataTrigger.EnterActions>
                     <BeginStoryboard x:Name="OpenMenuStoryboard" Storyboard="{StaticResource HamburgerMenu_OpenMenu}"/>
                 </DataTrigger.EnterActions>
@@ -169,7 +161,7 @@
                 </DataTrigger.ExitActions>
             </DataTrigger>
 
-            <DataTrigger Binding="{Binding HamburgerMenu_IsOpen, Mode=OneWay}" Value="False">
+            <DataTrigger Binding="{Binding Menu_IsOpen, Mode=OneWay}" Value="False">
                 <DataTrigger.EnterActions>
                     <BeginStoryboard x:Name="CloseMenuStoryboard" Storyboard="{StaticResource HamburgerMenu_CloseMenu}"/>
                 </DataTrigger.EnterActions>

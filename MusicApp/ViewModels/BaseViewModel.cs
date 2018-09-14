@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media.Effects;
 using MusicApp.Configs;
 using MusicApp.Models;
+using MusicApp.Logic;
 
 namespace MusicApp.ViewModels
 {
@@ -43,8 +44,11 @@ namespace MusicApp.ViewModels
         }
         private void ClickContent_Execute()
         {
-            if(ViewConfig.GetViewInfoByName("Menu").ViewModel is HamburgerMenuViewModel menuVM)
-                menuVM.CloseHamburgerMenu();
+            IMenuViewModel menuVM = ViewConfig.GetViewInfoByName("Menu").ViewModel as IMenuViewModel;
+            if (menuVM != null)
+                menuVM.CloseMenu();
+            else
+                throw new Exception("logger");
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
