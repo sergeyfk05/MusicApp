@@ -16,14 +16,14 @@ using System.Windows.Media.Effects;
 
 namespace MusicApp.ViewModels
 {
-    internal sealed class HamburgerMenuViewModel : INotifyPropertyChanged, IViewModel, IMenuViewModel
+    public sealed class HamburgerMenuViewModel : INotifyPropertyChanged, IViewModel, IMenuViewModel
     {
         public bool Menu_IsOpen
         {
             get { return _menu_IsOpen; }
             set
             {
-                if(_menu_IsOpen != value)
+                if (_menu_IsOpen != value)
                 {
                     _menu_IsOpen = value;
                     OnPropertyChanged("Menu_IsOpen");
@@ -31,7 +31,19 @@ namespace MusicApp.ViewModels
             }
         }
         private bool _menu_IsOpen = false;
-
+        public bool BaseWindowContent_IsBlur
+        {
+            get { return _baseWindowContent_IsBlur; }
+            set
+            {
+                if(_baseWindowContent_IsBlur != value)
+                {
+                    _baseWindowContent_IsBlur = value;
+                    OnPropertyChanged("BaseWindowContent_IsBlur");
+                }
+            }
+        }
+        private bool _baseWindowContent_IsBlur = false;
 
         private ICommand _clickMenuButton;
         public ICommand ClickMenuButton
@@ -39,28 +51,20 @@ namespace MusicApp.ViewModels
             get
             {
                 if (_clickMenuButton == null)
-                    _clickMenuButton = new RelayCommand<object>(this.ClickMenuButton_Execute); 
+                    _clickMenuButton = new RelayCommand<object>(this.ClickMenuButton_Execute);
 
                 return _clickMenuButton;
             }
         }
         private void ClickMenuButton_Execute()
         {
-            IBaseViewModel baseVM = ViewConfig.GetViewInfoByName("Base").ViewModel as IBaseViewModel;
-            if (baseVM != null)
-                baseVM.IsBlur = !baseVM.IsBlur;
-            else
-                throw new Exception("logger");
-            Menu_IsOpen = !Menu_IsOpen;        
+            Menu_IsOpen = !Menu_IsOpen;
+            BaseWindowContent_IsBlur = Menu_IsOpen;
         }
         public void CloseMenu()
         {
-            IBaseViewModel baseVM = ViewConfig.GetViewInfoByName("Base").ViewModel as IBaseViewModel;
-            if (baseVM != null)
-                baseVM.IsBlur = false;
-            else
-                throw new Exception("logger");
             Menu_IsOpen = false;
+            BaseWindowContent_IsBlur = false;
         }
 
 

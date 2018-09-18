@@ -23,11 +23,9 @@ namespace MusicApp.Views
     /// </summary>
     public partial class HamburgerMenu : Page
     {
-        public HamburgerMenu()
+        internal HamburgerMenu(IMenuViewModel VM)
         {
-            IViewModel vm = ViewConfig.GetViewInfoByName("Menu").ViewModel;
-            //vm.View = this;
-            this.DataContext = vm;
+            this.DataContext = VM;
             InitializeComponent();
         }
     }

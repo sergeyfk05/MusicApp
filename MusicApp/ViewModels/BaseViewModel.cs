@@ -1,21 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using MusicApp.Models;
+using System;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media.Effects;
-using MusicApp.Configs;
-using MusicApp.Models;
-using MusicApp.Logic;
 
 namespace MusicApp.ViewModels
 {
-    internal class BaseViewModel : IViewModel, INotifyPropertyChanged, IBaseViewModel
+    public class BaseViewModel : IViewModel, INotifyPropertyChanged, IBaseViewModel
     {
+        public BaseViewModel()
+        {
+            _menuVM = new HamburgerMenuViewModel();
+            MenuSource = new MusicApp.Views.HamburgerMenu(_menuVM);
+            _menuVM.PropertyChanged += MenuVM_PropertyChanged;
+        }
+
+        private void MenuVM_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            switch (e.PropertyName)
+            {
+                case "BaseWindowContent_IsBlur":
+                    IsBlur = _menuVM.BaseWindowContent_IsBlur;
+                    break;
+            }
+        }
+
         public bool IsBlur
         {
             get { return _isBlur; }
@@ -29,6 +39,21 @@ namespace MusicApp.ViewModels
             }
         }
         private bool _isBlur;
+
+        public Page MenuSource
+        {
+            get { return _menuSource; }
+            set
+            {
+                if (_menuSource != value)
+                {
+                    _menuSource = value;
+                    OnPropertyChanged("MenuSource");
+                }
+            }
+        }
+        private Page _menuSource;
+        private IMenuViewModel _menuVM;
 
 
         private ICommand _clickContent;
@@ -44,11 +69,8 @@ namespace MusicApp.ViewModels
         }
         private void ClickContent_Execute()
         {
-            IMenuViewModel menuVM = ViewConfig.GetViewInfoByName("Menu").ViewModel as IMenuViewModel;
-            if (menuVM != null)
-                menuVM.CloseMenu();
-            else
-                throw new Exception("logger");
+            _menuVM?.CloseMenu();
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
