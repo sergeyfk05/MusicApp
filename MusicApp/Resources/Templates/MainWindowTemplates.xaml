@@ -1,6 +1,63 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:MusicApp.Resources.Templates">
+                    xmlns:local="clr-namespace:MusicApp.Resources"
+                    xmlns:core="clr-namespace:System;assembly=mscorlib"
+                    xmlns:presentation="http://schemas.microsoft.com/netfx/2009/xaml/presentation">
 
+    <presentation:KeyTime x:Key="MainWindowAnimationStartTime">0</presentation:KeyTime>
+    <presentation:KeyTime x:Key="MainWindowAnimationEndTime">0:0:0.5</presentation:KeyTime>
+    <core:Double x:Key="MainWindowStartBlurRadius">0</core:Double>
+    <core:Double x:Key="MainWindowEndBlurRadius">5</core:Double>
+    
+    <Storyboard x:Key="MainWindow_Bluring">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Effect.Radius">
+            <EasingDoubleKeyFrame KeyTime="{StaticResource MainWindowAnimationStartTime}" Value="{StaticResource MainWindowStartBlurRadius}"/>
+            <EasingDoubleKeyFrame KeyTime="{StaticResource MainWindowAnimationEndTime}" Value="{StaticResource MainWindowEndBlurRadius}"/>
+        </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+    <Storyboard x:Key="MainWindow_Unbluring">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Effect.Radius">
+            <EasingDoubleKeyFrame KeyTime="{StaticResource MainWindowAnimationStartTime}" Value="{StaticResource MainWindowEndBlurRadius}"/>
+            <EasingDoubleKeyFrame KeyTime="{StaticResource MainWindowAnimationEndTime}" Value="{StaticResource MainWindowStartBlurRadius}"/>
+        </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+
+    <ControlTemplate x:Key="MainWindow_ContentControlTemplate" TargetType="ContentControl">
+        <Border>
+            <Border.Effect>
+                <BlurEffect/>
+            </Border.Effect>
+            <Border.Style>
+                <Style>
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsBlur}" Value="True"/>
+                            </MultiDataTrigger.Conditions>
+                            <MultiDataTrigger.EnterActions>
+                                <BeginStoryboard x:Name="BluringStoryboard" Storyboard="{StaticResource MainWindow_Bluring}"/>
+                            </MultiDataTrigger.EnterActions>
+                            <MultiDataTrigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="BluringStoryboard"/>
+                            </MultiDataTrigger.ExitActions>
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsBlur}" Value="False"/>
+                            </MultiDataTrigger.Conditions>
+                            <MultiDataTrigger.EnterActions>
+                                <BeginStoryboard x:Name="UnbluringStoryboard" Storyboard="{StaticResource MainWindow_Unbluring}"/>
+                            </MultiDataTrigger.EnterActions>
+                            <MultiDataTrigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="UnbluringStoryboard"/>
+                            </MultiDataTrigger.ExitActions>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+
+            <ContentPresenter/>
+        </Border>
+    </ControlTemplate>
 
 </ResourceDictionary>

@@ -7,6 +7,7 @@
             <Style x:Key="MainWindowStyle" TargetType="Window" BasedOn="{StaticResource MainWindowBaseStyle}">
                 <Setter Property="Background" Value="Wheat"/>
             </Style>
+            <Style x:Key="MainWindowContentControlStyle" TargetType="ContentControl" BasedOn="{StaticResource MainWindowContentControlBaseStyle}"/>
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

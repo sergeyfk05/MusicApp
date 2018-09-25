@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
+using System.Windows;
 
 namespace MusicApp.ViewModels
 {
-    internal interface IBaseViewModel
+    public interface IBaseViewModel
     {
         bool IsBlur { get; set; }
     }

@@ -30,23 +30,21 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Frame Panel.ZIndex="500" Grid.Column="0" x:Name="MenuFrame" Content="{Binding MenuSource, Mode=OneWay}"/>
-        <Grid x:Name="g" Panel.ZIndex="400" Grid.ColumnSpan="2" Margin="72 0 0 0">
-            <Grid.Effect>
-                <BlurEffect x:Name="BlurEffect" Radius="2"/>
-            </Grid.Effect>
+        <ContentControl Style="{DynamicResource MainWindowContentControlStyle}">
+            <Grid>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:InvokeCommandAction Command="{Binding ClickContent}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
 
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseDown">
-                    <i:InvokeCommandAction Command="{Binding ClickContent}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <TextBlock Text="sdfszxczxcxzhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"/>
-            <TextBlock Grid.Row="1" Margin="150 0 0 0" Text="{Binding IsBlur}"/>
-        </Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="sdfszxczxcxzhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"/>
+                <TextBlock Grid.Row="1" Margin="150 0 0 0" Text="{Binding IsBlur}"/>
+            </Grid>
+        </ContentControl>
     </Grid>
 </Window>

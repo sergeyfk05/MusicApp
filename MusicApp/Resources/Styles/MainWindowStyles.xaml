@@ -6,6 +6,11 @@
 
         <ResourceDictionary>
             <Style x:Key="MainWindowBaseStyle" TargetType="Window"/>
+            <Style x:Key="MainWindowContentControlBaseStyle" TargetType="ContentControl">
+                <Setter Property="Template" Value="{StaticResource MainWindow_ContentControlTemplate}"/>
+                <Setter Property="Panel.ZIndex" Value="400"/>
+                <Setter Property="Grid.ColumnSpan" Value="2"/>
+            </Style>
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

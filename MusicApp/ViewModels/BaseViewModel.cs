@@ -2,6 +2,7 @@
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -28,7 +29,7 @@ namespace MusicApp.ViewModels
 
         public bool IsBlur
         {
-            get { return _isBlur; }
+            get => _isBlur;
             set
             {
                 if (_isBlur != value)
@@ -42,7 +43,7 @@ namespace MusicApp.ViewModels
 
         public Page MenuSource
         {
-            get { return _menuSource; }
+            get => _menuSource;
             set
             {
                 if (_menuSource != value)
@@ -72,6 +73,7 @@ namespace MusicApp.ViewModels
             _menuVM?.CloseMenu();
 
         }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName]string prop = "")
