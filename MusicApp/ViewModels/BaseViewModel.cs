@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using NLog;
 
 namespace MusicApp.ViewModels
 {
@@ -12,9 +13,14 @@ namespace MusicApp.ViewModels
     {
         public BaseViewModel()
         {
+            logger = NLog.LogManager.GetCurrentClassLogger();
+            logger.Debug("Begin BaseViewModel initialization");
+
             _menuVM = new HamburgerMenuViewModel();
             MenuSource = new MusicApp.Views.HamburgerMenu(_menuVM);
             _menuVM.PropertyChanged += MenuVM_PropertyChanged;
+
+            logger.Debug("End BaseViewModel initialization");
         }
 
         private void MenuVM_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -70,8 +76,17 @@ namespace MusicApp.ViewModels
         }
         private void ClickContent_Execute()
         {
-            _menuVM?.CloseMenu();
+            logger.Debug("Begin handler for clicking content on MainWindow");
+            try
+            {
+                _menuVM.CloseMenu();
+            }
+            catch(Exception ex)
+            {
+                logger.Warn(ex, $"Eror in ClickContent_Execute in MusicApp.ViewModels.BaseViewModel.");
+            }
 
+            logger.Debug("End handler for clicking content on MainWindow");
         }
 
 
@@ -80,5 +95,7 @@ namespace MusicApp.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
+
+        public Logger logger { get; set; }
     }
 }

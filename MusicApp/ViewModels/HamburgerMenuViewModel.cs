@@ -13,11 +13,17 @@ using System.Windows;
 using System.Windows.Media.Animation;
 using MusicApp.Logic;
 using System.Windows.Media.Effects;
+using NLog;
 
 namespace MusicApp.ViewModels
 {
     public sealed class HamburgerMenuViewModel : INotifyPropertyChanged, IViewModel, IMenuViewModel
     {
+        public HamburgerMenuViewModel()
+        {
+            logger = NLog.LogManager.GetCurrentClassLogger();
+        }
+
         public bool Menu_IsOpen
         {
             get { return _menu_IsOpen; }
@@ -58,13 +64,21 @@ namespace MusicApp.ViewModels
         }
         private void ClickMenuButton_Execute()
         {
+            logger.Debug("Begin opening/closing navigation menu");
+
             Menu_IsOpen = !Menu_IsOpen;
             BaseWindowContent_IsBlur = Menu_IsOpen;
+
+            logger.Debug("End opening/closing navigation menu");
         }
         public void CloseMenu()
         {
+            logger.Debug("Begin closing navigation menu");
+
             Menu_IsOpen = false;
             BaseWindowContent_IsBlur = false;
+
+            logger.Debug("End closing navigation menu");
         }
 
 
@@ -84,5 +98,7 @@ namespace MusicApp.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
+
+        public Logger logger { get; set; }
     }
 }
