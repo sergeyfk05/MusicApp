@@ -73,13 +73,11 @@ namespace MusicApp.ViewModels
         }
         private void ClickMenuButton_Execute()
         {
-            Animate = true;
             Menu_IsOpen = !Menu_IsOpen;
             BaseWindowContent_IsBlur = Menu_IsOpen;
         }
         public void CloseMenu()
         {
-            Animate = true;
             Menu_IsOpen = false;
             BaseWindowContent_IsBlur = false;
         }
