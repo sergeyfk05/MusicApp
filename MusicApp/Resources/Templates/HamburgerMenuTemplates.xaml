@@ -147,7 +147,7 @@
     </ControlTemplate>
 
     <ControlTemplate TargetType="ContentControl" x:Key="HamburgerMenuTemplate">
-        <DockPanel Width="{StaticResource HamburgerMenuClosedMenuWidth}" x:Name="Menu" Style="{DynamicResource HamburgerMenu_DockPanelStyle}">
+        <DockPanel x:Name="Menu" Style="{DynamicResource HamburgerMenu_DockPanelStyle}">
             <StackPanel>
                 <Grid Style="{DynamicResource HamburgerMenu_TopPanelStyle}">
                     <Button x:Name="HamburgerMenu_Button" Style="{DynamicResource HamburgerMenu_ButtonStyle}" Command="{Binding ClickMenuButton}"/>
