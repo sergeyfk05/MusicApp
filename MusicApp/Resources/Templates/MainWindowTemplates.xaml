@@ -30,28 +30,22 @@
             <Border.Style>
                 <Style>
                     <Style.Triggers>
-                        <MultiDataTrigger>
-                            <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding IsBlur}" Value="True"/>
-                            </MultiDataTrigger.Conditions>
-                            <MultiDataTrigger.EnterActions>
-                                <BeginStoryboard x:Name="BluringStoryboard" Storyboard="{StaticResource MainWindow_Bluring}"/>
-                            </MultiDataTrigger.EnterActions>
-                            <MultiDataTrigger.ExitActions>
-                                <StopStoryboard BeginStoryboardName="BluringStoryboard"/>
-                            </MultiDataTrigger.ExitActions>
-                        </MultiDataTrigger>
-                        <MultiDataTrigger>
-                            <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding IsBlur}" Value="False"/>
-                            </MultiDataTrigger.Conditions>
-                            <MultiDataTrigger.EnterActions>
+                        <DataTrigger Binding="{Binding IsBlur}" Value="False">
+                            <DataTrigger.EnterActions>
                                 <BeginStoryboard x:Name="UnbluringStoryboard" Storyboard="{StaticResource MainWindow_Unbluring}"/>
-                            </MultiDataTrigger.EnterActions>
-                            <MultiDataTrigger.ExitActions>
+                            </DataTrigger.EnterActions>
+                            <DataTrigger.ExitActions>
                                 <StopStoryboard BeginStoryboardName="UnbluringStoryboard"/>
-                            </MultiDataTrigger.ExitActions>
-                        </MultiDataTrigger>
+                            </DataTrigger.ExitActions>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsBlur}" Value="True">
+                            <DataTrigger.EnterActions>
+                                <BeginStoryboard x:Name="BluringStoryboard" Storyboard="{StaticResource MainWindow_Bluring}"/>
+                            </DataTrigger.EnterActions>
+                            <DataTrigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="BluringStoryboard"/>
+                            </DataTrigger.ExitActions>
+                        </DataTrigger>
                     </Style.Triggers>
                 </Style>
             </Border.Style>

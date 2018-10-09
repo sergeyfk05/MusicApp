@@ -9,8 +9,8 @@ namespace MusicApp.Models
 {
     internal class RelayCommand<T> : ICommand
     {
-        private readonly Action _execute;
-        private readonly Predicate<T> _canExecute;
+        private readonly Action execute;
+        private readonly Predicate<T> canExecute;
 
         /// <summary>
         /// Создано при вызове RaiseCanExecuteChanged.
@@ -35,8 +35,8 @@ namespace MusicApp.Models
         {
             if (execute == null)
                 throw new ArgumentNullException("execute");
-            _execute = execute;
-            _canExecute = canExecute;
+            this.execute = execute;
+            this.canExecute = canExecute;
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace MusicApp.Models
         /// <returns>true, если команда может быть выполнена; в противном случае - false.</returns>
         public bool CanExecute(object parameter)
         {
-            return _canExecute == null ? true : _canExecute((T)parameter);
+            return canExecute == null ? true : canExecute((T)parameter);
         }
 
         /// <summary>
@@ -59,11 +59,11 @@ namespace MusicApp.Models
         /// </param>
         public void Execute()
         {
-            _execute();
+            execute();
         }
         public void Execute(object parameter)
         {
-            _execute();
+            execute();
         }
         /// <summary>
         /// Метод, используемый для создания события <see cref="CanExecuteChanged"/>

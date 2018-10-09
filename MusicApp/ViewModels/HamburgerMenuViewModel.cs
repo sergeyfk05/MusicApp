@@ -18,51 +18,68 @@ namespace MusicApp.ViewModels
 {
     public sealed class HamburgerMenuViewModel : INotifyPropertyChanged, IViewModel, IMenuViewModel
     {
+        //public bool Animate
+        //{
+        //    get { return animate; }
+        //    set
+        //    {
+        //        if(animate != value)
+        //        {
+        //            animate = value;
+        //            OnPropertyChanged();
+        //        }
+        //    }
+        //}
+        //private bool animate = false;
+
+
         public bool Menu_IsOpen
         {
-            get { return _menu_IsOpen; }
+            get { return menu_IsOpen; }
             set
             {
-                if (_menu_IsOpen != value)
+                if (menu_IsOpen != value)
                 {
-                    _menu_IsOpen = value;
-                    OnPropertyChanged("Menu_IsOpen");
+                    menu_IsOpen = value;
+                    OnPropertyChanged();
                 }
             }
         }
-        private bool _menu_IsOpen = false;
+        private bool menu_IsOpen = false;
         public bool BaseWindowContent_IsBlur
         {
-            get { return _baseWindowContent_IsBlur; }
+            get { return baseWindowContent_IsBlur; }
             set
             {
-                if(_baseWindowContent_IsBlur != value)
+                if(baseWindowContent_IsBlur != value)
                 {
-                    _baseWindowContent_IsBlur = value;
-                    OnPropertyChanged("BaseWindowContent_IsBlur");
+                    baseWindowContent_IsBlur = value;
+                    OnPropertyChanged();
                 }
             }
         }
-        private bool _baseWindowContent_IsBlur = false;
+        private bool baseWindowContent_IsBlur = false;
 
-        private ICommand _clickMenuButton;
+        private ICommand clickMenuButton;
         public ICommand ClickMenuButton
         {
             get
             {
-                if (_clickMenuButton == null)
-                    _clickMenuButton = new RelayCommand<object>(this.ClickMenuButton_Execute);
+                if (clickMenuButton == null)
+                    clickMenuButton = new RelayCommand<object>(this.ClickMenuButton_Execute);
 
-                return _clickMenuButton;
+                return clickMenuButton;
             }
         }
         private void ClickMenuButton_Execute()
         {
+            Animate = true;
             Menu_IsOpen = !Menu_IsOpen;
             BaseWindowContent_IsBlur = Menu_IsOpen;
         }
         public void CloseMenu()
         {
+            Animate = true;
             Menu_IsOpen = false;
             BaseWindowContent_IsBlur = false;
         }
@@ -70,9 +87,9 @@ namespace MusicApp.ViewModels
 
         public List<MenuItem> MenuList
         {
-            get { return _menuList; }
+            get { return menuList; }
         }
-        private List<MenuItem> _menuList = new List<MenuItem>()
+        private List<MenuItem> menuList = new List<MenuItem>()
             {
                 new MenuItem("\xE80F", "sdsadas", "Base"),
                 new MenuItem("\xE713", "sdsadassdasdasdass", "Settings"),
@@ -80,7 +97,7 @@ namespace MusicApp.ViewModels
             };
 
         public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string prop = "")
+        public void OnPropertyChanged([CallerMemberName]string prop = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }

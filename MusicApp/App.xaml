@@ -11,6 +11,8 @@
                 <!--Languages-->
                 <ResourceDictionary Source="Resources/Languages/language.xaml" />
                 <!--<ResourceDictionary Source="Resources/Languages/language.ru-RU.xaml" />-->
+
+                <ResourceDictionary Source="Resources/Styles/HamburgerMenuStyles.light.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

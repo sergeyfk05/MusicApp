@@ -14,13 +14,13 @@ namespace MusicApp.Configs
     {
         internal static List<ViewInfo> GetAllViewInfo()
         {
-            return _viewsInfo;
+            return viewsInfo;
         }
         internal static ViewInfo GetViewInfoByName(string name)
         {
-            return _viewsInfo.Single(x => x.Name.ToLower() == name.ToLower());
+            return viewsInfo.Single(x => x.Name.ToLower() == name.ToLower());
         }
-        private static readonly List<ViewInfo> _viewsInfo = new List<ViewInfo>()
+        private static readonly List<ViewInfo> viewsInfo = new List<ViewInfo>()
         {
             new ViewInfo("Base", typeof(MusicApp.Views.MainWindow), new BaseViewModel()),
             new ViewInfo("Menu", typeof(Views.HamburgerMenu), new HamburgerMenuViewModel()),

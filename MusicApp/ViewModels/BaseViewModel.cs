@@ -12,9 +12,9 @@ namespace MusicApp.ViewModels
     {
         public BaseViewModel()
         {
-            _menuVM = new HamburgerMenuViewModel();
-            MenuSource = new MusicApp.Views.HamburgerMenu(_menuVM);
-            _menuVM.PropertyChanged += MenuVM_PropertyChanged;
+            menuVM = new HamburgerMenuViewModel();
+            MenuSource = new MusicApp.Views.HamburgerMenu(menuVM);
+            menuVM.PropertyChanged += MenuVM_PropertyChanged;
         }
 
         private void MenuVM_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -22,55 +22,55 @@ namespace MusicApp.ViewModels
             switch (e.PropertyName)
             {
                 case "BaseWindowContent_IsBlur":
-                    IsBlur = _menuVM.BaseWindowContent_IsBlur;
+                    IsBlur = menuVM.BaseWindowContent_IsBlur;
                     break;
             }
         }
 
         public bool IsBlur
         {
-            get => _isBlur;
+            get => isBlur;
             set
             {
-                if (_isBlur != value)
+                if (isBlur != value)
                 {
-                    _isBlur = value;
-                    OnPropertyChanged("IsBlur");
+                    isBlur = value;
+                    OnPropertyChanged();
                 }
             }
         }
-        private bool _isBlur;
+        private bool isBlur;
 
         public Page MenuSource
         {
-            get => _menuSource;
+            get => menuSource;
             set
             {
-                if (_menuSource != value)
+                if (menuSource != value)
                 {
-                    _menuSource = value;
-                    OnPropertyChanged("MenuSource");
+                    menuSource = value;
+                    OnPropertyChanged();
                 }
             }
         }
-        private Page _menuSource;
-        private IMenuViewModel _menuVM;
+        private Page menuSource;
+        private IMenuViewModel menuVM;
 
 
-        private ICommand _clickContent;
+        private ICommand clickContent;
         public ICommand ClickContent
         {
             get
             {
-                if (_clickContent == null)
-                    _clickContent = new RelayCommand<object>(this.ClickContent_Execute);
+                if (clickContent == null)
+                    clickContent = new RelayCommand<object>(this.ClickContent_Execute);
 
-                return _clickContent;
+                return clickContent;
             }
         }
         private void ClickContent_Execute()
         {
-            _menuVM?.CloseMenu();
+            menuVM?.CloseMenu();
 
         }
 

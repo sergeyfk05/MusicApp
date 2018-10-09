@@ -147,7 +147,7 @@
     </ControlTemplate>
 
     <ControlTemplate TargetType="ContentControl" x:Key="HamburgerMenuTemplate">
-        <DockPanel x:Name="Menu" Style="{DynamicResource HamburgerMenu_DockPanelStyle}">
+        <DockPanel Width="{StaticResource HamburgerMenuClosedMenuWidth}" x:Name="Menu" Style="{DynamicResource HamburgerMenu_DockPanelStyle}">
             <StackPanel>
                 <Grid Style="{DynamicResource HamburgerMenu_TopPanelStyle}">
                     <Button x:Name="HamburgerMenu_Button" Style="{DynamicResource HamburgerMenu_ButtonStyle}" Command="{Binding ClickMenuButton}"/>
@@ -175,6 +175,18 @@
                     <StopStoryboard BeginStoryboardName="CloseMenuStoryboard"/>
                 </DataTrigger.ExitActions>
             </DataTrigger>
+            <!--<MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Menu_IsOpen, Mode=OneWay}" Value="False"/>
+                    <Condition Binding="{Binding Animate}" Value="True"/>
+                </MultiDataTrigger.Conditions>
+                <MultiDataTrigger.EnterActions>
+                    <BeginStoryboard x:Name="CloseMenuStoryboard" Storyboard="{StaticResource HamburgerMenu_CloseMenu}"/>
+                </MultiDataTrigger.EnterActions>
+                <MultiDataTrigger.ExitActions>
+                    <StopStoryboard BeginStoryboardName="CloseMenuStoryboard"/>
+                </MultiDataTrigger.ExitActions>
+            </MultiDataTrigger>-->
 
         </ControlTemplate.Triggers>
     </ControlTemplate>

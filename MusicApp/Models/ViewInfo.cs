@@ -11,24 +11,26 @@ namespace MusicApp.Models
     {
         internal ViewInfo(string name, Type view, IViewModel viewModel)
         {
-            _name = name;
-            _view = view;
-            _viewModel = viewModel;
+            this.name = name;
+            this.view = view;
+            this.viewModel = viewModel;
         }
         internal string Name
         {
-            get { return _name; }
+            get { return name; }
         }
-        private string _name;
+        private string name;
+
         internal Type View
         {
-            get { return _view; }
+            get { return view; }
         }
-        private Type _view;
+        private Type view;
+
         internal IViewModel ViewModel
         {
-            get { return _viewModel; ; }
+            get { return viewModel; ; }
         }
-        private IViewModel _viewModel;
+        private IViewModel viewModel;
     }
 }
