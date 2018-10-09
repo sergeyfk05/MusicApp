@@ -178,7 +178,7 @@
             <!--<MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding Menu_IsOpen, Mode=OneWay}" Value="False"/>
-                    <Condition Binding="{Binding Animate}" Value="True"/>
+                    <Condition Binding="{Binding Path=IsActive,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" Value="False"/>
                 </MultiDataTrigger.Conditions>
                 <MultiDataTrigger.EnterActions>
                     <BeginStoryboard x:Name="CloseMenuStoryboard" Storyboard="{StaticResource HamburgerMenu_CloseMenu}"/>
