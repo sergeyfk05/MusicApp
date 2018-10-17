@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace MusicApp.Models
+namespace MusicApp.Models.Commands
 {
     public class RelayCommandAsync : BaseCommand, ICommand
     {

@@ -1,18 +1,9 @@
 ﻿using MusicApp.Models;
-using System;
+using MusicApp.Models.Commands;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using MusicApp.Configs;
-using MusicApp.Views;
-using System.Windows;
-using System.Windows.Media.Animation;
-using MusicApp.Logic;
-using System.Windows.Media.Effects;
 
 namespace MusicApp.ViewModels
 {

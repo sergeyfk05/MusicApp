@@ -1,8 +1,6 @@
-﻿using MusicApp.Models;
-using System;
+﻿using MusicApp.Models.Commands;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
