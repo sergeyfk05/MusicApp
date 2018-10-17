@@ -1,18 +1,18 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace MusicApp.Models
 {
-    public class RelayCommand : BaseCommand, ICommand
+    public class RelayCommandWithParameterAsync<T> : BaseCommand, ICommand
     {
-        private readonly Action execute;
-
+        private readonly Func<T, Task> execute;
 
         /// <summary>
         /// Создает новую команду, которая всегда может выполняться.
         /// </summary>
         /// <param name="execute">Логика выполнения.</param>
-        public RelayCommand(Action execute)
+        public RelayCommandWithParameterAsync(Func<T, Task> execute)
             : this(execute, null)
         {
         }
@@ -22,8 +22,8 @@ namespace MusicApp.Models
         /// </summary>
         /// <param name="execute">Логика выполнения.</param>
         /// <param name="canExecute">Логика состояния выполнения.</param>
-        public RelayCommand(Action execute, Func<bool> canExecute)
-            :base(canExecute)
+        public RelayCommandWithParameterAsync(Func<T, Task> execute, Func<bool> canExecute)
+            : base(canExecute)
         {
             if (execute == null)
                 throw new ArgumentNullException("execute");
@@ -31,16 +31,15 @@ namespace MusicApp.Models
         }
 
         /// <summary>
-        /// Выполняет <see cref="RelayCommand"/> текущей цели команды.
+        /// Выполняет <see cref="RelayCommandWithParameterAsync"/> текущей цели команды.
         /// </summary>
         /// <param name="parameter">
         /// Данные, используемые командой. Если команда не требует передачи данных, этот объект можно установить равным NULL.
         /// </param>
-        public void Execute(object parameter = null)
+        public async void Execute(object parameter)
         {
-            if(CanExecute())
-                execute();
+            if ((parameter != null) && (CanExecute()))
+                await execute((T)parameter);
         }
-
     }
 }

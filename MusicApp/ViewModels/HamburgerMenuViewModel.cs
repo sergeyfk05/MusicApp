@@ -66,7 +66,7 @@ namespace MusicApp.ViewModels
             get
             {
                 if (clickMenuButton == null)
-                    clickMenuButton = new RelayCommand<object>(this.ClickMenuButton_Execute);
+                    clickMenuButton = new RelayCommand(this.ClickMenuButton_Execute);
 
                 return clickMenuButton;
             }
@@ -76,7 +76,19 @@ namespace MusicApp.ViewModels
             Menu_IsOpen = !Menu_IsOpen;
             BaseWindowContent_IsBlur = Menu_IsOpen;
         }
-        public void CloseMenu()
+
+        private ICommand closeMenu;
+        public ICommand CloseMenu
+        {
+            get
+            {
+                if (closeMenu == null)
+                    closeMenu = new RelayCommand(this.CloseMenu_Execute, () => menu_IsOpen);
+
+                return closeMenu;
+            }
+        }       
+        public void CloseMenu_Execute()
         {
             Menu_IsOpen = false;
             BaseWindowContent_IsBlur = false;

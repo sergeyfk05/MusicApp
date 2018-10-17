@@ -16,7 +16,6 @@ namespace MusicApp.ViewModels
             MenuSource = new MusicApp.Views.HamburgerMenu(menuVM);
             menuVM.PropertyChanged += MenuVM_PropertyChanged;
         }
-
         private void MenuVM_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             switch (e.PropertyName)
@@ -63,14 +62,14 @@ namespace MusicApp.ViewModels
             get
             {
                 if (clickContent == null)
-                    clickContent = new RelayCommand<object>(this.ClickContent_Execute);
+                    clickContent = new RelayCommand(this.ClickContent_Execute/*, () => menuVM != null ? menuVM.Menu_IsOpen : false*/);
 
                 return clickContent;
             }
         }
         private void ClickContent_Execute()
         {
-            menuVM?.CloseMenu();
+            menuVM?.CloseMenu.Execute(null);
 
         }
 

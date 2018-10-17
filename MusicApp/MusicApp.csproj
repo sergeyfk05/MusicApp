@@ -58,8 +58,11 @@
     </ApplicationDefinition>
     <Compile Include="Logic\BasicLogic.cs" />
     <Compile Include="Logic\ResourceManager.cs" />
+    <Compile Include="Models\BaseCommand.cs" />
     <Compile Include="Models\RelayCommand.cs" />
+    <Compile Include="Models\RelayCommandAsync.cs" />
     <Compile Include="Models\RelayCommandWithParameter.cs" />
+    <Compile Include="Models\RelayCommandWithParameterAsync.cs" />
     <Compile Include="Models\ViewInfo.cs" />
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
