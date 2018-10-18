@@ -68,6 +68,9 @@
     <Compile Include="Resources\Controls\HamburgerMenu.xaml.cs">
       <DependentUpon>HamburgerMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Controls\HamburgerMenuToggleButton.xaml.cs">
+      <DependentUpon>HamburgerMenuToggleButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MenuViewModel.cs" />
     <Compile Include="ViewModels\IBaseViewModel.cs" />
@@ -82,6 +85,10 @@
     </Compile>
     <Compile Include="Configs\ViewConfig.cs" />
     <Page Include="Resources\Controls\HamburgerMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Controls\HamburgerMenuToggleButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
