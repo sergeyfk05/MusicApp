@@ -7,23 +7,8 @@ using System.Windows.Input;
 
 namespace MusicApp.ViewModels
 {
-    public sealed class HamburgerMenuViewModel : INotifyPropertyChanged, IViewModel, IMenuViewModel
+    public sealed class MenuViewModel : INotifyPropertyChanged, IMenuViewModel
     {
-        //public bool Animate
-        //{
-        //    get { return animate; }
-        //    set
-        //    {
-        //        if(animate != value)
-        //        {
-        //            animate = value;
-        //            OnPropertyChanged();
-        //        }
-        //    }
-        //}
-        //private bool animate = false;
-
-
         public bool Menu_IsOpen
         {
             get { return menu_IsOpen; }

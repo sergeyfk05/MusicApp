@@ -6,6 +6,7 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
         xmlns:local="clr-namespace:MusicApp.Views"
         xmlns:vm="clr-namespace:MusicApp.ViewModels"
+        xmlns:myControls="clr-namespace:MusicApp.Resources.Controls"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         Style="{DynamicResource MainWindowStyle}">
@@ -26,11 +27,13 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition />
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Frame Panel.ZIndex="500" Grid.Column="0" x:Name="MenuFrame" Content="{Binding MenuSource, Mode=OneWay}"/>
-        <ContentControl Style="{DynamicResource MainWindowContentControlStyle}">
+
+        <myControls:HamburgerMenu Panel.ZIndex="500"/>
+
+        <ContentControl Margin="72 0 0 0" Style="{DynamicResource MainWindowContentControlStyle}">
             <Grid>
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseDown">

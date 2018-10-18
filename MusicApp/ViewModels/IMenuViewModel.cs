@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 namespace MusicApp.ViewModels
 {
-    internal interface IMenuViewModel
+    internal interface IMenuViewModel : IViewModel
     {
         bool Menu_IsOpen { get; set; }
         bool BaseWindowContent_IsBlur { get; set; }

@@ -3,7 +3,7 @@ using System.Windows;
 
 namespace MusicApp.ViewModels
 {
-    public interface IBaseViewModel
+    public interface IBaseViewModel : IViewModel
     {
         bool IsBlur { get; set; }
     }

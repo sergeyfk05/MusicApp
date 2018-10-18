@@ -6,12 +6,12 @@ using System.Windows.Input;
 
 namespace MusicApp.ViewModels
 {
-    public class BaseViewModel : IViewModel, INotifyPropertyChanged, IBaseViewModel
+    public class BaseViewModel : INotifyPropertyChanged, IBaseViewModel
     {
         public BaseViewModel()
         {
-            menuVM = new HamburgerMenuViewModel();
-            MenuSource = new MusicApp.Views.HamburgerMenu(menuVM);
+            menuVM = new MenuViewModel();
+            //MenuSource = new MusicApp.Views.HamburgerMenu(menuVM);
             menuVM.PropertyChanged += MenuVM_PropertyChanged;
         }
         private void MenuVM_PropertyChanged(object sender, PropertyChangedEventArgs e)
