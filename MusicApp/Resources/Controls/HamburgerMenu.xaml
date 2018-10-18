@@ -15,13 +15,13 @@
             <presentation:KeyTime x:Key="AnimationEndTime">0:0:0.5</presentation:KeyTime>
 
             <Storyboard x:Key="HamburgerMenu_CloseMenu">
-                <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)" Storyboard.TargetName="b">
+                <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)" Storyboard.TargetName="ToggleButton">
                     <DiscreteBooleanKeyFrame KeyTime="{StaticResource AnimationStartTime}" Value="False"/>
                     <DiscreteBooleanKeyFrame KeyTime="{StaticResource AnimationEndTime}" Value="True"/>
                 </BooleanAnimationUsingKeyFrames>
             </Storyboard>
             <Storyboard x:Key="HamburgerMenu_OpenMenu">
-                <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)" Storyboard.TargetName="b">
+                <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)" Storyboard.TargetName="ToggleButton">
                     <DiscreteBooleanKeyFrame KeyTime="{StaticResource AnimationStartTime}" Value="False"/>
                     <DiscreteBooleanKeyFrame KeyTime="{StaticResource AnimationEndTime}" Value="True"/>
                 </BooleanAnimationUsingKeyFrames>
@@ -34,7 +34,7 @@
             <DockPanel Width="{TemplateBinding ClosedWidth}" Background="{TemplateBinding Background}" HorizontalAlignment="Left">
                 <StackPanel>
                     <Grid Height="{TemplateBinding TopPanelHeight}" Background="{TemplateBinding TopPanelBackgroundColor}">
-                        <local:HamburgerMenuToggleButton x:Name="b" Background="{TemplateBinding ToggleButtonBackground}" Color="#FF515151" Cursor="Hand" MouseUp="HamburgerMenuToggleButton_MouseUp"/>
+                        <local:HamburgerMenuToggleButton IsParallel="{TemplateBinding ToggleButtonIsParallel}" x:Name="ToggleButton" Background="{TemplateBinding ToggleButtonBackground}" Color="#FF515151" Cursor="Hand" MouseUp="HamburgerMenuToggleButton_MouseUp"/>
                     </Grid>
                 </StackPanel>
             </DockPanel>

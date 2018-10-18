@@ -72,9 +72,7 @@
       <DependentUpon>HamburgerMenuToggleButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
-    <Compile Include="ViewModels\MenuViewModel.cs" />
     <Compile Include="ViewModels\IBaseViewModel.cs" />
-    <Compile Include="ViewModels\IMenuViewModel.cs" />
     <Compile Include="ViewModels\IViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

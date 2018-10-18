@@ -31,7 +31,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <myControls:HamburgerMenu Panel.ZIndex="500"/>
+        <myControls:HamburgerMenu x:Name="p" IsOpen="{Binding IsOpen, Mode=TwoWay}" Panel.ZIndex="500"/>
 
         <ContentControl Margin="72 0 0 0" Style="{DynamicResource MainWindowContentControlStyle}">
             <Grid>
@@ -45,8 +45,8 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <TextBlock Text="sdfszxczxcxzhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"/>
-                <TextBlock Grid.Row="1" Margin="150 0 0 0" Text="{Binding IsBlur}"/>
+                <TextBlock Text="{Binding IsOpen}"/>
+                <TextBlock Grid.Row="1" Margin="150 0 0 0" Text="{Binding ElementName=p, Path=IsOpen}"/>
             </Grid>
         </ContentControl>
     </Grid>

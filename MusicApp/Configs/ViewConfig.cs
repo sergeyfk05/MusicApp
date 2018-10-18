@@ -21,12 +21,7 @@ namespace MusicApp.Configs
             return viewsInfo.Single(x => x.Name.ToLower() == name.ToLower());
         }
         private static readonly List<ViewInfo> viewsInfo = new List<ViewInfo>()
-        {
-            new ViewInfo("Base", typeof(MusicApp.Views.MainWindow), new BaseViewModel()),
-            new ViewInfo("Menu", typeof(Views.MainWindow), new MenuViewModel()),
-            new ViewInfo("Home", typeof(MusicApp.Views.MainWindow), new MenuViewModel()),
-            new ViewInfo("Performers", typeof(MusicApp.Views.MainWindow), new MenuViewModel()),
-            new ViewInfo("Settings", typeof(MusicApp.Views.MainWindow), new MenuViewModel())
+        { 
         };
 
     }

@@ -24,7 +24,7 @@ namespace MusicApp.Resources.Controls
     {
         public HamburgerMenu()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         #region Main properties
@@ -37,16 +37,22 @@ namespace MusicApp.Resources.Controls
             get { return (bool)GetValue(IsOpenProperty); }
             set
             {
-                if(value != IsOpen)
-                    if (!IsOpen)
-                        OnOpened();
-                    else
-                        OnClosed();
                 SetValue(IsOpenProperty, value);                
             }
         }
         public static readonly DependencyProperty IsOpenProperty =
-            DependencyProperty.Register("IsOpen", typeof(bool), typeof(HamburgerMenu), new PropertyMetadata(false));
+            DependencyProperty.Register("IsOpen", typeof(bool), typeof(HamburgerMenu), new UIPropertyMetadata(false, OnIsOpenChanged));
+
+        /// <summary>
+        /// Получает или задает состояние кнопки открытия/закрытия.
+        /// </summary>
+        public bool ToggleButtonIsParallel
+        {
+            get { return (bool)GetValue(ToggleButtonIsParallelProperty); }
+            set { SetValue(ToggleButtonIsParallelProperty, value); }
+        }
+        public static readonly DependencyProperty ToggleButtonIsParallelProperty =
+            DependencyProperty.Register("ToggleButtonIsParallel", typeof(bool), typeof(HamburgerMenu), new PropertyMetadata(true));
 
         /// <summary>
         /// Ширина в закрытом состоянии.
@@ -131,6 +137,21 @@ namespace MusicApp.Resources.Controls
 
         #endregion
 
+        #region callbacks
+
+        private static void OnIsOpenChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is HamburgerMenu menu)
+            {
+                if (menu.IsOpen)
+                    menu.OnOpened();
+                else
+                    menu.OnClosed();
+            }
+        }
+
+        #endregion
+
         #region routed events
 
         /// <summary>
@@ -146,6 +167,7 @@ namespace MusicApp.Resources.Controls
         public void OnOpened()
         {
             RaiseEvent(new RoutedEventArgs(HamburgerMenu.OpenedEvent));
+            ToggleButtonIsParallel = false;
         }
 
         /// <summary>
@@ -161,15 +183,15 @@ namespace MusicApp.Resources.Controls
         public void OnClosed()
         {
             RaiseEvent(new RoutedEventArgs(HamburgerMenu.ClosedEvent));
+            ToggleButtonIsParallel = true;
         }
 
         #endregion
 
         private void HamburgerMenuToggleButton_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            if (sender is HamburgerMenuToggleButton button)
-                button.IsParallel = IsOpen;
             IsOpen = !IsOpen;
         }
+
     }
 }

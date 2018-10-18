@@ -8,22 +8,6 @@ namespace MusicApp.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged, IBaseViewModel
     {
-        public BaseViewModel()
-        {
-            menuVM = new MenuViewModel();
-            //MenuSource = new MusicApp.Views.HamburgerMenu(menuVM);
-            menuVM.PropertyChanged += MenuVM_PropertyChanged;
-        }
-        private void MenuVM_PropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            switch (e.PropertyName)
-            {
-                case "BaseWindowContent_IsBlur":
-                    IsBlur = menuVM.BaseWindowContent_IsBlur;
-                    break;
-            }
-        }
-
         public bool IsBlur
         {
             get => isBlur;
@@ -38,21 +22,19 @@ namespace MusicApp.ViewModels
         }
         private bool isBlur;
 
-        public Page MenuSource
+        public bool IsOpen
         {
-            get => menuSource;
+            get { return isOpen; }
             set
             {
-                if (menuSource != value)
+                if(value != isOpen)
                 {
-                    menuSource = value;
+                    isOpen = value;
                     OnPropertyChanged();
                 }
             }
         }
-        private Page menuSource;
-        private IMenuViewModel menuVM;
-
+        private bool isOpen;
 
         private ICommand clickContent;
         public ICommand ClickContent
@@ -60,15 +42,14 @@ namespace MusicApp.ViewModels
             get
             {
                 if (clickContent == null)
-                    clickContent = new RelayCommand(this.ClickContent_Execute/*, () => menuVM != null ? menuVM.Menu_IsOpen : false*/);
+                    clickContent = new RelayCommand(this.ClickContent_Execute, () => IsOpen);
 
                 return clickContent;
             }
         }
         private void ClickContent_Execute()
         {
-            menuVM?.CloseMenu.Execute(null);
-
+            IsOpen = false;
         }
 
 

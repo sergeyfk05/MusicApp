@@ -46,16 +46,26 @@ namespace MusicApp.Resources.Controls
             get { return (bool)GetValue(IsParallelProperty); }
             set
             {
-                if(value != IsParallel)
-                    if (!IsParallel)
-                        OnParalleled();
-                    else
-                        OnCrossed();
                 SetValue(IsParallelProperty, value);
             }
         }
         public static readonly DependencyProperty IsParallelProperty =
-            DependencyProperty.Register("IsParallel", typeof(bool), typeof(HamburgerMenuToggleButton), new PropertyMetadata(true));
+            DependencyProperty.Register("IsParallel", typeof(bool), typeof(HamburgerMenuToggleButton), new UIPropertyMetadata(true, OnIsParallelChanged));
+
+        #endregion
+
+        #region callbacks
+
+        private static void OnIsParallelChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is HamburgerMenuToggleButton button)
+            {
+                if (button.IsParallel)
+                    button.OnParalleled();
+                else
+                    button.OnCrossed();
+            }
+        }
 
         #endregion
 
