@@ -36,6 +36,7 @@
                     <Grid Height="{TemplateBinding TopPanelHeight}" Background="{TemplateBinding TopPanelBackgroundColor}">
                         <local:HamburgerMenuToggleButton IsParallel="{TemplateBinding ToggleButtonIsParallel}" x:Name="ToggleButton" Background="{TemplateBinding ToggleButtonBackground}" Color="#FF515151" Cursor="Hand" MouseUp="HamburgerMenuToggleButton_MouseUp"/>
                     </Grid>
+                    <local:HamburgerMenuListBox ItemsSource="{TemplateBinding ItemsSource}"/>
                 </StackPanel>
             </DockPanel>
 

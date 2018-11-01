@@ -7,27 +7,27 @@ using System.Threading.Tasks;
 
 namespace MusicApp.Models
 {
-    internal class ViewInfo
+    public class ViewInfo
     {
-        internal ViewInfo(string name, Type view, IViewModel viewModel)
+        public ViewInfo(string name, Type view, IViewModel viewModel)
         {
             this.name = name;
             this.view = view;
             this.viewModel = viewModel;
         }
-        internal string Name
+        public string Name
         {
             get { return name; }
         }
         private string name;
 
-        internal Type View
+        public Type View
         {
             get { return view; }
         }
         private Type view;
 
-        internal IViewModel ViewModel
+        public IViewModel ViewModel
         {
             get { return viewModel; ; }
         }

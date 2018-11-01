@@ -137,6 +137,18 @@ namespace MusicApp.Resources.Controls
 
         #endregion
 
+        #region ListBox properties
+
+        public IEnumerable<MusicApp.Models.MenuItem> ItemsSource
+        {
+            get { return (IEnumerable<MusicApp.Models.MenuItem>)GetValue(ItemsSourceProperty); }
+            set { SetValue(ItemsSourceProperty, value); }
+        }
+        public static readonly DependencyProperty ItemsSourceProperty =
+            DependencyProperty.Register("ItemsSource", typeof(IEnumerable<MusicApp.Models.MenuItem>), typeof(HamburgerMenu), new PropertyMetadata(null));
+
+        #endregion
+
         #region callbacks
 
         private static void OnIsOpenChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)

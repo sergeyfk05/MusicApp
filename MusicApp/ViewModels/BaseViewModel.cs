@@ -1,8 +1,11 @@
 ﻿using MusicApp.Models.Commands;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Windows.Controls;
 using System.Windows.Input;
+using System.Collections;
+using MusicApp.Models;
+using System.Collections.Generic;
+using MusicApp.Views;
 
 namespace MusicApp.ViewModels
 {
@@ -35,6 +38,23 @@ namespace MusicApp.ViewModels
             }
         }
         private bool isOpen;
+
+        public IEnumerable<MenuItem> ItemsSource
+        {
+            get
+            {
+                return new List<MenuItem>()
+                {
+                    new MenuItem("", "dsf", "menu"),
+                    new MenuItem("", "settings", "settings")
+                };
+            }
+            set
+            {
+
+            }
+        }
+
 
         private ICommand clickContent;
         public ICommand ClickContent
