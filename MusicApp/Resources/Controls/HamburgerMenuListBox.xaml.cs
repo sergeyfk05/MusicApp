@@ -23,6 +23,7 @@ namespace MusicApp.Resources.Controls
         public HamburgerMenuListBox()
         {
             InitializeComponent();
+            RequestedWidth = calcRequestedWidth();
         }
 
 
@@ -63,7 +64,6 @@ namespace MusicApp.Resources.Controls
             DependencyProperty.Register("ItemBackround", typeof(SolidColorBrush), typeof(HamburgerMenuListBox), new PropertyMetadata(new SolidColorBrush(Colors.Red)));
 
 
-
         public SolidColorBrush SelectedItemBackground
         {
             get { return (SolidColorBrush)GetValue(SelectedItemBackgroundProperty); }
@@ -73,9 +73,21 @@ namespace MusicApp.Resources.Controls
             DependencyProperty.Register("SelectedItemBackground", typeof(SolidColorBrush), typeof(HamburgerMenuListBox), new PropertyMetadata(new SolidColorBrush(Colors.Black)));
 
 
+        public double RequestedWidth
+        {
+            get { return (double)GetValue(RequestedWidthProperty); }
+            set { SetValue(RequestedWidthProperty, value); }
+        }
+        public static readonly DependencyProperty RequestedWidthProperty =
+            DependencyProperty.Register("RequestedWidth", typeof(double), typeof(HamburgerMenuListBox), new PropertyMetadata((double)0));
+
 
 
         #endregion
 
+        private double calcRequestedWidth()
+        {
+            return 300;
+        }
     }
 }

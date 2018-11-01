@@ -49,10 +49,15 @@ namespace MusicApp.Resources.Controls
         public bool ToggleButtonIsParallel
         {
             get { return (bool)GetValue(ToggleButtonIsParallelProperty); }
-            set { SetValue(ToggleButtonIsParallelProperty, value); }
         }
-        public static readonly DependencyProperty ToggleButtonIsParallelProperty =
-            DependencyProperty.Register("ToggleButtonIsParallel", typeof(bool), typeof(HamburgerMenu), new PropertyMetadata(true));
+        private bool ToggleButtonIsParallelKey
+        {   
+            get { return (bool)GetValue(ToggleButtonIsParallelProperty); }
+            set { SetValue(ToggleButtonIsParallelPropertyKey, value); }
+        }
+        public static readonly DependencyPropertyKey ToggleButtonIsParallelPropertyKey =
+            DependencyProperty.RegisterReadOnly("ToggleButtonIsParallel", typeof(bool), typeof(HamburgerMenu), new PropertyMetadata(true));
+        public static readonly DependencyProperty ToggleButtonIsParallelProperty = ToggleButtonIsParallelPropertyKey.DependencyProperty;
 
         /// <summary>
         /// Ширина в закрытом состоянии.
@@ -179,7 +184,7 @@ namespace MusicApp.Resources.Controls
         public void OnOpened()
         {
             RaiseEvent(new RoutedEventArgs(HamburgerMenu.OpenedEvent));
-            ToggleButtonIsParallel = false;
+            ToggleButtonIsParallelKey = false;
         }
 
         /// <summary>
@@ -195,7 +200,7 @@ namespace MusicApp.Resources.Controls
         public void OnClosed()
         {
             RaiseEvent(new RoutedEventArgs(HamburgerMenu.ClosedEvent));
-            ToggleButtonIsParallel = true;
+            ToggleButtonIsParallelKey = true;
         }
 
         #endregion

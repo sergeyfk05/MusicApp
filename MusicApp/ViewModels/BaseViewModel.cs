@@ -45,7 +45,7 @@ namespace MusicApp.ViewModels
             {
                 return new List<MenuItem>()
                 {
-                    new MenuItem("", "dsf", "menu"),
+                    new MenuItem("", "dsfdsfddddddddddddddddddddddddd", "menu"),
                     new MenuItem("", "settings", "settings")
                 };
             }

@@ -31,12 +31,12 @@
     
     <UserControl.Template>
         <ControlTemplate TargetType="local:HamburgerMenu">
-            <DockPanel Width="{TemplateBinding ClosedWidth}" Background="{TemplateBinding Background}" HorizontalAlignment="Left">
+            <DockPanel MinWidth="{TemplateBinding ClosedWidth}" MaxWidth="{TemplateBinding ClosedWidth}" Background="{TemplateBinding Background}" HorizontalAlignment="Left">
                 <StackPanel>
                     <Grid Height="{TemplateBinding TopPanelHeight}" Background="{TemplateBinding TopPanelBackgroundColor}">
                         <local:HamburgerMenuToggleButton IsParallel="{TemplateBinding ToggleButtonIsParallel}" x:Name="ToggleButton" Background="{TemplateBinding ToggleButtonBackground}" Color="#FF515151" Cursor="Hand" MouseUp="HamburgerMenuToggleButton_MouseUp"/>
                     </Grid>
-                    <local:HamburgerMenuListBox ItemsSource="{TemplateBinding ItemsSource}"/>
+                    <local:HamburgerMenuListBox ItemsSource="{TemplateBinding ItemsSource}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
                 </StackPanel>
             </DockPanel>
 
