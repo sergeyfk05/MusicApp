@@ -56,8 +56,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Localize\BaseLocalizationListener.cs" />
+    <Compile Include="Localize\BindingLocalizationConverter.cs" />
+    <Compile Include="Localize\BindingLocalizationListener.cs" />
+    <Compile Include="Localize\CultureChangedEventManager.cs" />
+    <Compile Include="Localize\ILocalizationProvider.cs" />
+    <Compile Include="Localize\KeyLocalizationListener.cs" />
+    <Compile Include="Localize\LocalizationExtension.cs" />
+    <Compile Include="Localize\LocalizationManager.cs" />
+    <Compile Include="Localize\ResxLocalizationProvider.cs" />
     <Compile Include="Logic\BasicLogic.cs" />
-    <Compile Include="Logic\ResourceManager.cs" />
     <Compile Include="Models\Commands\BaseCommand.cs" />
     <Compile Include="Models\Commands\RelayCommand.cs" />
     <Compile Include="Models\Commands\RelayCommandAsync.cs" />
@@ -73,6 +81,11 @@
     </Compile>
     <Compile Include="Resources\Controls\HamburgerMenuToggleButton.xaml.cs">
       <DependentUpon>HamburgerMenuToggleButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Languages\Language.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Language.resx</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\IBaseViewModel.cs" />
@@ -96,18 +109,6 @@
     <Page Include="Resources\Controls\HamburgerMenuToggleButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\Icons.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\Languages\language.ru-RU.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\Languages\language.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Resources\Styles\MainWindowStyles.light.xaml">
       <SubType>Designer</SubType>
@@ -144,6 +145,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Languages\Language.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Language.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Languages\Language.ru.resx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
