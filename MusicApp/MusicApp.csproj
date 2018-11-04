@@ -63,7 +63,6 @@
     <Compile Include="Models\Commands\RelayCommandAsync.cs" />
     <Compile Include="Models\Commands\RelayCommandWithParameter.cs" />
     <Compile Include="Models\Commands\RelayCommandWithParameterAsync.cs" />
-    <Compile Include="Models\ViewInfo.cs" />
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Resources\Controls\HamburgerMenu.xaml.cs">
       <DependentUpon>HamburgerMenu.xaml</DependentUpon>
@@ -74,6 +73,20 @@
     <Compile Include="Resources\Controls\HamburgerMenuToggleButton.xaml.cs">
       <DependentUpon>HamburgerMenuToggleButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Themes\Theme.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Theme.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ThemeChanger\BaseThemeChangerListener.cs" />
+    <Compile Include="ThemeChanger\BindingThemeChangerConverter.cs" />
+    <Compile Include="ThemeChanger\BindingThemeChangerListener.cs" />
+    <Compile Include="ThemeChanger\ThemeChangedEventManager.cs" />
+    <Compile Include="ThemeChanger\IThemeChangerProvider.cs" />
+    <Compile Include="ThemeChanger\KeyThemeChangerListener.cs" />
+    <Compile Include="ThemeChanger\ThemeChangerExtension.cs" />
+    <Compile Include="ThemeChanger\ThemeChangerManager.cs" />
+    <Compile Include="ThemeChanger\ResxThemeChangerProvider.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\IBaseViewModel.cs" />
     <Compile Include="ViewModels\IViewModel.cs" />
@@ -84,7 +97,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Configs\ViewConfig.cs" />
     <Page Include="Resources\Controls\HamburgerMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -96,18 +108,6 @@
     <Page Include="Resources\Controls\HamburgerMenuToggleButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\Icons.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\Languages\language.ru-RU.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\Languages\language.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Resources\Styles\MainWindowStyles.light.xaml">
       <SubType>Designer</SubType>
@@ -144,6 +144,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Themes\Theme.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Theme.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Themes\Theme.ru.resx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -152,6 +157,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Configs\" />
+    <Folder Include="Resources\Languages\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

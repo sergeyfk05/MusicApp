@@ -4,15 +4,5 @@
              xmlns:local="clr-namespace:MusicApp"
              StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <!--Icons-->
-                <ResourceDictionary Source="Resources/Icons.xaml" />
-                <!--Languages-->
-                <ResourceDictionary Source="Resources/Languages/language.xaml" />
-                <!--<ResourceDictionary Source="Resources/Languages/language.ru-RU.xaml" />-->
-
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
     </Application.Resources>
 </Application>
