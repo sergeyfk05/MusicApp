@@ -56,8 +56,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Localize\BaseLocalizationListener.cs" />
+    <Compile Include="Localize\BindingLocalizationConverter.cs" />
+    <Compile Include="Localize\BindingLocalizationListener.cs" />
+    <Compile Include="Localize\CultureChangedEventManager.cs" />
+    <Compile Include="Localize\ILocalizationProvider.cs" />
+    <Compile Include="Localize\KeyLocalizationListener.cs" />
+    <Compile Include="Localize\LocalizationExtension.cs" />
+    <Compile Include="Localize\LocalizationManager.cs" />
+    <Compile Include="Localize\ResxLocalizationProvider.cs" />
     <Compile Include="Logic\BasicLogic.cs" />
-    <Compile Include="Logic\ResourceManager.cs" />
     <Compile Include="Models\Commands\BaseCommand.cs" />
     <Compile Include="Models\Commands\RelayCommand.cs" />
     <Compile Include="Models\Commands\RelayCommandAsync.cs" />
@@ -72,6 +80,11 @@
     </Compile>
     <Compile Include="Resources\Controls\HamburgerMenuToggleButton.xaml.cs">
       <DependentUpon>HamburgerMenuToggleButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Languages\Language.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Language.resx</DependentUpon>
     </Compile>
     <Compile Include="Resources\Themes\Theme.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -149,6 +162,11 @@
       <LastGenOutput>Theme.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Themes\Theme.ru.resx" />
+     <EmbeddedResource Include="Resources\Languages\Language.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Language.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Languages\Language.ru.resx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

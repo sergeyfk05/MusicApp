@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MusicApp.Localization;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -18,6 +19,7 @@ namespace MusicApp
         {
             base.OnStartup(e);
 
+            LocalizationManager.Instance.LocalizationProvider = new ResxLocalizationProvider();
             ThemeManager.Instance.ThemeChangerProvider = new ResxThemeChangerProvider();
         }
     }
