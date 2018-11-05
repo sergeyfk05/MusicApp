@@ -19,11 +19,11 @@ namespace MusicApp.ThemeChanger
         /// <summary>
         /// Доступные культуры
         /// </summary>
-        IEnumerable<CultureInfo> Themes { get; }
+        IEnumerable<ThemeInfo> Themes { get; }
 
         /// <summary>
         /// Текущяя культура
         /// </summary>
-        CultureInfo CurrentTheme { get; set; }
+        ThemeInfo CurrentTheme { get; set; }
     }
 }

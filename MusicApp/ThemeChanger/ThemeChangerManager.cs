@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using MusicApp.Models;
 
 namespace MusicApp.ThemeChanger
 {
@@ -20,7 +21,7 @@ namespace MusicApp.ThemeChanger
 
         public event EventHandler ThemeChanged;
 
-        public CultureInfo CurrentTheme
+        public ThemeInfo CurrentTheme
         {
             get { return ThemeChangerProvider?.CurrentTheme ?? ThemeChangerProvider?.Themes.FirstOrDefault(); }
             set
@@ -35,7 +36,7 @@ namespace MusicApp.ThemeChanger
             }
         }
 
-        public IEnumerable<CultureInfo> Themes => ThemeChangerProvider?.Themes ?? Enumerable.Empty<CultureInfo>();
+        public IEnumerable<ThemeInfo> Themes => ThemeChangerProvider?.Themes ?? Enumerable.Empty<ThemeInfo>();
 
         public IThemeChangerProvider ThemeChangerProvider { get; set; }
 

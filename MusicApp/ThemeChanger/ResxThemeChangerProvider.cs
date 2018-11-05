@@ -1,4 +1,5 @@
-﻿using MusicApp.Resources.Themes;
+﻿using MusicApp.Models;
+using MusicApp.Resources.Themes;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -11,13 +12,13 @@ namespace MusicApp.ThemeChanger
     /// </summary>
     public class ResxThemeChangerProvider : IThemeChangerProvider
     {
-        public ResxThemeChangerProvider(CultureInfo current)
+        public ResxThemeChangerProvider(string keyTheme)
         {
-            CurrentTheme = current;
+            _currentTheme = Themes.First<ThemeInfo>(x => x.Name == keyTheme);
         }
 
-        private IEnumerable<CultureInfo> _themes;
-        private CultureInfo _currentTheme;
+        private IEnumerable<ThemeInfo> _themes;
+        private ThemeInfo _currentTheme;
   
 
         public object Localize(string key)
@@ -25,18 +26,19 @@ namespace MusicApp.ThemeChanger
             return Theme.ResourceManager.GetObject(key);
         }
 
-        public IEnumerable<CultureInfo> Themes => _themes ?? (_themes = new List<CultureInfo>
+        public IEnumerable<ThemeInfo> Themes => _themes ?? (_themes = new List<ThemeInfo>
         {
-            new CultureInfo("light"),
-            new CultureInfo("dark"),
+            new ThemeInfo("light"),
+            new ThemeInfo("dark"),
         });
-        public CultureInfo CurrentTheme
+        public ThemeInfo CurrentTheme
         {
             get { return _currentTheme; }
             set
             {
                 if (Equals(value, _currentTheme))
                     return;
+
                 if (!Themes.Contains(value))
                     throw new ArgumentException("There is no such theme in the list of themes.");
 

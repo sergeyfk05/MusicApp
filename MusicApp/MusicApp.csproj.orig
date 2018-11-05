@@ -72,7 +72,6 @@
     <Compile Include="Models\Commands\RelayCommandWithParameter.cs" />
     <Compile Include="Models\Commands\RelayCommandWithParameterAsync.cs" />
     <Compile Include="Models\MenuItem.cs" />
-    <Compile Include="Models\ThemeInfo.cs" />
     <Compile Include="Resources\Controls\HamburgerMenu.xaml.cs">
       <DependentUpon>HamburgerMenu.xaml</DependentUpon>
     </Compile>
@@ -82,11 +81,7 @@
     <Compile Include="Resources\Controls\HamburgerMenuToggleButton.xaml.cs">
       <DependentUpon>HamburgerMenuToggleButton.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Languages\Language.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Language.resx</DependentUpon>
-    </Compile>
+<<<<<<< HEAD
     <Compile Include="Resources\Themes\Theme.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -101,6 +96,13 @@
     <Compile Include="ThemeChanger\ThemeChangerExtension.cs" />
     <Compile Include="ThemeChanger\ThemeChangerManager.cs" />
     <Compile Include="ThemeChanger\ResxThemeChangerProvider.cs" />
+=======
+    <Compile Include="Resources\Languages\Language.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Language.resx</DependentUpon>
+    </Compile>
+>>>>>>> culture-manager
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\IBaseViewModel.cs" />
     <Compile Include="ViewModels\IViewModel.cs" />
@@ -158,16 +160,19 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+<<<<<<< HEAD
     <EmbeddedResource Include="Resources\Themes\Theme.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Theme.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Themes\Theme.ru.resx" />
+=======
     <EmbeddedResource Include="Resources\Languages\Language.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Language.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Languages\Language.ru.resx" />
+>>>>>>> culture-manager
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -178,6 +183,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Configs\" />
+    <Folder Include="Resources\Languages\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
