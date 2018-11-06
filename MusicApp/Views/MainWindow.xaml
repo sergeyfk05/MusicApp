@@ -5,8 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
         xmlns:local="clr-namespace:MusicApp.Views"
-        xmlns:theme="clr-namespace:MusicApp.ThemeChanger"
-        xmlns:localize="clr-namespace:MusicApp.Localization"
+        xmlns:theme="clr-namespace:MusicApp.DynamicResource.Themes"
         xmlns:vm="clr-namespace:MusicApp.ViewModels"
         xmlns:myControls="clr-namespace:MusicApp.Resources.Controls"
         mc:Ignorable="d"
@@ -48,7 +47,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <TextBlock Text="{Binding IsOpen}"/>
-                <TextBlock Grid.Row="1" Margin="150 0 0 0" Text="{localize:Localization s}"/>
+                <TextBlock Grid.Row="1" Margin="150 0 0 0" Text="{theme:Theme str}"/>
             </Grid>
         </ContentControl>
     </Grid>

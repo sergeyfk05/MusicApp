@@ -13,7 +13,7 @@ namespace MusicApp.Models
             if (_themeInfos.FirstOrDefault(x => x.Name == name) != null)
                 throw new ArgumentException($"ThemeInfo instance with {name} already created.");
 
-            _themeInfos.Add(new ThemeInfo(name));
+            //_themeInfos.Add(new ThemeInfo(name));
             Name = name;
         }
 

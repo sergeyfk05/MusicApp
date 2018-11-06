@@ -1,5 +1,4 @@
-﻿using MusicApp.Localization;
-using MusicApp.ThemeChanger;
+﻿using MusicApp.DynamicResource.Themes;
 using System.Windows;
 
 namespace MusicApp
@@ -13,12 +12,12 @@ namespace MusicApp
         {
             base.OnStartup(e);
 
-            var a = new MusicApp.Models.ThemeInfo("1");
+            /*var a = new MusicApp.Models.ThemeInfo("1");
             a = new MusicApp.Models.ThemeInfo("1");
-            a = new MusicApp.Models.ThemeInfo("1");
+            a = new MusicApp.Models.ThemeInfo("1");*/
 
-            LocalizationManager.Instance.LocalizationProvider = new ResxLocalizationProvider();
-            ThemeManager.Instance.ThemeChangerProvider = new ResxThemeChangerProvider("light");
+            //LocalizationManager.Instance.LocalizationProvider = new ResxLocalizationProvider();
+            ThemeManager.Instance.Provider = new ResxThemeChangerProvider("ru");
         }
     }
 }
