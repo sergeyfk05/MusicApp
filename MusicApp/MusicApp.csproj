@@ -67,15 +67,9 @@
     <Compile Include="DynamicResource\Themes\ResxThemeChangerProvider.cs" />
     <Compile Include="DynamicResource\Themes\ThemeExtension.cs" />
     <Compile Include="DynamicResource\Themes\ThemeManager.cs" />
-    <Compile Include="Localize\BaseLocalizationListener.cs" />
-    <Compile Include="Localize\BindingLocalizationConverter.cs" />
-    <Compile Include="Localize\BindingLocalizationListener.cs" />
-    <Compile Include="Localize\CultureChangedEventManager.cs" />
-    <Compile Include="Localize\ILocalizationProvider.cs" />
-    <Compile Include="Localize\KeyLocalizationListener.cs" />
-    <Compile Include="Localize\LocalizationExtension.cs" />
-    <Compile Include="Localize\LocalizationManager.cs" />
-    <Compile Include="Localize\ResxLocalizationProvider.cs" />
+    <Compile Include="DynamicResource\Languages\LanguagesExtension.cs" />
+    <Compile Include="DynamicResource\Languages\LanguagesManager.cs" />
+    <Compile Include="DynamicResource\Languages\ResxLanguagesProvider.cs" />
     <Compile Include="Logic\BasicLogic.cs" />
     <Compile Include="Models\Commands\BaseCommand.cs" />
     <Compile Include="Models\Commands\RelayCommand.cs" />
@@ -103,15 +97,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Theme.resx</DependentUpon>
     </Compile>
-    <Compile Include="ThemeChanger\BaseThemeChangerListener.cs" />
-    <Compile Include="ThemeChanger\BindingThemeChangerConverter.cs" />
-    <Compile Include="ThemeChanger\BindingThemeChangerListener.cs" />
-    <Compile Include="ThemeChanger\ThemeChangedEventManager.cs" />
-    <Compile Include="ThemeChanger\IThemeChangerProvider.cs" />
-    <Compile Include="ThemeChanger\KeyThemeChangerListener.cs" />
-    <Compile Include="ThemeChanger\ThemeChangerExtension.cs" />
-    <Compile Include="ThemeChanger\ThemeChangerManager.cs" />
-    <Compile Include="ThemeChanger\ResxThemeChangerProvider.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\IBaseViewModel.cs" />
     <Compile Include="ViewModels\IViewModel.cs" />

@@ -1,4 +1,5 @@
 ﻿using MusicApp.DynamicResource.Themes;
+using MusicApp.DynamicResource.Languages;
 using System.Windows;
 
 namespace MusicApp
@@ -16,7 +17,7 @@ namespace MusicApp
             a = new MusicApp.Models.ThemeInfo("1");
             a = new MusicApp.Models.ThemeInfo("1");*/
 
-            //LocalizationManager.Instance.LocalizationProvider = new ResxLocalizationProvider();
+            LanguagesManager.Instance.Provider = new ResxLanguagesProvider();
             ThemeManager.Instance.Provider = new ResxThemeChangerProvider("ru");
         }
     }

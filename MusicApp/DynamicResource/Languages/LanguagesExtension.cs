@@ -5,22 +5,23 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Markup;
+using MusicApp.DynamicResource.Base;
 
-namespace MusicApp.Localization
+namespace MusicApp.DynamicResource.Languages
 {
     /// <summary>
     /// Расширение разметки, которое возвращает локализованную строку по ключу или привязке
     /// </summary>
     [ContentProperty(nameof(ArgumentBindings))]
-    public class LocalizationExtension : MarkupExtension
+    public class LanguagesExtension : MarkupExtension
     {
         private Collection<BindingBase> _arguments;
 
-        public LocalizationExtension()
+        public LanguagesExtension()
         {
         }
 
-        public LocalizationExtension(string key)
+        public LanguagesExtension(string key)
         {
             Key = key;
         }
@@ -66,7 +67,7 @@ namespace MusicApp.Localization
             // то используем BindingLocalizationListener
             if (KeyBinding != null || ArgumentBindings.Any())
             {
-                var listener = new BindingLocalizationListener();
+                var listener = new BindingDynamicResourceListener<LanguagesManager>(CultureChangedDynamicResourceEventManager<LanguagesManager>.Instance, LanguagesManager.Instance);
 
                 // Создаем привязку для слушателя
                 var listenerBinding = new Binding { Source = listener };
@@ -75,7 +76,7 @@ namespace MusicApp.Localization
 
                 var multiBinding = new MultiBinding
                 {
-                    Converter = new BindingLocalizationConverter(),
+                    Converter = new BindingDynamicResourceConverter(LanguagesManager.Instance),
                     ConverterParameter = Arguments,
                     Bindings = { listenerBinding, keyBinding }
                 };
@@ -93,13 +94,13 @@ namespace MusicApp.Localization
             // Если задан ключ, то используем KeyLocalizationListener
             if (!string.IsNullOrEmpty(Key))
             {
-                var listener = new KeyLocalizationListener(Key, Arguments?.ToArray());
+                var listener = new KeyDynamicResourceListener<LanguagesManager>(Key, Arguments?.ToArray(), CultureChangedDynamicResourceEventManager<LanguagesManager>.Instance, LanguagesManager.Instance);
 
                 // Если локализация навешана на DependencyProperty объекта DependencyObject
                 if ((target.TargetObject is DependencyObject && target.TargetProperty is DependencyProperty) ||
                     target.TargetObject is Setter)
                 {
-                    var binding = new Binding(nameof(KeyLocalizationListener.Value))
+                    var binding = new Binding(nameof(KeyDynamicResourceListener<LanguagesManager>.Value))
                     {
                         Source = listener,
                         UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
@@ -112,7 +113,7 @@ namespace MusicApp.Localization
                 if (targetBinding != null && target.TargetProperty != null &&
                     target.TargetProperty.GetType().FullName == "System.Reflection.RuntimePropertyInfo")
                 {
-                    targetBinding.Path = new PropertyPath(nameof(KeyLocalizationListener.Value));
+                    targetBinding.Path = new PropertyPath(nameof(KeyDynamicResourceListener<LanguagesManager>.Value));
                     targetBinding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
                     return listener;
                 }

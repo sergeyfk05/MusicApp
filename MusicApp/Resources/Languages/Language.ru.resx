@@ -120,4 +120,7 @@
   <data name="s" xml:space="preserve">
     <value>сс</value>
   </data>
+  <data name="ss" xml:space="preserve">
+    <value>ggg</value>
+  </data>
 </root>

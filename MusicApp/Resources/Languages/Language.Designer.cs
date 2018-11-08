@@ -68,5 +68,14 @@ namespace MusicApp.Resources.Languages {
                 return ResourceManager.GetString("s", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на ddd.
+        /// </summary>
+        internal static string ss {
+            get {
+                return ResourceManager.GetString("ss", resourceCulture);
+            }
+        }
     }
 }

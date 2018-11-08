@@ -6,6 +6,7 @@ using System.Collections;
 using MusicApp.Models;
 using System.Collections.Generic;
 using MusicApp.Views;
+using MusicApp.DynamicResource.Languages;
 
 namespace MusicApp.ViewModels
 {
@@ -69,6 +70,14 @@ namespace MusicApp.ViewModels
         }
         private void ClickContent_Execute()
         {
+            //foreach (var i in LanguagesManager.Instance.Cultures)
+            //{
+            //    if (i != LanguagesManager.Instance.CurrentCulture)
+            //    {
+            //        LanguagesManager.Instance.CurrentCulture = i;
+            //        break;
+            //    }
+            //}
             IsOpen = false;
         }
 
