@@ -13,10 +13,6 @@ namespace MusicApp
         {
             base.OnStartup(e);
 
-            /*var a = new MusicApp.Models.ThemeInfo("1");
-            a = new MusicApp.Models.ThemeInfo("1");
-            a = new MusicApp.Models.ThemeInfo("1");*/
-
             LanguagesManager.Instance.Provider = new ResxLanguagesProvider();
             ThemeManager.Instance.Provider = new ResxThemeChangerProvider("ru");
         }

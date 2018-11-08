@@ -10,15 +10,17 @@ namespace MusicApp.Models
     {
         public ThemeInfo(string name)
         {
-            if (_themeInfos.FirstOrDefault(x => x.Name == name) != null)
+            if (ThemesInfo.FirstOrDefault(x => x.Name == name) != null)
                 throw new ArgumentException($"ThemeInfo instance with {name} already created.");
 
-            //_themeInfos.Add(new ThemeInfo(name));
             Name = name;
+            ThemesInfo.Add(this);
         }
 
         public string Name { get; private set; }
 
-        private static List<ThemeInfo> _themeInfos = new List<ThemeInfo>();
+
+        public static List<ThemeInfo> ThemesInfo => _themeInfos ?? (_themeInfos = new List<ThemeInfo>());
+        private static List<ThemeInfo> _themeInfos;
     }
 }
