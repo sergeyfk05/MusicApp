@@ -61,7 +61,7 @@ namespace MusicApp.Resources.Themes {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на sss.
+        ///   Ищет локализованную строку, похожую на 0.
         /// </summary>
         internal static string String1 {
             get {
