@@ -70,14 +70,6 @@ namespace MusicApp.ViewModels
         }
         private void ClickContent_Execute()
         {
-            //foreach (var i in LanguagesManager.Instance.Cultures)
-            //{
-            //    if (i != LanguagesManager.Instance.CurrentCulture)
-            //    {
-            //        LanguagesManager.Instance.CurrentCulture = i;
-            //        break;
-            //    }
-            //}
             IsOpen = false;
         }
 
