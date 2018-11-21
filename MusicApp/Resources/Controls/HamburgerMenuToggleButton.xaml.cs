@@ -82,7 +82,7 @@ namespace MusicApp.Resources.Controls
             add { AddHandler(CrossedEvent, value); }
             remove { RemoveHandler(CrossedEvent, value); }
         }
-        public void OnCrossed()
+        private void OnCrossed()
         {
             RaiseEvent(new RoutedEventArgs(HamburgerMenuToggleButton.CrossedEvent));
         }
@@ -97,7 +97,7 @@ namespace MusicApp.Resources.Controls
             add { AddHandler(ParalleledEvent, value); }
             remove { RemoveHandler(ParalleledEvent, value); }
         }
-        public void OnParalleled()
+        private void OnParalleled()
         {
             RaiseEvent(new RoutedEventArgs(HamburgerMenuToggleButton.ParalleledEvent));
         }
