@@ -23,9 +23,7 @@ namespace MusicApp.Logic
 
             foreach (ResourceDictionary mergedRes in dynamicResource.MergedDictionaries)
             {
-                var buffer = FindInResourceByNameSingleOrDefault(mergedRes, findName);
-                if ((buffer != null) && (buffer is T))
-                    return buffer as T;
+                return FindInResourceByNameSingleOrDefault(mergedRes, findName);
             }
 
             return null;
