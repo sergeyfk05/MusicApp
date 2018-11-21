@@ -181,7 +181,7 @@ namespace MusicApp.Resources.Controls
             add { AddHandler(OpenedEvent, value); }
             remove { RemoveHandler(OpenedEvent, value); }
         }
-        public void OnOpened()
+        private void OnOpened()
         {
             RaiseEvent(new RoutedEventArgs(HamburgerMenu.OpenedEvent));
             ToggleButtonIsParallelKey = false;
@@ -197,7 +197,7 @@ namespace MusicApp.Resources.Controls
             add { AddHandler(ClosedEvent, value); }
             remove { RemoveHandler(ClosedEvent, value); }
         }
-        public void OnClosed()
+        private void OnClosed()
         {
             RaiseEvent(new RoutedEventArgs(HamburgerMenu.ClosedEvent));
             ToggleButtonIsParallelKey = true;
