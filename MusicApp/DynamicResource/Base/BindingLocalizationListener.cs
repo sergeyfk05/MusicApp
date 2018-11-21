@@ -5,7 +5,7 @@ namespace MusicApp.DynamicResource.Base
     /// <summary>
     /// Слушатель изменения культуры при локализации по привязке
     /// </summary>
-    public class BindingDynamicResourceListener<T> : BaseDynamicResourceListener<T>
+    public class BindingDynamicResourceListener<T> : BaseDynamicResourceListener<T> where T: IDynamicResourceManager
     {
         public BindingDynamicResourceListener(IEventManager eventManager, IDynamicResourceManager manager)
             :base (eventManager, manager)

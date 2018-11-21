@@ -6,7 +6,7 @@ namespace MusicApp.DynamicResource.Base
     /// <summary>
     /// Базовый класс для слушателей изменения культуры
     /// </summary>
-    public abstract class BaseDynamicResourceListener<T> : IWeakEventListener, IDisposable
+    public abstract class BaseDynamicResourceListener<T> : IWeakEventListener, IDisposable where T: IDynamicResourceManager
     {
         protected BaseDynamicResourceListener(IEventManager eventManager, IDynamicResourceManager manager)
         {
