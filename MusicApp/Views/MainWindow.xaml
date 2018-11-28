@@ -5,13 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
         xmlns:local="clr-namespace:MusicApp.Views"
+        xmlns:presentation="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:theme="clr-namespace:MusicApp.DynamicResource.Themes"
         xmlns:language="clr-namespace:MusicApp.DynamicResource.Languages"
         xmlns:vm="clr-namespace:MusicApp.ViewModels"
         xmlns:myControls="clr-namespace:MusicApp.Resources.Controls"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
-        Style="{DynamicResource MainWindowStyle}">
+        Style="{DynamicResource MainWindowStyle}"
+        Background="Wheat">
     <Window.DataContext>
         <vm:BaseViewModel/>
     </Window.DataContext>
@@ -19,9 +22,26 @@
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../Resources/Styles/MainWindowStyles.light.xaml"/>
+                <ResourceDictionary Source="../Resources/Styles/MainWindowStyles.xaml"/>
+
                 <ResourceDictionary>
-                    
+                    <presentation:KeyTime x:Key="AnimationStartTime">0</presentation:KeyTime>
+                    <presentation:KeyTime x:Key="AnimationEndTime">0:0:0.5</presentation:KeyTime>
+                    <system:Double x:Key="StartBluringValue">0</system:Double>
+                    <system:Double x:Key="StopBluringValue">5</system:Double>
+
+                    <Storyboard x:Key="MainWindow_Bluring">
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(BlurEffect.Radius)" Storyboard.TargetName="blurEffect">
+                            <DiscreteDoubleKeyFrame KeyTime="{StaticResource AnimationStartTime}" Value="{StaticResource StartBluringValue}"/>
+                            <DiscreteDoubleKeyFrame KeyTime="{StaticResource AnimationEndTime}" Value="{StaticResource StopBluringValue}"/>
+                        </DoubleAnimationUsingKeyFrames>
+                    </Storyboard>
+                    <Storyboard x:Key="MainWindow_UnBluring">
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(BlurEffect.Radius)" Storyboard.TargetName="blurEffect">
+                            <DiscreteDoubleKeyFrame KeyTime="{StaticResource AnimationStartTime}" Value="{StaticResource StopBluringValue}"/>
+                            <DiscreteDoubleKeyFrame KeyTime="{StaticResource AnimationEndTime}" Value="{StaticResource StartBluringValue}"/>
+                        </DoubleAnimationUsingKeyFrames>
+                    </Storyboard>
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
@@ -33,7 +53,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <myControls:HamburgerMenu x:Name="p" IsOpen="{Binding IsOpen, Mode=TwoWay}" ItemsSource="{Binding ItemsSource}" Panel.ZIndex="500"/>
+        <myControls:HamburgerMenu x:Name="NavigationMenu" IsOpen="{Binding IsOpen, Mode=TwoWay}" ItemsSource="{Binding ItemsSource}" Panel.ZIndex="500"/>
 
         <ContentControl Margin="72 0 0 0" Style="{DynamicResource MainWindowContentControlStyle}">
             <Grid>
@@ -42,14 +62,28 @@
                         <i:InvokeCommandAction Command="{Binding ClickContent}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
-
+                
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
+                <Button x:Name="n"></Button>
                 <TextBlock Text="{Binding IsOpen}"/>
                 <TextBlock Grid.Row="1" Margin="150 0 0 0" Text="{language:Languages s}"/>
             </Grid>
         </ContentControl>
+
+        <Grid.Effect>
+            <BlurEffect x:Name="blurEffect" Radius="{StaticResource StartBluringValue}"/>
+        </Grid.Effect>
+        
+        <Grid.Triggers>
+            <EventTrigger RoutedEvent="local:MainWindow.Blured">
+                <BeginStoryboard Storyboard="{StaticResource MainWindow_Bluring}"/>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="local:MainWindow.UnBlured">
+                <BeginStoryboard Storyboard="{StaticResource MainWindow_UnBluring}"/>
+            </EventTrigger>
+        </Grid.Triggers>
     </Grid>
 </Window>

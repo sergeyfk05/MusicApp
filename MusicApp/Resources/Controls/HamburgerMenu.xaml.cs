@@ -1,19 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MusicApp.Resources.Controls
 {
@@ -24,7 +13,7 @@ namespace MusicApp.Resources.Controls
     {
         public HamburgerMenu()
         {
-            InitializeComponent();            
+            InitializeComponent();
         }
 
         #region Main properties
@@ -37,7 +26,7 @@ namespace MusicApp.Resources.Controls
             get { return (bool)GetValue(IsOpenProperty); }
             set
             {
-                SetValue(IsOpenProperty, value);                
+                SetValue(IsOpenProperty, value);
             }
         }
         public static readonly DependencyProperty IsOpenProperty =
@@ -51,7 +40,7 @@ namespace MusicApp.Resources.Controls
             get { return (bool)GetValue(ToggleButtonIsParallelProperty); }
         }
         private bool ToggleButtonIsParallelKey
-        {   
+        {
             get { return (bool)GetValue(ToggleButtonIsParallelProperty); }
             set { SetValue(ToggleButtonIsParallelPropertyKey, value); }
         }
@@ -156,15 +145,15 @@ namespace MusicApp.Resources.Controls
 
         #region callbacks
 
+        /// <summary>
+        /// Вызывает события, связанные с изменением состояния открытия/закрытия.
+        /// </summary>
+        /// <param name="d">Only HamburgerMenu object</param>
+        /// <param name="e"></param>
         private static void OnIsOpenChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (d is HamburgerMenu menu)
-            {
-                if (menu.IsOpen)
-                    menu.OnOpened();
-                else
-                    menu.OnClosed();
-            }
+                menu.OnIsOpenChangedEvent();            
         }
 
         #endregion
@@ -201,6 +190,26 @@ namespace MusicApp.Resources.Controls
         {
             RaiseEvent(new RoutedEventArgs(HamburgerMenu.ClosedEvent));
             ToggleButtonIsParallelKey = true;
+        }
+
+        /// <summary>
+        /// Событие, вызываемое при изменении состояния меню.
+        /// </summary>
+        public static readonly RoutedEvent IsOpenChangedEvent =
+            EventManager.RegisterRoutedEvent("IsOpenChanged", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(HamburgerMenu));
+        public event RoutedEventHandler IsOpenChanged
+        {
+            add { AddHandler(IsOpenChangedEvent, value); }
+            remove { RemoveHandler(IsOpenChangedEvent, value); }
+        }
+        private void OnIsOpenChangedEvent()
+        {
+            if (IsOpen)
+                OnOpened();
+            else
+                OnClosed();
+
+            RaiseEvent(new RoutedEventArgs(HamburgerMenu.IsOpenChangedEvent));
         }
 
         #endregion

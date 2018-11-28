@@ -5,8 +5,8 @@
         <ResourceDictionary Source="../Templates/MainWindowTemplates.xaml"/>
 
         <ResourceDictionary>
-            <Style x:Key="MainWindowBaseStyle" TargetType="Window"/>
-            <Style x:Key="MainWindowContentControlBaseStyle" TargetType="ContentControl">
+            <Style x:Key="MainWindowStyle" TargetType="Window"/>
+            <Style x:Key="MainWindowContentControlStyle" TargetType="ContentControl">
                 <Setter Property="Panel.ZIndex" Value="400"/>
                 <Setter Property="Grid.ColumnSpan" Value="2"/>
             </Style>

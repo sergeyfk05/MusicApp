@@ -1,11 +1,11 @@
-﻿using System.ComponentModel;
-using System.Windows;
+﻿using System.Windows.Input;
 
 namespace MusicApp.ViewModels
 {
     public interface IBaseViewModel : IViewModel
     {
-        bool IsBlur { get; set; }
+        bool IsOpen { get; set; }
+        ICommand ClickContent { get; }
     }
 }
 

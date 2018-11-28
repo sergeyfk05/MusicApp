@@ -7,25 +7,12 @@ using MusicApp.Models;
 using System.Collections.Generic;
 using MusicApp.Views;
 using MusicApp.DynamicResource.Languages;
+using System.Windows;
 
 namespace MusicApp.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged, IBaseViewModel
     {
-        public bool IsBlur
-        {
-            get => isBlur;
-            set
-            {
-                if (isBlur != value)
-                {
-                    isBlur = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-        private bool isBlur;
-
         public bool IsOpen
         {
             get { return isOpen; }
