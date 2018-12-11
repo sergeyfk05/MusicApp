@@ -1,12 +1,13 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:MusicApp.Resources.Styles">
+                    xmlns:local="clr-namespace:MusicApp.Resources.Styles"
+                    xmlns:myControls="clr-namespace:MusicApp.Resources.Controls">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="../Templates/MainWindowTemplates.xaml"/>
 
         <ResourceDictionary>
             <Style x:Key="MainWindowStyle" TargetType="Window"/>
-            <Style x:Key="MainWindowContentControlStyle" TargetType="ContentControl">
+            <Style x:Key="MainWindowContainerStyle" TargetType="myControls:BluringContainer">
                 <Setter Property="Panel.ZIndex" Value="400"/>
                 <Setter Property="Grid.ColumnSpan" Value="2"/>
             </Style>

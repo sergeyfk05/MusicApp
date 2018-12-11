@@ -78,6 +78,9 @@
     <Compile Include="Models\Commands\RelayCommandWithParameterAsync.cs" />
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Models\ThemeInfo.cs" />
+    <Compile Include="Resources\Controls\BluringContainer.xaml.cs">
+      <DependentUpon>BluringContainer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Controls\HamburgerMenu.xaml.cs">
       <DependentUpon>HamburgerMenu.xaml</DependentUpon>
     </Compile>
@@ -107,6 +110,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Resources\Controls\BluringContainer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Controls\HamburgerMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
