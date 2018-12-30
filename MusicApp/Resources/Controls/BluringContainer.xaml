@@ -6,44 +6,44 @@
              xmlns:presentation="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              xmlns:local="clr-namespace:MusicApp.Resources.Controls"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary>
-            <presentation:KeyTime x:Key="AnimationStartTime">0</presentation:KeyTime>
-            <presentation:KeyTime x:Key="AnimationEndTime">0:0:0.5</presentation:KeyTime>
+            <presentation:Duration x:Key="AnimationDuration">0:0:0.5</presentation:Duration>
             <system:Double x:Key="StartBluringValue">0</system:Double>
             <system:Double x:Key="StopBluringValue">5</system:Double>
 
 
             <Storyboard x:Key="BluringContainer_Bluring">
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(BlurEffect.Radius)" Storyboard.TargetName="blurEffect">
-                    <DiscreteDoubleKeyFrame KeyTime="{StaticResource AnimationStartTime}" Value="{StaticResource StartBluringValue}"/>
-                    <DiscreteDoubleKeyFrame KeyTime="{StaticResource AnimationEndTime}" Value="{StaticResource StopBluringValue}"/>
+                <DoubleAnimationUsingKeyFrames Duration="{StaticResource AnimationDuration}" Storyboard.TargetProperty="(BlurEffect.Radius)" Storyboard.TargetName="blurEffect">
+                    <LinearDoubleKeyFrame KeyTime="0%" Value="{StaticResource StartBluringValue}"/>
+                    <LinearDoubleKeyFrame KeyTime="100%" Value="{StaticResource StopBluringValue}"/>
                 </DoubleAnimationUsingKeyFrames>
             </Storyboard>
             <Storyboard x:Key="BluringContainer_UnBluring">
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(BlurEffect.Radius)" Storyboard.TargetName="blurEffect">
-                    <DiscreteDoubleKeyFrame KeyTime="{StaticResource AnimationStartTime}" Value="{StaticResource StopBluringValue}"/>
-                    <DiscreteDoubleKeyFrame KeyTime="{StaticResource AnimationEndTime}" Value="{StaticResource StartBluringValue}"/>
+                <DoubleAnimationUsingKeyFrames Duration="{StaticResource AnimationDuration}" Storyboard.TargetProperty="(BlurEffect.Radius)" Storyboard.TargetName="blurEffect">
+                    <EasingDoubleKeyFrame KeyTime="0%" Value="{StaticResource StopBluringValue}"/>
+                    <EasingDoubleKeyFrame KeyTime="100%" Value="{StaticResource StartBluringValue}"/>
                 </DoubleAnimationUsingKeyFrames>
             </Storyboard>
         </ResourceDictionary>
     </UserControl.Resources>
-    <ContentPresenter>
 
+    <UserControl.Content>
+        <ContentPresenter/>
+    </UserControl.Content>
 
-        <ContentPresenter.Effect>
-            <BlurEffect x:Name="blurEffect" Radius="{StaticResource StartBluringValue}"/>
-        </ContentPresenter.Effect>
-        
-        <ContentPresenter.Triggers>
-            <EventTrigger RoutedEvent="local:BluringContainer.Blured">
-                <BeginStoryboard Storyboard="{StaticResource BluringContainer_Bluring}"/>
-            </EventTrigger>
-            <EventTrigger RoutedEvent="local:BluringContainer.UnBlured">
-                <BeginStoryboard Storyboard="{StaticResource BluringContainer_UnBluring}"/>
-            </EventTrigger>
-        </ContentPresenter.Triggers>
-    </ContentPresenter>
+    
+    <UserControl.Effect>
+        <BlurEffect x:Name="blurEffect" Radius="{StaticResource StartBluringValue}"/>
+    </UserControl.Effect>
+
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="local:BluringContainer.Blured">
+            <BeginStoryboard Storyboard="{StaticResource BluringContainer_Bluring}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="local:BluringContainer.UnBlured">
+            <BeginStoryboard Storyboard="{StaticResource BluringContainer_UnBluring}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
 </UserControl>

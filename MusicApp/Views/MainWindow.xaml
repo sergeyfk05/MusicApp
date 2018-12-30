@@ -23,6 +23,9 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Resources/Styles/MainWindowStyles.xaml"/>
+                <ResourceDictionary>
+
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
@@ -36,18 +39,18 @@
         <myControls:HamburgerMenu x:Name="NavigationMenu" IsOpen="{Binding IsOpen, Mode=TwoWay}" ItemsSource="{Binding ItemsSource}" Panel.ZIndex="500"/>
 
         <myControls:BluringContainer IsBlured="{Binding IsOpen}" Margin="72 0 0 0" Style="{DynamicResource MainWindowContainerStyle}">
-           <Grid>
+            <Grid>
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseDown">
                         <i:InvokeCommandAction Command="{Binding ClickContent}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
-                
+
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                
+
                 <TextBlock Text="{Binding IsOpen}"/>
                 <TextBlock Grid.Row="1" Margin="150 0 0 0" Text="{language:Languages s}"/>
             </Grid>

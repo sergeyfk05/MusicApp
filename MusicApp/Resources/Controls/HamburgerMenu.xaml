@@ -7,24 +7,22 @@
              xmlns:t="clr-namespace:MusicApp.DynamicResource.Themes" 
              xmlns:local="clr-namespace:MusicApp.Resources.Controls"
              xmlns:presentation="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d">
 
     <UserControl.Resources>
         <ResourceDictionary>
-            <presentation:KeyTime x:Key="AnimationStartTime">0</presentation:KeyTime>
-            <presentation:KeyTime x:Key="AnimationEndTime">0:0:0.5</presentation:KeyTime>
+            <presentation:Duration x:Key="AnimationDuration">0:0:0.5</presentation:Duration>
 
             <Storyboard x:Key="HamburgerMenu_CloseMenu">
-                <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)" Storyboard.TargetName="ToggleButton">
-                    <DiscreteBooleanKeyFrame KeyTime="{StaticResource AnimationStartTime}" Value="False"/>
-                    <DiscreteBooleanKeyFrame KeyTime="{StaticResource AnimationEndTime}" Value="True"/>
+                <BooleanAnimationUsingKeyFrames Duration="{StaticResource AnimationDuration}" Storyboard.TargetProperty="(UIElement.IsEnabled)" Storyboard.TargetName="ToggleButton">
+                    <DiscreteBooleanKeyFrame KeyTime="0%" Value="False"/>
+                    <DiscreteBooleanKeyFrame KeyTime="100%" Value="True"/>
                 </BooleanAnimationUsingKeyFrames>
             </Storyboard>
             <Storyboard x:Key="HamburgerMenu_OpenMenu">
-                <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)" Storyboard.TargetName="ToggleButton">
-                    <DiscreteBooleanKeyFrame KeyTime="{StaticResource AnimationStartTime}" Value="False"/>
-                    <DiscreteBooleanKeyFrame KeyTime="{StaticResource AnimationEndTime}" Value="True"/>
+                <BooleanAnimationUsingKeyFrames Duration="{StaticResource AnimationDuration}" Storyboard.TargetProperty="(UIElement.IsEnabled)" Storyboard.TargetName="ToggleButton">
+                    <DiscreteBooleanKeyFrame KeyTime="0%" Value="False"/>
+                    <DiscreteBooleanKeyFrame KeyTime="100%" Value="True"/>
                 </BooleanAnimationUsingKeyFrames>
             </Storyboard>
         </ResourceDictionary>

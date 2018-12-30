@@ -11,6 +11,6 @@ namespace MusicApp.Views
         public MainWindow()
         { 
             InitializeComponent();
-        }
+        }   
     }
 }
