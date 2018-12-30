@@ -10,16 +10,20 @@ namespace MusicApp.DynamicResource.Languages
     /// <summary>
     /// Основной класс для работы с локализацией
     /// </summary>
-    public class LanguagesManager : IDynamicResourceManager
+    public class LanguagesManager : IDynamicResourceManager<CultureInfo>
     {
         private LanguagesManager()
         {
         }
 
-        private static IDynamicResourceManager _localizationManager;
+        private static IDynamicResourceManager<CultureInfo> _localizationManager;
 
-        public static IDynamicResourceManager Instance => _localizationManager ?? (_localizationManager = new LanguagesManager());
-        IDynamicResourceManager IDynamicResourceManager.Instance => Instance;
+        public static IDynamicResourceManager<CultureInfo> Instance => _localizationManager ?? (_localizationManager = new LanguagesManager());
+        IDynamicResourceManager<CultureInfo> IDynamicResourceManager<CultureInfo>.Instance => Instance;
+
+        public static IDynamicResourceManager InstanceStock => _localizationManager ?? (_localizationManager = new LanguagesManager());
+        IDynamicResourceManager IDynamicResourceManager.InstanceStock => InstanceStock;
+
 
         public event EventHandler CultureChanged;
         private void OnCultureChanged()
@@ -60,7 +64,7 @@ namespace MusicApp.DynamicResource.Languages
             }
         }
 
-        public IDynamicResourceProvider Provider { get; set; }
+        public IDynamicResourceProvider<CultureInfo> Provider { get; set; }
 
         public object GetResource(string key)
         {

@@ -12,7 +12,7 @@ namespace MusicApp.DynamicResource.Base
         {
             _eventManager = eventManager;
             _manager = manager;
-            _eventManager.AddListener(_manager.Instance, this);
+            _eventManager.AddListener(_manager.InstanceStock, this);
         }
         private IEventManager _eventManager;
         private IDynamicResourceManager _manager;
@@ -31,7 +31,7 @@ namespace MusicApp.DynamicResource.Base
 
         public void Dispose()
         {
-            _eventManager.RemoveListener(_manager.Instance, this);
+            _eventManager.RemoveListener(_manager.InstanceStock, this);
             GC.SuppressFinalize(this);
         }
     }

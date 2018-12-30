@@ -1,4 +1,5 @@
 ﻿using MusicApp.DynamicResource.Base;
+using MusicApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -7,35 +8,39 @@ using System.Threading;
 
 namespace MusicApp.DynamicResource.Themes
 {
-    public class ThemeManager: IDynamicResourceManager
+    public class ThemeManager: IDynamicResourceManager<ThemeInfo>
     {
         private ThemeManager()
         {
         }
 
-        private static IDynamicResourceManager _dynamicResourceManager;
+        private static IDynamicResourceManager<ThemeInfo> _dynamicResourceManager;
 
-        public static IDynamicResourceManager Instance => _dynamicResourceManager ?? (_dynamicResourceManager = new ThemeManager());
-        IDynamicResourceManager IDynamicResourceManager.Instance => Instance;
+        public static IDynamicResourceManager<ThemeInfo> Instance => _dynamicResourceManager ?? (_dynamicResourceManager = new ThemeManager());
+        IDynamicResourceManager<ThemeInfo> IDynamicResourceManager<ThemeInfo>.Instance => Instance;
+
+        public static IDynamicResourceManager InstanceStock => _dynamicResourceManager ?? (_dynamicResourceManager = new ThemeManager());
+        IDynamicResourceManager IDynamicResourceManager.InstanceStock => InstanceStock;
+
 
         public event EventHandler CultureChanged;
 
-        public CultureInfo CurrentCulture
+        public ThemeInfo CurrentCulture
         {
-            get { return Thread.CurrentThread.CurrentUICulture; }
+            get { return null; /*Thread.CurrentThread.CurrentUICulture;*/ }
             set
             {
                 if (Equals(value, Thread.CurrentThread.CurrentUICulture))
                     return;
-                Thread.CurrentThread.CurrentUICulture = value;
-                CultureInfo.DefaultThreadCurrentUICulture = value;
+                //Thread.CurrentThread.CurrentUICulture = value;
+                //CultureInfo.DefaultThreadCurrentUICulture = value;
                 OnCultureChanged();
             }
         }
 
-        public IEnumerable<CultureInfo> Cultures => Provider?.Cultures ?? Enumerable.Empty<CultureInfo>();
+        public IEnumerable<ThemeInfo> Cultures => Provider?.Cultures ?? Enumerable.Empty<ThemeInfo>();
 
-        public IDynamicResourceProvider Provider { get; set; }
+        public IDynamicResourceProvider<ThemeInfo> Provider { get; set; }
 
         private void OnCultureChanged()
         {

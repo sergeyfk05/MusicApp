@@ -24,7 +24,7 @@ namespace MusicApp.DynamicResource.Base
         {
             get
             {
-                var value = _manager.Instance.GetResource(Key);
+                var value = _manager.InstanceStock.GetResource(Key);
                 if (value is string && Args != null)
                     value = string.Format((string)value, Args);
                 return value;

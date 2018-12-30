@@ -7,7 +7,7 @@ namespace MusicApp.DynamicResource.Base
     /// <summary>
     /// Интерфейс для реализации поставщика локализованных строк
     /// </summary>
-    public interface IDynamicResourceProvider
+    public interface IDynamicResourceProvider<T>
     {
         /// <summary>
         /// Возвращает локализованный объект по ключу
@@ -19,11 +19,11 @@ namespace MusicApp.DynamicResource.Base
         /// <summary>
         /// Доступные культуры
         /// </summary>
-        IEnumerable<CultureInfo> Cultures { get; }
+        IEnumerable<T> Cultures { get; }
 
         /// <summary>
         /// Текущяя культура
         /// </summary>
-        CultureInfo CurrentCulture{ get; set; }
+        T CurrentCulture{ get; set; }
     }
 }

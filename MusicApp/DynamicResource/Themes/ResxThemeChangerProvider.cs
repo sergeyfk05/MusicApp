@@ -10,15 +10,15 @@ namespace MusicApp.DynamicResource.Themes
     /// <summary>
     /// Реализация поставщика локализованных строк через ресурсы приложения
     /// </summary>
-    public class ResxThemeChangerProvider : IDynamicResourceProvider
+    public class ResxThemeChangerProvider : IDynamicResourceProvider<ThemeInfo>
     {
         public ResxThemeChangerProvider(string keyTheme)
         {
-            _currentCulture = Cultures.First<CultureInfo>(x => x.Name == keyTheme);
+            _currentCulture = Cultures.First<ThemeInfo>(x => x.Name == keyTheme);
         }
 
-        private IEnumerable<CultureInfo> _cultures;
-        private CultureInfo _currentCulture;
+        private IEnumerable<ThemeInfo> _cultures;
+        private ThemeInfo _currentCulture;
   
 
         public object GetResource(string key)
@@ -26,11 +26,11 @@ namespace MusicApp.DynamicResource.Themes
             return "aaaa";//Theme.ResourceManager.GetObject(key);
         }
 
-        public IEnumerable<CultureInfo> Cultures => _cultures ?? (_cultures = new List<CultureInfo>()
+        public IEnumerable<ThemeInfo> Cultures => _cultures ?? (_cultures = new List<ThemeInfo>()
         {
-            new CultureInfo("ru")
+            new ThemeInfo("ru")
         });
-        public CultureInfo CurrentCulture
+        public ThemeInfo CurrentCulture
         {
             get { return _currentCulture; }
             set

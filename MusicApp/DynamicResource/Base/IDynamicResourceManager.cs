@@ -4,16 +4,21 @@ using System.Globalization;
 
 namespace MusicApp.DynamicResource.Base
 {
+    public interface IDynamicResourceManager<T> : IDynamicResourceManager
+    {
+        IDynamicResourceManager<T> Instance { get; }
+
+        T CurrentCulture { get; set; }
+
+        IEnumerable<T> Cultures { get; }
+
+        IDynamicResourceProvider<T> Provider { get; set; }
+    }
     public interface IDynamicResourceManager
     {
-        IDynamicResourceManager Instance { get; }
+        IDynamicResourceManager InstanceStock { get; }
 
-        CultureInfo CurrentCulture { get; set; }
         event EventHandler CultureChanged;
-
-        IEnumerable<CultureInfo> Cultures { get; }
-
-        IDynamicResourceProvider Provider { get; set; }
 
         object GetResource(string key);
     }

@@ -23,7 +23,7 @@ namespace MusicApp.DynamicResource.Base
             if (values == null || values.Length < 2)
                 return null;
             var key = System.Convert.ToString(values[1] ?? "");
-            var value = _manager?.Instance.GetResource(key);
+            var value = _manager?.InstanceStock.GetResource(key);
             if (value is string)
             {
                 var args = (parameter as IEnumerable<object> ?? values.Skip(2)).ToArray();
