@@ -22,28 +22,45 @@ namespace MusicApp.DynamicResource.Languages
         IDynamicResourceManager IDynamicResourceManager.Instance => Instance;
 
         public event EventHandler CultureChanged;
-
-        public CultureInfo CurrentCulture
-        {
-            get { return Thread.CurrentThread.CurrentUICulture; }
-            set
-            {
-                if (Equals(value, Thread.CurrentThread.CurrentUICulture))
-                    return;
-                Thread.CurrentThread.CurrentUICulture = value;
-                CultureInfo.DefaultThreadCurrentUICulture = value;
-                OnCultureChanged();
-            }
-        }
-
-        public IEnumerable<CultureInfo> Cultures => Provider?.Cultures ?? Enumerable.Empty<CultureInfo>();
-
-        public IDynamicResourceProvider Provider { get; set; }
-
         private void OnCultureChanged()
         {
             CultureChanged?.Invoke(this, EventArgs.Empty);
         }
+
+        public CultureInfo CurrentCulture
+        {
+            get
+            {
+                if (Provider == null)
+                    throw new NullReferenceException("Provider is null");
+
+                return Provider.CurrentCulture;
+            }
+            set
+            {
+                if (Provider == null)
+                    throw new NullReferenceException("Provider is null");
+
+                if (Equals(value, Provider.CurrentCulture))
+                    return;
+
+                Provider.CurrentCulture = value;
+                OnCultureChanged();
+            }
+        }
+
+        public IEnumerable<CultureInfo> Cultures
+        {
+            get
+            {
+                if (Provider == null)
+                    throw new NullReferenceException("Provider is null");
+
+                return Provider.Cultures ?? Enumerable.Empty<CultureInfo>();
+            }
+        }
+
+        public IDynamicResourceProvider Provider { get; set; }
 
         public object GetResource(string key)
         {

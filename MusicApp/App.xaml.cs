@@ -13,7 +13,7 @@ namespace MusicApp
         {
             base.OnStartup(e);
 
-            LanguagesManager.Instance.Provider = new ResxLanguagesProvider();
+            LanguagesManager.Instance.Provider = new ResxLanguagesProvider("ru-ru");
             ThemeManager.Instance.Provider = new ResxThemeChangerProvider("ru");
         }
     }
