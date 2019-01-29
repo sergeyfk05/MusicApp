@@ -10,12 +10,8 @@ namespace MusicApp.DynamicResource.Languages
     /// <summary>
     /// Основной класс для работы с локализацией
     /// </summary>
-    public class LanguagesManager : IDynamicResourceManager<CultureInfo>
+    public class LanguagesManager : BaseManager<CultureInfo>, IDynamicResourceManager<CultureInfo>
     {
-        private LanguagesManager()
-        {
-        }
-
         private static IDynamicResourceManager<CultureInfo> _localizationManager;
 
         public static IDynamicResourceManager<CultureInfo> Instance => _localizationManager ?? (_localizationManager = new LanguagesManager());
@@ -24,49 +20,7 @@ namespace MusicApp.DynamicResource.Languages
         public static IDynamicResourceManager InstanceStock => _localizationManager ?? (_localizationManager = new LanguagesManager());
         IDynamicResourceManager IDynamicResourceManager.InstanceStock => InstanceStock;
 
-
-        public event EventHandler CultureChanged;
-        private void OnCultureChanged()
-        {
-            CultureChanged?.Invoke(this, EventArgs.Empty);
-        }
-
-        public CultureInfo CurrentCulture
-        {
-            get
-            {
-                if (Provider == null)
-                    throw new NullReferenceException("Provider is null");
-
-                return Provider.CurrentCulture;
-            }
-            set
-            {
-                if (Provider == null)
-                    throw new NullReferenceException("Provider is null");
-
-                if (Equals(value, Provider.CurrentCulture))
-                    return;
-
-                Provider.CurrentCulture = value;
-                OnCultureChanged();
-            }
-        }
-
-        public IEnumerable<CultureInfo> Cultures
-        {
-            get
-            {
-                if (Provider == null)
-                    throw new NullReferenceException("Provider is null");
-
-                return Provider.Cultures ?? Enumerable.Empty<CultureInfo>();
-            }
-        }
-
-        public IDynamicResourceProvider<CultureInfo> Provider { get; set; }
-
-        public object GetResource(string key)
+        public override object GetResource(string key)
         {
             if (string.IsNullOrEmpty(key))
                 return "[NULL]";

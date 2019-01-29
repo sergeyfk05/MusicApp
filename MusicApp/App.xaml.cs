@@ -1,6 +1,7 @@
 ﻿using MusicApp.DynamicResource.Themes;
 using MusicApp.DynamicResource.Languages;
 using System.Windows;
+using System.Linq;
 
 namespace MusicApp
 {
@@ -13,8 +14,11 @@ namespace MusicApp
         {
             base.OnStartup(e);
 
+            //реализовать выбор культуры из сохранений
             LanguagesManager.Instance.Provider = new ResxLanguagesProvider("en");
+            //LanguagesManager.Instance.Provider.CurrentCulture = LanguagesManager.Instance.Provider.Cultures.First(x => x.Name == "ru");
             ThemeManager.Instance.Provider = new ResxThemeChangerProvider("ru");
+            ThemeManager.Instance.Provider.CurrentCulture = ThemeManager.Instance.Provider.Cultures.First(x => x.Name == "en");
         }
     }
 }

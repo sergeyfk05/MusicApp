@@ -11,7 +11,7 @@ namespace MusicApp.DynamicResource.Languages
     /// <summary>
     /// Реализация поставщика локализованных строк через ресурсы приложения
     /// </summary>
-    public class ResxLanguagesProvider : IDynamicResourceProvider<CultureInfo>
+    public class ResxLanguagesProvider : BaseProvider<CultureInfo>, IDynamicResourceProvider<CultureInfo>
     {
         public ResxLanguagesProvider(CultureInfo culture = null)
         {
@@ -33,13 +33,13 @@ namespace MusicApp.DynamicResource.Languages
         }
         private void Init(string language)
         {
-            language.ToLower();
+            language = language.ToLower();
 
             //ищем полное совпадение
-            CultureInfo c = Cultures.FirstOrDefault<CultureInfo>(x => x.Name.ToLower() == language);
-            if (c != null)
+            CultureInfo selectedCulture = Cultures.FirstOrDefault<CultureInfo>(x => x.Name.ToLower() == language);
+            if (selectedCulture != null)
             {
-                CurrentCulture = c;
+                CurrentCulture = selectedCulture;
                 return;
             }
 
@@ -47,9 +47,9 @@ namespace MusicApp.DynamicResource.Languages
             if (language.IndexOf('-') != -1)
                 language = language.Remove(language.IndexOf('-'));
 
-            c = Cultures.FirstOrDefault<CultureInfo>(x => x.Name.ToLower() == language);
-            if (c != null)
-                CurrentCulture = c;
+            selectedCulture = Cultures.FirstOrDefault<CultureInfo>(x => x.Name.ToLower() == language);
+            if (selectedCulture != null)
+                CurrentCulture = selectedCulture;
             else
                 //если не нашли ни одного совпадение - назначаем дефолтную культуру(первую)
                 CurrentCulture = Cultures.First();
@@ -57,31 +57,16 @@ namespace MusicApp.DynamicResource.Languages
 
         private IEnumerable<CultureInfo> _cultures;
 
-        public object GetResource(string key)
+        public override object GetResource(string key)
         {
-            return Language.ResourceManager.GetObject(key);
+            return CurrentCulture.Name == "ru" ? "ru" : "en";
+            //return Language.ResourceManager.GetObject(key);
         }
 
-        public IEnumerable<CultureInfo> Cultures => _cultures ?? (_cultures = new List<CultureInfo>
+        public override IEnumerable<CultureInfo> Cultures => _cultures ?? (_cultures = new List<CultureInfo>
         {
             new CultureInfo("en"),
-            new CultureInfo("ru"),
+            new CultureInfo("ru")
         });
-
-        public CultureInfo CurrentCulture
-        {
-            get { return Thread.CurrentThread.CurrentUICulture; }
-            set
-            {
-                if (Equals(value, Thread.CurrentThread.CurrentUICulture))
-                    return;
-
-                if (!Cultures.Contains(value))
-                    throw new ArgumentException("There is no such theme in the list of themes.");
-
-                Thread.CurrentThread.CurrentUICulture = value;
-                CultureInfo.DefaultThreadCurrentUICulture = value;
-            }
-        }
     }
 }

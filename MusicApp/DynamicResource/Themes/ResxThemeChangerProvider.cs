@@ -10,39 +10,27 @@ namespace MusicApp.DynamicResource.Themes
     /// <summary>
     /// Реализация поставщика локализованных строк через ресурсы приложения
     /// </summary>
-    public class ResxThemeChangerProvider : IDynamicResourceProvider<ThemeInfo>
+    public class ResxThemeChangerProvider : BaseProvider<ThemeInfo>, IDynamicResourceProvider<ThemeInfo>
     {
         public ResxThemeChangerProvider(string keyTheme)
         {
-            _currentCulture = Cultures.First<ThemeInfo>(x => x.Name == keyTheme);
+            ThemeInfo buffer = Cultures.FirstOrDefault<ThemeInfo>(x => x.Name == keyTheme);
+            CurrentCulture = buffer != null ? buffer : Cultures.First();
+        }  
+
+        public override object GetResource(string key)
+        {
+            return CurrentCulture.Name == "ru" ? "ru" : "en";
+            //return CurrentCulture.Name;
+            //throw new NotImplementedException();
+            //return "aaaa";//Theme.ResourceManager.GetObject(key);
         }
 
-        private IEnumerable<ThemeInfo> _cultures;
-        private ThemeInfo _currentCulture;
-  
-
-        public object GetResource(string key)
+        public override IEnumerable<ThemeInfo> Cultures => _cultures ?? (_cultures = new List<ThemeInfo>()
         {
-            return "aaaa";//Theme.ResourceManager.GetObject(key);
-        }
-
-        public IEnumerable<ThemeInfo> Cultures => _cultures ?? (_cultures = new List<ThemeInfo>()
-        {
-            new ThemeInfo("ru")
+            new ThemeInfo("ru"),
+            new ThemeInfo("en")
         });
-        public ThemeInfo CurrentCulture
-        {
-            get { return _currentCulture; }
-            set
-            {
-                if (Equals(value, _currentCulture))
-                    return;
-
-                if (!Cultures.Contains(value))
-                    throw new ArgumentException("There is no such theme in the list of themes.");
-
-                _currentCulture = value;
-            }
-        }
+        private IEnumerable<ThemeInfo> _cultures;
     }
 }
