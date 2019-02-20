@@ -12,7 +12,7 @@ namespace MusicApp.DynamicResource.Base
 
         IEnumerable<T> Cultures { get; }
 
-        IDynamicResourceProvider<T> Provider { get; set; }
+        IDynamicResourceProvider<T> Provider { set; }
     }
     public interface IDynamicResourceManager
     {

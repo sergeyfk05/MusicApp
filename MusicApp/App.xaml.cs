@@ -16,9 +16,9 @@ namespace MusicApp
 
             //реализовать выбор культуры из сохранений
             LanguagesManager.Instance.Provider = new ResxLanguagesProvider("en");
-            //LanguagesManager.Instance.Provider.CurrentCulture = LanguagesManager.Instance.Provider.Cultures.First(x => x.Name == "ru");
+            //LanguagesManager.Instance.CurrentCulture = LanguagesManager.Instance.Provider.Cultures.First(x => x.Name == "ru");
             ThemeManager.Instance.Provider = new ResxThemeChangerProvider("ru");
-            ThemeManager.Instance.Provider.CurrentCulture = ThemeManager.Instance.Provider.Cultures.First(x => x.Name == "en");
+            ThemeManager.Instance.CurrentCulture = ThemeManager.Instance.Cultures.First(x => x.Name == "en");
         }
     }
 }

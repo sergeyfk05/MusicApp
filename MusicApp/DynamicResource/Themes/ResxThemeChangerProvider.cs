@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Windows;
 
 namespace MusicApp.DynamicResource.Themes
 {
@@ -16,7 +17,7 @@ namespace MusicApp.DynamicResource.Themes
         {
             ThemeInfo buffer = Cultures.FirstOrDefault<ThemeInfo>(x => x.Name == keyTheme);
             CurrentCulture = buffer != null ? buffer : Cultures.First();
-        }  
+        }
 
         public override object GetResource(string key)
         {

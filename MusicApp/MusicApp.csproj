@@ -75,9 +75,7 @@
     <Compile Include="Logic\BasicLogic.cs" />
     <Compile Include="Models\Commands\BaseCommand.cs" />
     <Compile Include="Models\Commands\RelayCommand.cs" />
-    <Compile Include="Models\Commands\RelayCommandAsync.cs" />
     <Compile Include="Models\Commands\RelayCommandWithParameter.cs" />
-    <Compile Include="Models\Commands\RelayCommandWithParameterAsync.cs" />
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Models\ThemeInfo.cs" />
     <Compile Include="Resources\Controls\HamburgerMenu.xaml.cs">

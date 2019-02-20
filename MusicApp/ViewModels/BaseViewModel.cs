@@ -7,6 +7,8 @@ using MusicApp.Models;
 using System.Collections.Generic;
 using MusicApp.Views;
 using MusicApp.DynamicResource.Languages;
+using System.Threading.Tasks;
+using System.Linq;
 
 namespace MusicApp.ViewModels
 {
@@ -35,6 +37,7 @@ namespace MusicApp.ViewModels
                 {
                     isOpen = value;
                     OnPropertyChanged();
+                    LanguagesManager.Instance.CurrentCulture = LanguagesManager.Instance.Cultures.First(x => x.Name == "ru");
                 }
             }
         }

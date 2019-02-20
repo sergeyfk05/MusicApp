@@ -34,7 +34,7 @@ namespace MusicApp.DynamicResource.Base
 
         public IEnumerable<T> Cultures => Provider?.Cultures ?? Enumerable.Empty<T>();
 
-        public IDynamicResourceProvider<T> Provider { get; set; }
+        public IDynamicResourceProvider<T> Provider { protected get; set; }
 
         private void OnCultureChanged()
         {

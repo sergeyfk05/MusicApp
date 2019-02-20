@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace MusicApp.DynamicResource.Languages
 {
@@ -59,6 +60,7 @@ namespace MusicApp.DynamicResource.Languages
 
         public override object GetResource(string key)
         {
+            Thread.Sleep(10000);
             return CurrentCulture.Name == "ru" ? "ru" : "en";
             //return Language.ResourceManager.GetObject(key);
         }
