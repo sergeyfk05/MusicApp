@@ -10,15 +10,14 @@ namespace MusicApp.DynamicResource.Languages
     /// <summary>
     /// Основной класс для работы с локализацией
     /// </summary>
-    public class LanguagesManager : BaseManager<CultureInfo>, IDynamicResourceManager<CultureInfo>
+    public class LanguagesManager : BaseManager<CultureInfo>
     {
-        private static IDynamicResourceManager<CultureInfo> _localizationManager;
+        private static BaseManager<CultureInfo> _localizationManager;
 
-        public static IDynamicResourceManager<CultureInfo> Instance => _localizationManager ?? (_localizationManager = new LanguagesManager());
-        IDynamicResourceManager<CultureInfo> IDynamicResourceManager<CultureInfo>.Instance => Instance;
+        public override BaseManager<CultureInfo> Instance => StaticInstance;
+        public override BaseManager InstanceStock => Instance;
 
-        public static IDynamicResourceManager InstanceStock => _localizationManager ?? (_localizationManager = new LanguagesManager());
-        IDynamicResourceManager IDynamicResourceManager.InstanceStock => InstanceStock;
+        public static BaseManager<CultureInfo> StaticInstance => _localizationManager ?? (_localizationManager = new LanguagesManager());
 
         public override object GetResource(string key)
         {

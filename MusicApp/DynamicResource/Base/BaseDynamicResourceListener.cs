@@ -6,16 +6,16 @@ namespace MusicApp.DynamicResource.Base
     /// <summary>
     /// Базовый класс для слушателей изменения культуры
     /// </summary>
-    public abstract class BaseDynamicResourceListener<T> : IWeakEventListener, IDisposable where T: IDynamicResourceManager
+    public abstract class BaseDynamicResourceListener<T> : IWeakEventListener, IDisposable where T: BaseManager
     {
-        protected BaseDynamicResourceListener(IEventManager eventManager, IDynamicResourceManager manager)
+        protected BaseDynamicResourceListener(IEventManager eventManager, BaseManager manager)
         {
             _eventManager = eventManager;
             _manager = manager;
             _eventManager.AddListener(_manager.InstanceStock, this);
         }
         private IEventManager _eventManager;
-        private IDynamicResourceManager _manager;
+        private BaseManager _manager;
 
         public bool ReceiveWeakEvent(Type managerType, object sender, EventArgs e)
         {

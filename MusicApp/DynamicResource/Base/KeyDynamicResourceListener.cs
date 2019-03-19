@@ -5,9 +5,9 @@ namespace MusicApp.DynamicResource.Base
     /// <summary>
     /// Слушатель изменения культуры при локализации по ключу
     /// </summary>
-    public class KeyDynamicResourceListener<T> : BaseDynamicResourceListener<T>, INotifyPropertyChanged where T: IDynamicResourceManager
+    public class KeyDynamicResourceListener<T> : BaseDynamicResourceListener<T>, INotifyPropertyChanged where T: BaseManager
     {
-        public KeyDynamicResourceListener(string key, object[] args, IEventManager eventManager, IDynamicResourceManager manager) 
+        public KeyDynamicResourceListener(string key, object[] args, IEventManager eventManager, BaseManager manager) 
             :base(eventManager, manager)
         {
             _manager = manager;
@@ -15,7 +15,7 @@ namespace MusicApp.DynamicResource.Base
             Args = args;
         }
 
-        private IDynamicResourceManager _manager;
+        private BaseManager _manager;
         private string Key { get; }
 
         private object[] Args { get; }

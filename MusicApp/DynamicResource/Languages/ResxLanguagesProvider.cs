@@ -12,7 +12,7 @@ namespace MusicApp.DynamicResource.Languages
     /// <summary>
     /// Реализация поставщика локализованных строк через ресурсы приложения
     /// </summary>
-    public class ResxLanguagesProvider : BaseProvider<CultureInfo>, IDynamicResourceProvider<CultureInfo>
+    public class ResxLanguagesProvider : BaseProvider<CultureInfo>
     {
         public ResxLanguagesProvider(CultureInfo culture = null)
         {
@@ -60,7 +60,6 @@ namespace MusicApp.DynamicResource.Languages
 
         public override object GetResource(string key)
         {
-            Thread.Sleep(10000);
             return CurrentCulture.Name == "ru" ? "ru" : "en";
             //return Language.ResourceManager.GetObject(key);
         }

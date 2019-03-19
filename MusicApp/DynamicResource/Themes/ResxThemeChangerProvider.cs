@@ -11,7 +11,7 @@ namespace MusicApp.DynamicResource.Themes
     /// <summary>
     /// Реализация поставщика локализованных строк через ресурсы приложения
     /// </summary>
-    public class ResxThemeChangerProvider : BaseProvider<ThemeInfo>, IDynamicResourceProvider<ThemeInfo>
+    public class ResxThemeChangerProvider : BaseProvider<ThemeInfo>
     {
         public ResxThemeChangerProvider(string keyTheme)
         {

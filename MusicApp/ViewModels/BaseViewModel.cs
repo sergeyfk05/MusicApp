@@ -12,7 +12,7 @@ using System.Linq;
 
 namespace MusicApp.ViewModels
 {
-    public class BaseViewModel : INotifyPropertyChanged, IBaseViewModel
+    public class BaseViewModel : ViewModel
     {
         public bool IsBlur
         {
@@ -37,11 +37,24 @@ namespace MusicApp.ViewModels
                 {
                     isOpen = value;
                     OnPropertyChanged();
-                    LanguagesManager.Instance.CurrentCulture = LanguagesManager.Instance.Cultures.First(x => x.Name == "ru");
                 }
             }
         }
         private bool isOpen;
+
+        public MenuItem ActiveMenuItem
+        {
+            get { return activeMenuItem; }
+            set
+            {
+                if(!Equals(value, activeMenuItem))
+                {
+                    activeMenuItem = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        private MenuItem activeMenuItem;
 
         public IEnumerable<MenuItem> ItemsSource
         {
@@ -49,8 +62,8 @@ namespace MusicApp.ViewModels
             {
                 return new List<MenuItem>()
                 {
-                    new MenuItem("", "dsfdsfddddddddddddddddddddddddd", "menu"),
-                    new MenuItem("", "settings", "settings")
+                    new MenuItem("", "dsfdsfddddddddddddddddddddddddd", "Home", new HomeView()),
+                    new MenuItem("", "settings", "settings", new SettingsView())
                 };
             }
             set
@@ -77,10 +90,5 @@ namespace MusicApp.ViewModels
         }
 
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string prop = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
     }
 }

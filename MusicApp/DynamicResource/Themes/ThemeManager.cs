@@ -8,15 +8,14 @@ using System.Threading;
 
 namespace MusicApp.DynamicResource.Themes
 {
-    public class ThemeManager: BaseManager<ThemeInfo>, IDynamicResourceManager<ThemeInfo>
+    public class ThemeManager: BaseManager<ThemeInfo>
     {
-        private static IDynamicResourceManager<ThemeInfo> _dynamicResourceManager;
+        private static BaseManager<ThemeInfo> _dynamicResourceManager;
 
-        public static IDynamicResourceManager<ThemeInfo> Instance => _dynamicResourceManager ?? (_dynamicResourceManager = new ThemeManager());
-        IDynamicResourceManager<ThemeInfo> IDynamicResourceManager<ThemeInfo>.Instance => Instance;
+        public override BaseManager<ThemeInfo> Instance => StaticInstance;
+        public override BaseManager InstanceStock => Instance;
 
-        public static IDynamicResourceManager InstanceStock => _dynamicResourceManager ?? (_dynamicResourceManager = new ThemeManager());
-        IDynamicResourceManager IDynamicResourceManager.InstanceStock => InstanceStock;
+        public static BaseManager<ThemeInfo> StaticInstance => _dynamicResourceManager ?? (_dynamicResourceManager = new ThemeManager());
 
         public override object GetResource(string key)
         {

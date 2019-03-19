@@ -12,11 +12,11 @@ namespace MusicApp.DynamicResource.Base
     /// </summary>
     public class BindingDynamicResourceConverter : IMultiValueConverter
     {
-        public BindingDynamicResourceConverter(IDynamicResourceManager manager)
+        public BindingDynamicResourceConverter(BaseManager manager)
         {
             _manager = manager;
         }
-        private IDynamicResourceManager _manager;
+        private BaseManager _manager;
 
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {

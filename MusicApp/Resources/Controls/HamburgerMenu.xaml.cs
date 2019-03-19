@@ -152,6 +152,30 @@ namespace MusicApp.Resources.Controls
         public static readonly DependencyProperty ItemsSourceProperty =
             DependencyProperty.Register("ItemsSource", typeof(IEnumerable<MusicApp.Models.MenuItem>), typeof(HamburgerMenu), new PropertyMetadata(null));
 
+
+
+        public object SelectedItem
+        {
+            get { return (MenuItem)GetValue(SelectedItemProperty); }
+            set { SetValue(SelectedItemProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for SelectedItem.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SelectedItemProperty =
+            DependencyProperty.Register("SelectedItem", typeof(MenuItem), typeof(HamburgerMenu), new UIPropertyMetadata(null, OnIsOpenChanged1));
+
+
+        private static void OnIsOpenChanged1(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is HamburgerMenu menu)
+            {
+                if (menu.IsOpen)
+                    menu.OnOpened();
+                else
+                    menu.OnClosed();
+            }
+        }
+
         #endregion
 
         #region callbacks
