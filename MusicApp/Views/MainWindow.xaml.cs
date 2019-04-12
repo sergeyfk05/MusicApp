@@ -1,4 +1,6 @@
 ﻿using System.Windows;
+using MusicApp.DynamicResource.Languages;
+using System.Linq;
 
 namespace MusicApp.Views
 {

@@ -39,7 +39,7 @@ namespace MusicApp.Models.Commands
         public void Execute(object parameter = null)
         {
             if(CanExecute())
-                execute();
+                execute?.BeginInvoke(null, null);
         }
 
     }

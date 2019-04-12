@@ -10,42 +10,16 @@ namespace MusicApp.DynamicResource.Languages
     /// <summary>
     /// Основной класс для работы с локализацией
     /// </summary>
-    public class LanguagesManager : IDynamicResourceManager
+    public class LanguagesManager : BaseManager<CultureInfo>
     {
-        private LanguagesManager()
-        {
-        }
+        private static BaseManager<CultureInfo> _localizationManager;
 
-        private static IDynamicResourceManager _localizationManager;
+        public override BaseManager<CultureInfo> Instance => StaticInstance;
+        public override BaseManager InstanceStock => Instance;
 
-        public static IDynamicResourceManager Instance => _localizationManager ?? (_localizationManager = new LanguagesManager());
-        IDynamicResourceManager IDynamicResourceManager.Instance => Instance;
+        public static BaseManager<CultureInfo> StaticInstance => _localizationManager ?? (_localizationManager = new LanguagesManager());
 
-        public event EventHandler CultureChanged;
-
-        public CultureInfo CurrentCulture
-        {
-            get { return Thread.CurrentThread.CurrentUICulture; }
-            set
-            {
-                if (Equals(value, Thread.CurrentThread.CurrentUICulture))
-                    return;
-                Thread.CurrentThread.CurrentUICulture = value;
-                CultureInfo.DefaultThreadCurrentUICulture = value;
-                OnCultureChanged();
-            }
-        }
-
-        public IEnumerable<CultureInfo> Cultures => Provider?.Cultures ?? Enumerable.Empty<CultureInfo>();
-
-        public IDynamicResourceProvider Provider { get; set; }
-
-        private void OnCultureChanged()
-        {
-            CultureChanged?.Invoke(this, EventArgs.Empty);
-        }
-
-        public object GetResource(string key)
+        public override object GetResource(string key)
         {
             if (string.IsNullOrEmpty(key))
                 return "[NULL]";

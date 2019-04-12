@@ -12,18 +12,18 @@ namespace MusicApp.DynamicResource.Base
     /// </summary>
     public class BindingDynamicResourceConverter : IMultiValueConverter
     {
-        public BindingDynamicResourceConverter(IDynamicResourceManager manager)
+        public BindingDynamicResourceConverter(BaseManager manager)
         {
             _manager = manager;
         }
-        private IDynamicResourceManager _manager;
+        private BaseManager _manager;
 
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
             if (values == null || values.Length < 2)
                 return null;
             var key = System.Convert.ToString(values[1] ?? "");
-            var value = _manager?.Instance.GetResource(key);
+            var value = _manager?.InstanceStock.GetResource(key);
             if (value is string)
             {
                 var args = (parameter as IEnumerable<object> ?? values.Skip(2)).ToArray();

@@ -37,8 +37,8 @@ namespace MusicApp.Models.Commands
         /// </param>
         public void Execute(object parameter)
         {
-            if((parameter != null) && (CanExecute(parameter)))
-                execute((T)parameter);
+            if ((parameter != null) && (CanExecute(parameter)))
+                execute?.BeginInvoke((T)parameter, null, null);
         }
     }
 }

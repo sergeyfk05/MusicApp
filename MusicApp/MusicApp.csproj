@@ -57,12 +57,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DynamicResource\Base\BaseDynamicResourceListener.cs" />
+    <Compile Include="DynamicResource\Base\BaseManager.cs" />
+    <Compile Include="DynamicResource\Base\BaseProvider.cs" />
     <Compile Include="DynamicResource\Base\BindingDynamicResourceConverter.cs" />
     <Compile Include="DynamicResource\Base\BindingLocalizationListener.cs" />
     <Compile Include="DynamicResource\Base\CultureChangedDynamicResourceEventManager.cs" />
-    <Compile Include="DynamicResource\Base\IDynamicResourceManager.cs" />
     <Compile Include="DynamicResource\Base\IEventManager.cs" />
-    <Compile Include="DynamicResource\Base\IDynamicResourceProvider.cs" />
     <Compile Include="DynamicResource\Base\KeyDynamicResourceListener.cs" />
     <Compile Include="DynamicResource\Themes\ResxThemeChangerProvider.cs" />
     <Compile Include="DynamicResource\Themes\ThemeExtension.cs" />
@@ -73,9 +73,7 @@
     <Compile Include="Logic\BasicLogic.cs" />
     <Compile Include="Models\Commands\BaseCommand.cs" />
     <Compile Include="Models\Commands\RelayCommand.cs" />
-    <Compile Include="Models\Commands\RelayCommandAsync.cs" />
     <Compile Include="Models\Commands\RelayCommandWithParameter.cs" />
-    <Compile Include="Models\Commands\RelayCommandWithParameterAsync.cs" />
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Models\ThemeInfo.cs" />
     <Compile Include="Resources\Controls\HamburgerMenu.xaml.cs">
@@ -98,14 +96,19 @@
       <DependentUpon>Theme.resx</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
-    <Compile Include="ViewModels\IBaseViewModel.cs" />
-    <Compile Include="ViewModels\IViewModel.cs" />
+    <Compile Include="ViewModels\ViewModel.cs" />
+    <Compile Include="Views\HomeView.xaml.cs">
+      <DependentUpon>HomeView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\SettingsView.xaml.cs">
+      <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
     <Page Include="Resources\Controls\HamburgerMenu.xaml">
       <SubType>Designer</SubType>
@@ -131,7 +134,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\HomeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SettingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

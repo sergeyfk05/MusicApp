@@ -68,7 +68,7 @@ namespace MusicApp.DynamicResource.Themes
             // то используем BindingLocalizationListener
             if (KeyBinding != null || ArgumentBindings.Any())
             {
-                var listener = new BindingDynamicResourceListener<ThemeManager>(CultureChangedDynamicResourceEventManager<ThemeManager>.Instance, ThemeManager.Instance);
+                var listener = new BindingDynamicResourceListener<ThemeManager>(CultureChangedDynamicResourceEventManager<ThemeManager>.Instance, ThemeManager.StaticInstance);
 
                 // Создаем привязку для слушателя
                 var listenerBinding = new Binding { Source = listener };
@@ -77,7 +77,7 @@ namespace MusicApp.DynamicResource.Themes
 
                 var multiBinding = new MultiBinding
                 {
-                    Converter = new BindingDynamicResourceConverter(ThemeManager.Instance),
+                    Converter = new BindingDynamicResourceConverter(ThemeManager.StaticInstance),
                     ConverterParameter = Arguments,
                     Bindings = { listenerBinding, keyBinding }
                 };
@@ -95,7 +95,7 @@ namespace MusicApp.DynamicResource.Themes
             // Если задан ключ, то используем KeyLocalizationListener
             if (!string.IsNullOrEmpty(Key))
             {
-                var listener = new KeyDynamicResourceListener<ThemeManager>(Key, Arguments?.ToArray(), CultureChangedDynamicResourceEventManager<ThemeManager>.Instance, ThemeManager.Instance);
+                var listener = new KeyDynamicResourceListener<ThemeManager>(Key, Arguments?.ToArray(), CultureChangedDynamicResourceEventManager<ThemeManager>.Instance, ThemeManager.StaticInstance);
 
                 // Если локализация навешана на DependencyProperty объекта DependencyObject
                 if ((target.TargetObject is DependencyObject && target.TargetProperty is DependencyProperty) ||

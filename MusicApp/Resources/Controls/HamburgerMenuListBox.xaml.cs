@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
+//using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -12,18 +12,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MusicApp.Models;
 
 namespace MusicApp.Resources.Controls
 {
     /// <summary>
     /// Логика взаимодействия для HamburgerMenuListBox.xaml
     /// </summary>
-    public partial class HamburgerMenuListBox : ListBox
+    public partial class HamburgerMenuListBox : System.Windows.Controls.ListBox
     {
         public HamburgerMenuListBox()
         {
             InitializeComponent();
-            RequestedWidth = calcRequestedWidth();
         }
 
 
@@ -73,21 +73,21 @@ namespace MusicApp.Resources.Controls
             DependencyProperty.Register("SelectedItemBackground", typeof(SolidColorBrush), typeof(HamburgerMenuListBox), new PropertyMetadata(new SolidColorBrush(Colors.Black)));
 
 
-        public double RequestedWidth
-        {
-            get { return (double)GetValue(RequestedWidthProperty); }
-            set { SetValue(RequestedWidthProperty, value); }
-        }
-        public static readonly DependencyProperty RequestedWidthProperty =
-            DependencyProperty.Register("RequestedWidth", typeof(double), typeof(HamburgerMenuListBox), new PropertyMetadata((double)0));
+
+
+        //public MenuItem SelectedItem
+        //{
+        //    get { return (MenuItem)GetValue(SelectedItemProperty); }
+        //    set { SetValue(SelectedItemProperty, value); }
+        //}
+
+        //// Using a DependencyProperty as the backing store for SelectedItem.  This enables animation, styling, binding, etc...
+        //public static readonly DependencyProperty SelectedItemProperty =
+        //    DependencyProperty.Register("SelectedItem", typeof(MenuItem), typeof(HamburgerMenuListBox), new PropertyMetadata(null));
 
 
 
         #endregion
 
-        private double calcRequestedWidth()
-        {
-            return 300;
-        }
     }
 }
