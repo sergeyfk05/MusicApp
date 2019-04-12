@@ -23,20 +23,20 @@ namespace MusicApp.DynamicResource.Base
             }
         }
 
-        public static void AddListenerSt(BaseManager source, IWeakEventListener listener)
+        public static void AddListenerSt(Manager source, IWeakEventListener listener)
         {
             CurrentManager.ProtectedAddListener(source, listener);
         }
-        public void AddListener(BaseManager source, IWeakEventListener listener)
+        public void AddListener(Manager source, IWeakEventListener listener)
         {
             CurrentManager.ProtectedAddListener(source, listener);
         }
 
-        public static void RemoveListenerSt(BaseManager source, IWeakEventListener listener)
+        public static void RemoveListenerSt(Manager source, IWeakEventListener listener)
         {
             CurrentManager.ProtectedRemoveListener(source, listener);
         }
-        public void RemoveListener(BaseManager source, IWeakEventListener listener)
+        public void RemoveListener(Manager source, IWeakEventListener listener)
         {
             CurrentManager.ProtectedRemoveListener(source, listener);
         }
@@ -48,13 +48,13 @@ namespace MusicApp.DynamicResource.Base
 
         protected override void StartListening(object source)
         {
-            var manager = (BaseManager)source;
+            var manager = (Manager)source;
             manager.CultureChanged += OnCultureChanged;
         }
 
         protected override void StopListening(object source)
         {
-            var manager = (BaseManager)source;
+            var manager = (Manager)source;
             manager.CultureChanged -= OnCultureChanged;
         }
     }

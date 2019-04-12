@@ -6,21 +6,21 @@ using System.Threading.Tasks;
 
 namespace MusicApp.DynamicResource.Base
 {
-    public abstract class BaseManager
+    public abstract class Manager
     {
         public abstract object GetResource(string key);
 
-        public abstract BaseManager InstanceStock { get; }
+        public abstract Manager InstanceStock { get; }
 
-        public event EventHandler CultureChanged;
+        public event EventHandler CultureChanged = (sender, e) => { };
 
         protected void OnCultureChanged()
         {
-            CultureChanged?.Invoke(this, EventArgs.Empty);
+            CultureChanged(this, EventArgs.Empty);
         }
 
     }
-    public abstract class BaseManager<T> : BaseManager
+    public abstract class Manager<T> : Manager
     {
         public T CurrentCulture
         {
@@ -46,9 +46,9 @@ namespace MusicApp.DynamicResource.Base
 
         public IEnumerable<T> Cultures => Provider?.Cultures ?? Enumerable.Empty<T>();
 
-        public BaseProvider<T> Provider { get; set; }
+        public Provider<T> Provider { get; set; }
 
-        public abstract BaseManager<T> Instance { get; }
+        public abstract Manager<T> Instance { get; }
 
     }
 }

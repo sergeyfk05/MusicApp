@@ -5,17 +5,17 @@ namespace MusicApp.DynamicResource.Base
     /// <summary>
     /// Слушатель изменения культуры при локализации по ключу
     /// </summary>
-    public class KeyDynamicResourceListener<T> : BaseDynamicResourceListener<T>, INotifyPropertyChanged where T: BaseManager
+    public class KeyDynamicResourceListener<T> : DynamicResourceListener<T>, INotifyPropertyChanged where T : Manager
     {
-        public KeyDynamicResourceListener(string key, object[] args, IEventManager eventManager, BaseManager manager) 
-            :base(eventManager, manager)
+        public KeyDynamicResourceListener(string key, object[] args, IEventManager eventManager, Manager manager)
+            : base(eventManager, manager)
         {
             _manager = manager;
             Key = key;
             Args = args;
         }
 
-        private BaseManager _manager;
+        private Manager _manager;
         private string Key { get; }
 
         private object[] Args { get; }
@@ -31,12 +31,12 @@ namespace MusicApp.DynamicResource.Base
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged = (sender, e) => {};
 
         protected override void OnCultureChanged()
         {
             // Уведомляем привязку об изменении строки
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Value)));
+            PropertyChanged(this, new PropertyChangedEventArgs(nameof(Value)));
         }
     }
 }

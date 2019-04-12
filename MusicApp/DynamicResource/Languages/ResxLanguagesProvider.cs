@@ -12,7 +12,7 @@ namespace MusicApp.DynamicResource.Languages
     /// <summary>
     /// Реализация поставщика локализованных строк через ресурсы приложения
     /// </summary>
-    public class ResxLanguagesProvider : BaseProvider<CultureInfo>
+    public class ResxLanguagesProvider : Provider<CultureInfo>
     {
         public ResxLanguagesProvider(CultureInfo culture = null)
         {
