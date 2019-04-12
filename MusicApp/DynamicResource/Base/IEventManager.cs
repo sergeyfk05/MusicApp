@@ -4,8 +4,8 @@ namespace MusicApp.DynamicResource.Base
 {
     public interface IEventManager
     {
-        void AddListener(BaseManager source, IWeakEventListener listener);
+        void AddListener(Manager source, IWeakEventListener listener);
 
-        void RemoveListener(BaseManager source, IWeakEventListener listener);
+        void RemoveListener(Manager source, IWeakEventListener listener);
     }
 }

@@ -56,9 +56,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="DynamicResource\Base\BaseDynamicResourceListener.cs" />
-    <Compile Include="DynamicResource\Base\BaseManager.cs" />
-    <Compile Include="DynamicResource\Base\BaseProvider.cs" />
+    <Compile Include="DynamicResource\Base\DynamicResourceListener.cs" />
+    <Compile Include="DynamicResource\Base\Manager.cs" />
+    <Compile Include="DynamicResource\Base\Provider.cs" />
     <Compile Include="DynamicResource\Base\BindingDynamicResourceConverter.cs" />
     <Compile Include="DynamicResource\Base\BindingLocalizationListener.cs" />
     <Compile Include="DynamicResource\Base\CultureChangedDynamicResourceEventManager.cs" />

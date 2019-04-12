@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace MusicApp.DynamicResource.Base
 {
-    public abstract class BaseProvider<T>
+    public abstract class Provider<T>
     {
         //ResourceDictionary RD = new ResourceDictionary();
 
