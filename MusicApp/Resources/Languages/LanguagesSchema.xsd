@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="LanguagesSchema"
+    targetNamespace="http://tempuri.org/LanguagesSchema.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/LanguagesSchema.xsd"
+    xmlns:mstns="http://tempuri.org/LanguagesSchema.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+<xs:element name="recordings">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element name="record">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="ru"/>
+              <xs:element type="xs:string" name="en"/>
+              <xs:element type="xs:string" name="en-US"/>
+            </xs:sequence>
+            <xs:attribute type="xs:string" name="name" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

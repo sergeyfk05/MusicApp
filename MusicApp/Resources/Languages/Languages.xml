@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<recordings>
+  <record name="s">
+    <ru>ru s</ru>
+    <en>en s</en>
+    <en-US>en-us s</en-US>
+  </record>
+  <record name="ss">
+    <ru>ru ss</ru>
+    <en>en ss</en>
+    <en-US>en-us ss</en-US>
+  </record>
+</recordings>

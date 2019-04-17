@@ -15,10 +15,10 @@ namespace MusicApp
             base.OnStartup(e);
 
             //реализовать выбор культуры из сохранений
-            LanguagesManager.StaticInstance.Provider = new ResxLanguagesProvider("ru");
+            LanguagesManager.StaticInstance.Provider = new XMLLanguageChangerProvider("ru");
             //LanguagesManager.StaticInstance.CurrentCulture = LanguagesManager.StaticInstance.Provider.Cultures.First(x => x.Name == "en");
-            ThemeManager.StaticInstance.Provider = new ResxThemeChangerProvider("ru");
-            ThemeManager.StaticInstance.CurrentCulture = ThemeManager.StaticInstance.Cultures.First(x => x.Name == "en");
+            ThemeManager.StaticInstance.Provider = new XMLThemeChangerProvider("white");
+            ThemeManager.StaticInstance.CurrentCulture = ThemeManager.StaticInstance.Cultures.First(x => x.Name == "dark");
         }
     }
 }

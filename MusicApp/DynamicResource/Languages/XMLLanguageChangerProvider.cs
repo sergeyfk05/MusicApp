@@ -1,20 +1,18 @@
 ﻿using MusicApp.DynamicResource.Base;
-using MusicApp.Resources.Languages;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace MusicApp.DynamicResource.Languages
 {
-    /// <summary>
-    /// Реализация поставщика локализованных строк через ресурсы приложения
-    /// </summary>
-    public class ResxLanguagesProvider : Provider<CultureInfo>
+    class XMLLanguageChangerProvider : Provider<CultureInfo>
     {
-        public ResxLanguagesProvider(CultureInfo culture = null)
+        public XMLLanguageChangerProvider(CultureInfo culture = null)
         {
             //если ничего не передано
             if (culture == null)
@@ -28,9 +26,9 @@ namespace MusicApp.DynamicResource.Languages
             else
                 CurrentCulture = culture;
         }
-        public ResxLanguagesProvider(string language)
+        public XMLLanguageChangerProvider(string language)
         {
-            Init(language);
+            Init(language);            
         }
         private void Init(string language)
         {
@@ -57,11 +55,12 @@ namespace MusicApp.DynamicResource.Languages
         }
 
         private IEnumerable<CultureInfo> _cultures;
+        private XElement _languages = XDocument.Load("../../Resources/Languages/Languages.xml").Element("recordings");
 
         public override object GetResource(string key)
         {
-            return CurrentCulture.Name == "ru" ? "ru" : "en";
-            //return Language.ResourceManager.GetObject(key);
+            IEnumerable<XElement> record = _languages.Elements("record").Where(x => x.Attributes("name").ElementAt(0).Value == key);
+            return record.Count() > 0 ? record.ElementAt(0).Element(CurrentCulture.Name).Value : "null string";
         }
 
         public override IEnumerable<CultureInfo> Cultures => _cultures ?? (_cultures = new List<CultureInfo>

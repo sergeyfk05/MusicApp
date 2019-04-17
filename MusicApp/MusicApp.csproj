@@ -64,12 +64,12 @@
     <Compile Include="DynamicResource\Base\CultureChangedDynamicResourceEventManager.cs" />
     <Compile Include="DynamicResource\Base\IEventManager.cs" />
     <Compile Include="DynamicResource\Base\KeyDynamicResourceListener.cs" />
-    <Compile Include="DynamicResource\Themes\ResxThemeChangerProvider.cs" />
+    <Compile Include="DynamicResource\Languages\XMLLanguageChangerProvider.cs" />
     <Compile Include="DynamicResource\Themes\ThemeExtension.cs" />
     <Compile Include="DynamicResource\Themes\ThemeManager.cs" />
     <Compile Include="DynamicResource\Languages\LanguagesExtension.cs" />
     <Compile Include="DynamicResource\Languages\LanguagesManager.cs" />
-    <Compile Include="DynamicResource\Languages\ResxLanguagesProvider.cs" />
+    <Compile Include="DynamicResource\Themes\XMLThemeChangerProvider.cs" />
     <Compile Include="Logic\BasicLogic.cs" />
     <Compile Include="Models\Commands\BaseCommand.cs" />
     <Compile Include="Models\Commands\RelayCommand.cs" />
@@ -84,16 +84,6 @@
     </Compile>
     <Compile Include="Resources\Controls\HamburgerMenuToggleButton.xaml.cs">
       <DependentUpon>HamburgerMenuToggleButton.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Resources\Languages\Language.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Language.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Resources\Themes\Theme.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Theme.resx</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
@@ -165,19 +155,15 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Themes\Theme.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Theme.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Themes\Theme.ru.resx" />
-    <EmbeddedResource Include="Resources\Languages\Language.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Language.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Languages\Language.ru.resx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Resources\Languages\LanguagesSchema.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\Themes\ThemesSchema.xsd">
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -185,6 +171,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Configs\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Languages\Languages.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Themes\Themes.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
