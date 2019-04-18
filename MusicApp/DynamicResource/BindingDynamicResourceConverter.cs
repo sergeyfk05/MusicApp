@@ -5,7 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Windows.Data;
 
-namespace MusicApp.DynamicResource.Base
+namespace MusicApp.DynamicResource
 {
     /// <summary>
     /// Конвертер для получения значения выражения привязки в локализации

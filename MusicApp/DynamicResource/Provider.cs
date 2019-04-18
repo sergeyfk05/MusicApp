@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace MusicApp.DynamicResource.Base
+namespace MusicApp.DynamicResource
 {
     public abstract class Provider<T>
     {

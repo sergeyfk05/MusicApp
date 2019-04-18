@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace MusicApp.DynamicResource.Base
+namespace MusicApp.DynamicResource
 {
     /// <summary>
     /// Слушатель изменения культуры при локализации по ключу

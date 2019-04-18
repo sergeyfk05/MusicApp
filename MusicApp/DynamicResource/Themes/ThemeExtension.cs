@@ -5,7 +5,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Markup;
-using MusicApp.DynamicResource.Base;
+using MusicApp.DynamicResource;
 
 namespace MusicApp.DynamicResource.Themes
 {

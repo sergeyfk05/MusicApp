@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 
-namespace MusicApp.DynamicResource.Base
+namespace MusicApp.DynamicResource
 {
     public class CultureChangedDynamicResourceEventManager<T> : WeakEventManager, IEventManager
     {

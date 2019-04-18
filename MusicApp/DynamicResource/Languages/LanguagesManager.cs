@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
-using MusicApp.DynamicResource.Base;
+using MusicApp.DynamicResource;
 
 namespace MusicApp.DynamicResource.Languages
 {

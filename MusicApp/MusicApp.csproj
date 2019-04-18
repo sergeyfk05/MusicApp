@@ -56,14 +56,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="DynamicResource\Base\DynamicResourceListener.cs" />
-    <Compile Include="DynamicResource\Base\Manager.cs" />
-    <Compile Include="DynamicResource\Base\Provider.cs" />
-    <Compile Include="DynamicResource\Base\BindingDynamicResourceConverter.cs" />
-    <Compile Include="DynamicResource\Base\BindingLocalizationListener.cs" />
-    <Compile Include="DynamicResource\Base\CultureChangedDynamicResourceEventManager.cs" />
-    <Compile Include="DynamicResource\Base\IEventManager.cs" />
-    <Compile Include="DynamicResource\Base\KeyDynamicResourceListener.cs" />
+    <Compile Include="DynamicResource\DynamicResourceListener.cs" />
+    <Compile Include="DynamicResource\Languages\LanguageNode.cs" />
+    <Compile Include="DynamicResource\Manager.cs" />
+    <Compile Include="DynamicResource\Provider.cs" />
+    <Compile Include="DynamicResource\BindingDynamicResourceConverter.cs" />
+    <Compile Include="DynamicResource\BindingLocalizationListener.cs" />
+    <Compile Include="DynamicResource\CultureChangedDynamicResourceEventManager.cs" />
+    <Compile Include="DynamicResource\IEventManager.cs" />
+    <Compile Include="DynamicResource\KeyDynamicResourceListener.cs" />
     <Compile Include="DynamicResource\Languages\XMLLanguageChangerProvider.cs" />
     <Compile Include="DynamicResource\Themes\ThemeExtension.cs" />
     <Compile Include="DynamicResource\Themes\ThemeManager.cs" />

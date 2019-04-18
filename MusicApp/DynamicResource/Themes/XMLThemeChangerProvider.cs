@@ -1,4 +1,4 @@
-﻿using MusicApp.DynamicResource.Base;
+﻿using MusicApp.DynamicResource;
 using MusicApp.Models;
 using System;
 using System.Collections.Generic;

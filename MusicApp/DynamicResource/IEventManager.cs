@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace MusicApp.DynamicResource.Base
+namespace MusicApp.DynamicResource
 {
     public interface IEventManager
     {
