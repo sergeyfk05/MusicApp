@@ -57,7 +57,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DynamicResource\DynamicResourceListener.cs" />
-    <Compile Include="DynamicResource\Languages\LanguageNode.cs" />
     <Compile Include="DynamicResource\Manager.cs" />
     <Compile Include="DynamicResource\Provider.cs" />
     <Compile Include="DynamicResource\BindingDynamicResourceConverter.cs" />
