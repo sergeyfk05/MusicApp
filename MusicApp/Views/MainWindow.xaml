@@ -48,7 +48,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <TextBlock Text="{Binding IsOpen}"/>
-                <TextBlock Grid.Row="1" Margin="150 0 0 0" Text="{language:Languages sss}"/>
+                <TextBlock Grid.Row="1" Margin="150 0 0 0" Text="{language:Languages ss}"/>
             </Grid>
         </ContentControl>
     </Grid>

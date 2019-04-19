@@ -61,7 +61,7 @@ namespace MusicApp.DynamicResource.Themes
         public override object GetResource(string key)
         {
             IEnumerable<XElement> record = _languages.Elements("record").Where(x => x.Attributes("name").ElementAt(0).Value == key);
-            return record.Count() > 0 ? record.ElementAt(0).Element(CurrentCulture.Name).Value : "null string";
+            return record.Count() > 0 ? record.ElementAt(0).Element(CurrentCulture.Name)?.Value ?? "not declared culture" : "null string";
         }
 
         public override IEnumerable<ThemeInfo> Cultures => _cultures ?? (_cultures = new List<ThemeInfo>
