@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<recordings>
-  <record name="s">
-    <dark>dark s</dark>
-    <white>white s</white>
-  </record>
-  <record name="ss">
+<Recordings>
+  <Record name="s">
+    <dark>Red</dark>
+    <white>White</white>
+  </Record>
+  <Record name="ss">
     <dark>dark ss</dark>
     <white>white ss</white>
-  </record>
-</recordings>
+  </Record>
+</Recordings>

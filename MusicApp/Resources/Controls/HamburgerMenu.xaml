@@ -7,6 +7,7 @@
              xmlns:local="clr-namespace:MusicApp.Resources.Controls"
              xmlns:presentation="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
              mc:Ignorable="d" 
+             x:Name="UControl"
              d:DesignHeight="450" d:DesignWidth="800">
 
     <UserControl.Resources>
@@ -28,13 +29,15 @@
             </Storyboard>
         </ResourceDictionary>
     </UserControl.Resources>
-    
+
     <UserControl.Template>
         <ControlTemplate TargetType="local:HamburgerMenu">
-            <DockPanel MinWidth="{TemplateBinding ClosedWidth}" MaxWidth="{TemplateBinding ClosedWidth}" Background="{TemplateBinding Background}" HorizontalAlignment="Left">
+            <DockPanel x:Name="root" Width="{TemplateBinding ClosedWidth}" MinWidth="{TemplateBinding ClosedWidth}" MaxWidth="{TemplateBinding MaxOpenWidth}" Background="{TemplateBinding Background}" HorizontalAlignment="Left">
                 <StackPanel>
                     <Grid Height="{TemplateBinding TopPanelHeight}" Background="{TemplateBinding TopPanelBackgroundColor}">
-                        <local:HamburgerMenuToggleButton IsParallel="{TemplateBinding ToggleButtonIsParallel}" x:Name="ToggleButton" Background="{TemplateBinding ToggleButtonBackground}" Color="#FF515151" Cursor="Hand" MouseUp="HamburgerMenuToggleButton_MouseUp"/>
+                        <Grid Width="{TemplateBinding ClosedWidth}" HorizontalAlignment="Left">
+                            <local:HamburgerMenuToggleButton IsParallel="{TemplateBinding ToggleButtonIsParallel}" x:Name="ToggleButton" Background="{TemplateBinding ToggleButtonBackground}" Color="#FF515151" Cursor="Hand" HorizontalAlignment="Center" MouseUp="HamburgerMenuToggleButton_MouseUp"/>
+                        </Grid>
                     </Grid>
                     <local:HamburgerMenuListBox SelectedItem="{Binding SelectedItem}" ItemsSource="{TemplateBinding ItemsSource}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
                 </StackPanel>

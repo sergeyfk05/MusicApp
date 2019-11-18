@@ -7,12 +7,13 @@ using MusicApp.Models;
 using System.Collections.Generic;
 using MusicApp.Views;
 using MusicApp.DynamicResource.Languages;
+using MusicApp.DynamicResource.Themes;
 using System.Threading.Tasks;
 using System.Linq;
 
 namespace MusicApp.ViewModels
 {
-    public class BaseViewModel : ViewModel
+    public class MainViewModel : ViewModel
     {
         public bool IsBlur
         {

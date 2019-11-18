@@ -11,6 +11,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -24,7 +25,25 @@ namespace MusicApp.Resources.Controls
     {
         public HamburgerMenu()
         {
-            InitializeComponent();            
+            InitializeComponent();
+
+            DoubleAnimation navAnimation = new DoubleAnimation();
+            navAnimation.Duration = TimeSpan.FromMilliseconds(500);           
+
+            Opened += delegate(object sender, RoutedEventArgs e)
+            {
+                navAnimation.From = ClosedWidth;
+                navAnimation.To = MaxOpenWidth;
+                ((FrameworkElement)UControl.Template.FindName("root", UControl)).BeginAnimation(FrameworkElement.WidthProperty, navAnimation);
+            };
+
+            Closed += delegate (object sender, RoutedEventArgs e)
+            {
+                FrameworkElement fe = (FrameworkElement)UControl.Template.FindName("root", UControl);
+                navAnimation.From = fe.Width;
+                navAnimation.To = ClosedWidth;
+                fe.BeginAnimation(FrameworkElement.WidthProperty, navAnimation);
+            };
         }
 
         #region Main properties
@@ -51,7 +70,7 @@ namespace MusicApp.Resources.Controls
             get { return (bool)GetValue(ToggleButtonIsParallelProperty); }
         }
         private bool ToggleButtonIsParallelKey
-        {   
+        {
             get { return (bool)GetValue(ToggleButtonIsParallelProperty); }
             set { SetValue(ToggleButtonIsParallelPropertyKey, value); }
         }
@@ -76,7 +95,10 @@ namespace MusicApp.Resources.Controls
         public double MaxOpenWidth
         {
             get { return (double)GetValue(MaxOpenWidthProperty); }
-            set { SetValue(MaxOpenWidthProperty, value); }
+            set
+            {
+                SetValue(MaxOpenWidthProperty, value);
+            }
         }
         public static readonly DependencyProperty MaxOpenWidthProperty =
             DependencyProperty.Register("MaxOpenWidth", typeof(double), typeof(HamburgerMenu), new PropertyMetadata((double)300));

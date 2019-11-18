@@ -32,6 +32,7 @@ namespace MusicApp.DynamicResource.Languages
         }
         private void Init(string language)
         {
+
             language = language.ToLower();
 
             //ищем полное совпадение
@@ -55,11 +56,11 @@ namespace MusicApp.DynamicResource.Languages
         }
 
         private IEnumerable<CultureInfo> _cultures;
-        private XElement _languages = XDocument.Load("../../Resources/Languages/Languages.xml").Element("recordings");
+        private XElement _languages = XDocument.Load("../../Resources/Languages/Languages.xml").Element("Recordings");
 
         public override object GetResource(string key)
         {
-            IEnumerable<XElement> record = _languages.Elements("record").Where(x => x.Attributes("name").ElementAt(0).Value == key);
+            IEnumerable<XElement> record = _languages.Elements("Record").Where(x => x.Attributes("name").ElementAt(0).Value == key);
             return record.Count() > 0 ? record.ElementAt(0).Element(CurrentCulture.Name)?.Value ?? "not declared culture" : "null string";
         }
 

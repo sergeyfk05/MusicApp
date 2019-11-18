@@ -13,7 +13,7 @@
         Title="MainWindow" Height="450" Width="800"
         Style="{DynamicResource MainWindowStyle}">
     <Window.DataContext>
-        <vm:BaseViewModel/>
+        <vm:MainViewModel/>
     </Window.DataContext>
 
     <Window.Resources>
@@ -33,7 +33,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <myControls:HamburgerMenu SelectedItem="{Binding ActiveMenuItem}" IsOpen="{Binding IsOpen, Mode=TwoWay}" ItemsSource="{Binding ItemsSource}" Panel.ZIndex="500"/>
+        <myControls:HamburgerMenu SelectedItem="{Binding ActiveMenuItem}" IsOpen="{Binding IsOpen, Mode=TwoWay}" ItemsSource="{Binding ItemsSource}" Panel.ZIndex="500" MaxOpenWidth="200"/>
 
         <ContentControl Margin="72 0 0 0" Style="{DynamicResource MainWindowContentControlStyle}">
             <Grid>
@@ -48,7 +48,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <TextBlock Text="{Binding IsOpen}"/>
-                <TextBlock Grid.Row="1" Margin="150 0 0 0" Text="{language:Languages ss}"/>
+                <TextBlock Grid.Row="1" Margin="150 0 0 0" Text="{language:Languages ss}" Background="{theme:Theme s}"/>
             </Grid>
         </ContentControl>
     </Grid>

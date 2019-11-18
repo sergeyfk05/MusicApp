@@ -9,8 +9,6 @@ namespace MusicApp.DynamicResource
 {
     public abstract class Provider<T>
     {
-        //ResourceDictionary RD = new ResourceDictionary();
-
         public abstract object GetResource(string key);
         public abstract IEnumerable<T> Cultures { get; }
 
@@ -26,7 +24,6 @@ namespace MusicApp.DynamicResource
                     throw new ArgumentException("There is no such culture in the list of cultures.");
 
                 _currentCulture = value;
-                //rd.Source = new Uri("ms-appx:///Dictionary1.xaml");
             }
         }
         private T _currentCulture;

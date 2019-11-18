@@ -18,7 +18,7 @@ namespace MusicApp
             LanguagesManager.StaticInstance.Provider = new XMLLanguageChangerProvider("ru");
             //LanguagesManager.StaticInstance.CurrentCulture = LanguagesManager.StaticInstance.Provider.Cultures.First(x => x.Name == "en");
             ThemeManager.StaticInstance.Provider = new XMLThemeChangerProvider("white");
-            ThemeManager.StaticInstance.CurrentCulture = ThemeManager.StaticInstance.Cultures.First(x => x.Name == "dark");
+            //ThemeManager.StaticInstance.CurrentCulture = ThemeManager.StaticInstance.Cultures.First(x => x.Name == "dark");
         }
     }
 }

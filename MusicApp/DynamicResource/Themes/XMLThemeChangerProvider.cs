@@ -56,11 +56,11 @@ namespace MusicApp.DynamicResource.Themes
         }
 
         private IEnumerable<ThemeInfo> _cultures;
-        private XElement _languages = XDocument.Load("../../Resources/Themes/Themes.xml").Element("recordings");
+        private XElement _languages = XDocument.Load("../../Resources/Themes/Themes.xml").Element("Recordings");
 
         public override object GetResource(string key)
         {
-            IEnumerable<XElement> record = _languages.Elements("record").Where(x => x.Attributes("name").ElementAt(0).Value == key);
+            IEnumerable<XElement> record = _languages.Elements("Record").Where(x => x.Attributes("name").ElementAt(0).Value == key);
             return record.Count() > 0 ? record.ElementAt(0).Element(CurrentCulture.Name)?.Value ?? "not declared culture" : "null string";
         }
 
