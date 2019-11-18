@@ -28,7 +28,7 @@ namespace MusicApp.Resources.Controls
             InitializeComponent();
 
             DoubleAnimation navAnimation = new DoubleAnimation();
-            navAnimation.Duration = TimeSpan.FromMilliseconds(500);           
+            navAnimation.Duration = TimeSpan.FromMilliseconds(500);
 
             Opened += delegate(object sender, RoutedEventArgs e)
             {
