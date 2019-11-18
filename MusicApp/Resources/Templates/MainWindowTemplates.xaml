@@ -6,52 +6,5 @@
 
     <presentation:KeyTime x:Key="MainWindowAnimationStartTime">0</presentation:KeyTime>
     <presentation:KeyTime x:Key="MainWindowAnimationEndTime">0:0:0.5</presentation:KeyTime>
-    <core:Double x:Key="MainWindowStartBlurRadius">0</core:Double>
-    <core:Double x:Key="MainWindowEndBlurRadius">5</core:Double>
-    
-    <Storyboard x:Key="MainWindow_Bluring">
-        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Effect.Radius">
-            <EasingDoubleKeyFrame KeyTime="{StaticResource MainWindowAnimationStartTime}" Value="{StaticResource MainWindowStartBlurRadius}"/>
-            <EasingDoubleKeyFrame KeyTime="{StaticResource MainWindowAnimationEndTime}" Value="{StaticResource MainWindowEndBlurRadius}"/>
-        </DoubleAnimationUsingKeyFrames>
-    </Storyboard>
-    <Storyboard x:Key="MainWindow_Unbluring">
-        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Effect.Radius">
-            <EasingDoubleKeyFrame KeyTime="{StaticResource MainWindowAnimationStartTime}" Value="{StaticResource MainWindowEndBlurRadius}"/>
-            <EasingDoubleKeyFrame KeyTime="{StaticResource MainWindowAnimationEndTime}" Value="{StaticResource MainWindowStartBlurRadius}"/>
-        </DoubleAnimationUsingKeyFrames>
-    </Storyboard>
-
-    <ControlTemplate x:Key="MainWindow_ContentControlTemplate" TargetType="ContentControl">
-        <Border>
-            <Border.Effect>
-                <BlurEffect/>
-            </Border.Effect>
-            <Border.Style>
-                <Style>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding IsBlur}" Value="False">
-                            <DataTrigger.EnterActions>
-                                <BeginStoryboard x:Name="UnbluringStoryboard" Storyboard="{StaticResource MainWindow_Unbluring}"/>
-                            </DataTrigger.EnterActions>
-                            <DataTrigger.ExitActions>
-                                <StopStoryboard BeginStoryboardName="UnbluringStoryboard"/>
-                            </DataTrigger.ExitActions>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding IsBlur}" Value="True">
-                            <DataTrigger.EnterActions>
-                                <BeginStoryboard x:Name="BluringStoryboard" Storyboard="{StaticResource MainWindow_Bluring}"/>
-                            </DataTrigger.EnterActions>
-                            <DataTrigger.ExitActions>
-                                <StopStoryboard BeginStoryboardName="BluringStoryboard"/>
-                            </DataTrigger.ExitActions>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Border.Style>
-
-            <ContentPresenter/>
-        </Border>
-    </ControlTemplate>
 
 </ResourceDictionary>
